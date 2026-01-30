@@ -1,0 +1,19 @@
+---
+title: "Portfolio"
+---
+
+## Featured Projects
+
+### ⚾ LMB Analytics Shiny App
+- Mexican League advanced stats
+- WAR, FIP, player comparison
+- Built with **R, Shiny, Google Sheets, baseballR**
+
+👉 [View App](https://axelmora.shinyapps.io/lmb_stats/)
+
+---
+
+### 🧪 Data QA Automation Framework
+- .NET + NUnit
+- PostgreSQL validation
+- AWS Lambda mocking

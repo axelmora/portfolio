@@ -1,0 +1,14 @@
+---
+title: "Welcome"
+---
+
+## Hi, I'm Axel 👋
+
+Data Engineer & Aspiring Sabermetrician passionate about baseball analytics.
+
+### 🔍 What you'll find here:
+
+-   ⚾ LMB Analytics (Shiny App)
+-   📊 Data projects
+-   🧪 R, Python, SQL & Cloud work
+-   ✍️ Blog posts about baseball & data

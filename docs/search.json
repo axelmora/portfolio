@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Data Engineer & Aspiring Sabermetrician passionate about baseball analytics.\n\n\n\n⚾ LMB Analytics (Shiny App)\n📊 Data projects\n🧪 R, Python, SQL & Cloud work\n✍️ Blog posts about baseball & data"
+  },
+  {
+    "objectID": "index.html#hi-im-axel",
+    "href": "index.html#hi-im-axel",
+    "title": "Welcome",
+    "section": "",
+    "text": "Data Engineer & Aspiring Sabermetrician passionate about baseball analytics.\n\n\n\n⚾ LMB Analytics (Shiny App)\n📊 Data projects\n🧪 R, Python, SQL & Cloud work\n✍️ Blog posts about baseball & data"
+  },
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Mexican League advanced stats\nWAR, FIP, player comparison\nBuilt with R, Shiny, Google Sheets, baseballR\n\n👉 View App\n\n\n\n\n\n.NET + NUnit\nPostgreSQL validation\nAWS Lambda mocking"
+  },
+  {
+    "objectID": "portfolio.html#featured-projects",
+    "href": "portfolio.html#featured-projects",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Mexican League advanced stats\nWAR, FIP, player comparison\nBuilt with R, Shiny, Google Sheets, baseballR\n\n👉 View App\n\n\n\n\n\n.NET + NUnit\nPostgreSQL validation\nAWS Lambda mocking"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]

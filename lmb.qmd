@@ -1,0 +1,3 @@
+<iframe src="https://axelmora.shinyapps.io/lmb_stats/" width="100%" height="900px" style="border:none;">
+
+</iframe>

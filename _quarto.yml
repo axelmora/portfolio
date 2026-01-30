@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Axel Mora | Baseball & Data Analytics"
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Portfolio
+        href: portfolio.qmd
+      - text: LMB Analytics
+        href: lmb.qmd
+      - text: Blog
+        href: blog.qmd
+      - text: About
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/axelmora
+      - icon: linkedin
+        href: https://linkedin.com/in/axelmora
+      - icon: twitter-x
+        href: https://x.com/axelmora
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
