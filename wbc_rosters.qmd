@@ -1,0 +1,368 @@
+---
+title: "⚾ World Baseball Classic"
+subtitle: "Análisis de Rosters y Diversidad Global"
+author: "Axel Mora"
+date: today
+format:
+  revealjs:
+    theme: [default]
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    logo: wbc_logo.png
+    css: styles.css
+    footer: "World Baseball Classic 2026 | Análisis de Datos"
+    transition: slide
+    background-transition: fade
+    highlight-style: monokai
+editor: visual
+execute:
+  echo: false
+  
+warning: false
+message: false
+---
+
+```{r setup}
+#| include: false
+
+# Cargar librerías
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(scales)
+library(viridis)
+library(patchwork)
+library(treemapify)
+library(knitr)
+library(kableExtra)
+
+# Tema personalizado
+theme_wbc <- function() {
+  theme_minimal(base_size = 14) +
+    theme(
+      plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 14, hjust = 0.5, color = "gray40"),
+      axis.title = element_text(size = 13, face = "bold"),
+      axis.text = element_text(size = 11),
+      legend.title = element_text(size = 12, face = "bold"),
+      legend.text = element_text(size = 11),
+      panel.grid.minor = element_blank(),
+      plot.background = element_rect(fill = "white", color = NA)
+    )
+}
+
+# Cargar datos
+df <- read_csv("wbc_rosters.csv", show_col_types = FALSE)
+
+# Crear variable de tipo de jugador
+df <- df %>%
+  mutate(
+    player_type = case_when(
+      team_name == "United States" & birth_country == "USA" ~ "Local",
+      team_name == "Japan" & birth_country == "Japan" ~ "Local",
+      team_name == "Venezuela" & birth_country == "Venezuela" ~ "Local",
+      team_name == "Cuba" & birth_country == "Cuba" ~ "Local",
+      team_name == "Dominican Republic" & birth_country == "Dominican Republic" ~ "Local",
+      team_name == "Puerto Rico" & birth_country == "Puerto Rico" ~ "Local",
+      team_name == "Mexico" & birth_country == "Mexico" ~ "Local",
+      team_name == "Korea" & birth_country == "Republic of Korea" ~ "Local",
+      team_name == "Chinese Taipei" & birth_country == "Taiwan" ~ "Local",
+      team_name == "Australia" & birth_country == "Australia" ~ "Local",
+      team_name == "Canada" & birth_country == "Canada" ~ "Local",
+      team_name == "Brazil" & birth_country == "Brazil" ~ "Local",
+      team_name == "Czechia" & birth_country == "Czech Republic" ~ "Local",
+      team_name == "Colombia" & birth_country == "Colombia" ~ "Local",
+      team_name == "Panama" & birth_country == "Panama" ~ "Local",
+      team_name == "Nicaragua" & birth_country == "Nicaragua" ~ "Local",
+      team_name == "Italy" & birth_country == "Italy" ~ "Local",
+      team_name == "Israel" & birth_country == "Israel" ~ "Local",
+      team_name == "Great Britain" & birth_country == "United Kingdom" ~ "Local",
+      team_name == "Kingdom of the Netherlands" & birth_country %in% c("Curacao","Netherlands","Aruba") ~ "Local",
+      TRUE ~ "Heritage"
+    )
+  )
+```
+
+## 🌍 Introducción {background-color="#1a1a2e"}
+
+::::: columns
+::: {.column width="50%"}
+### El Béisbol es Global
+
+-   **20 equipos nacionales**
+-   **600 jugadores**
+-   **28 países de origen**
+-   Un torneo que une al mundo
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+
+# Métricas clave
+#knitr::include_graphics("baseball_world.png")
+```
+:::
+:::::
+
+## 📊 Resumen Ejecutivo {.smaller}
+
+```{r}
+#| fig-height: 3
+
+# Crear tabla de resumen
+summary_data <- tibble(
+  Métrica = c("Total de Jugadores", "Equipos", "Países de Nacimiento", 
+              "Nacidos en USA", "Nacidos en sus países que representan", "Jugadores  de herencia, doble nacionalidad o naturalización"),
+  Valor = c(
+    nrow(df),
+    n_distinct(df$team_name),
+    n_distinct(df$birth_country),
+    sum(df$birth_country == "USA"),
+    sum(df$player_type == "Local"),
+    sum(df$player_type == "Heritage")
+  ),
+  Porcentaje = c(
+    "100%",
+    "-",
+    "-",
+    sprintf("%.1f%%", sum(df$birth_country == "USA")/nrow(df)*100),
+    sprintf("%.1f%%", sum(df$player_type == "Local")/nrow(df)*100),
+    sprintf("%.1f%%", sum(df$player_type == "Heritage")/nrow(df)*100)
+  )
+)
+
+summary_data %>%
+  gt() %>%
+  tab_header(
+    title = md("**Métricas Clave del Torneo**")
+  ) %>%
+  cols_align(align = "center", columns = everything()) %>%
+  tab_style(
+    style = cell_fill(color = "#3498db", alpha = 0.2),
+    locations = cells_body(rows = c(1, 4))
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold", size = px(16)),
+    locations = cells_body(columns = Valor)
+  ) %>%
+  opt_stylize(style = 6, color = "blue")
+```
+
+# 🌐 Distribución Geográfica
+
+## Top 15 Países de Nacimiento {.smaller}
+
+```{r}
+#| fig-width: 12
+#| fig-height: 7
+
+birth_top15 <- df %>%
+  count(birth_country, sort = TRUE) %>%
+  head(15) %>%
+  mutate(birth_country = fct_reorder(birth_country, n))
+
+ggplot(birth_top15, aes(x = n, y = birth_country, fill = n)) +
+  geom_col(show.legend = FALSE, width = 0.8) +
+  geom_text(aes(label = n), hjust = -0.2, fontface = "bold", size = 5) +
+  scale_fill_viridis_c(option = "rocket", direction = -1) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.15))) +
+  labs(
+    title = "Top 15 Países de Nacimiento",
+    subtitle = "USA domina con más de 200 jugadores",
+    x = "Número de Jugadores",
+    y = NULL
+  ) +
+  theme_wbc() +
+  theme(axis.text.y = element_text(size = 13, face = "bold"))
+```
+
+::: notes
+-   USA representa el 35% de todos los jugadores
+-   Muchos juegan para otros países por herencia
+-   La globalización del béisbol es evidente
+:::
+
+## Distribución Global (Treemap) {.smaller}
+
+```{r}
+#| fig-width: 14
+#| fig-height: 8
+
+birth_all <- df %>%
+  count(birth_country, sort = TRUE) %>%
+  mutate(
+    label = paste0(birth_country, "\n", n),
+    pct = n / sum(n) * 100
+  )
+
+ggplot(birth_all, aes(area = n, fill = n, label = label)) +
+  geom_treemap(color = "white", size = 2) +
+  geom_treemap_text(
+    place = "centre",
+    grow = FALSE,
+    color = "white",
+    fontface = "bold",
+    size = 12
+  ) +
+  scale_fill_viridis_c(option = "plasma", name = "Jugadores") +
+  labs(title = "Distribución Global de Jugadores por País de Nacimiento") +
+  theme_void() +
+  theme(
+    plot.title = element_text(size = 20, face = "bold", hjust = 0.5, margin = margin(b = 15)),
+    legend.position = "bottom",
+    legend.key.width = unit(3, "cm")
+  )
+```
+
+# 🏆 Análisis por Equipos
+
+## Composición de Rosters {.smaller}
+
+```{r}
+#| fig-width: 13
+#| fig-height: 8
+
+team_comp <- df %>%
+  count(team_name, player_type) %>%
+  group_by(team_name) %>%
+  mutate(
+    total = sum(n),
+    pct = n / total * 100
+  ) %>%
+  ungroup()
+
+# Ordenar por % de locales
+team_order <- team_comp %>%
+  filter(player_type == "Local") %>%
+  arrange(pct) %>%
+  pull(team_name)
+
+team_comp$team_name <- factor(team_comp$team_name, levels = team_order)
+
+ggplot(team_comp, aes(x = n, y = team_name, fill = player_type)) +
+  geom_col(position = "stack", color = "white", size = 0.5) +
+  geom_text(
+    data = team_comp %>% filter(player_type == "Local"),
+    aes(label = sprintf("%.0f%%", pct)),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    fontface = "bold",
+    size = 4
+  ) +
+  scale_fill_manual(
+    values = c("Local" = "#27ae60", "Heritage" = "#e74c3c"),
+    name = NULL
+  ) +
+  geom_vline(xintercept = 30, linetype = "dashed", color = "gray30", size = 0.8) +
+  labs(
+    title = "Composición de Rosters: Jugadores Locales vs Heritage",
+    x = "Número de Jugadores (Total = 30 por equipo)",
+    y = NULL
+  ) +
+  theme_wbc() +
+  theme(
+    legend.position = "top",
+    legend.text = element_text(size = 14),
+    axis.text.y = element_text(size = 12, face = "bold")
+  )
+```
+
+*Curacao y Aruba se incluyeron como parte del Kingdom of the Netherlands*
+
+## Porcentaje de Jugadores Locales {.smaller}
+
+```{r}
+#| fig-width: 12
+#| fig-height: 7
+
+local_pct <- df %>%
+  group_by(team_name) %>%
+  summarise(
+    total = n(),
+    local = sum(player_type == "Local"),
+    pct_local = local / total * 100
+  ) %>%
+  arrange(desc(pct_local)) %>%
+  mutate(team_name = fct_reorder(team_name, pct_local))
+
+ggplot(local_pct, aes(x = pct_local, y = team_name)) +
+  geom_segment(aes(x = 0, xend = pct_local, y = team_name, yend = team_name),
+               color = "gray60", size = 1.5) +
+  geom_point(aes(color = pct_local), size = 6) +
+  geom_text(aes(label = sprintf("%.0f%%", pct_local)),
+            hjust = -0.4, fontface = "bold", size = 4.5) +
+  scale_color_gradient2(
+    low = "#e74c3c", mid = "#f39c12", high = "#27ae60",
+    midpoint = 50,
+    name = "% Local"
+  ) +
+  scale_x_continuous(limits = c(0, 115), expand = c(0, 0)) +
+  labs(
+    title = "Porcentaje de Jugadores Locales por Equipo",
+    subtitle = "4 equipos con 100% de jugadores nacionales",
+    x = "Porcentaje (%)",
+    y = NULL
+  ) +
+  theme_wbc() +
+  theme(
+    legend.position = "none",
+    axis.text.y = element_text(size = 11, face = "bold")
+  )
+```
+
+::: notes
+-   USA, Japan, Venezuela y Cuba: 100% puros
+-   Israel: Solo 3.3% locales (estrategia heritage)
+-   Italia y Gran Bretaña: Mayormente heritage
+:::
+
+## Tabla de Estrategias {.smaller}
+
+```{r}
+team_strategy <- df %>%
+  group_by(team_name) %>%
+  summarise(
+    Local = sum(player_type == "Local"),
+    Heritage = sum(player_type == "Heritage"),
+    Total = n(),
+    `% Local` = Local / Total * 100
+  ) %>%
+  arrange(desc(`% Local`)) %>%
+  mutate(
+    Estrategia = case_when(
+      `% Local` == 100 ~ "🟢 100% Puro",
+      `% Local` >= 90 ~ "🔵 Mayormente Local",
+      `% Local` >= 70 ~ "🟡 Mixto",
+      `% Local` >= 50 ~ "🟠 Mixto-Heritage",
+      TRUE ~ "🔴 Dominado Heritage"
+    )
+  )
+
+team_strategy %>%
+  select(team_name, Local, Heritage, `% Local`, Estrategia) %>%
+  head(10) %>%
+  gt() %>%
+  tab_header(
+    title = md("**Top 10 Equipos por % de Jugadores Locales**")
+  ) %>%
+  fmt_number(columns = `% Local`, decimals = 1) %>%
+  cols_label(
+    team_name = "Equipo",
+    `% Local` = "% Local"
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = team_name)
+  ) %>%
+  data_color(
+    columns = `% Local`,
+    colors = scales::col_numeric(
+      palette = c("#e74c3c", "#f39c12", "#27ae60"),
+      domain = c(0, 100)
+    )
+  ) %>%
+  opt_stylize(style = 6, color = "cyan")
+```

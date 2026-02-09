@@ -33,5 +33,54 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "wbc_rosters.html#introducción",
+    "href": "wbc_rosters.html#introducción",
+    "title": "⚾ World Baseball Classic",
+    "section": "🌍 Introducción",
+    "text": "🌍 Introducción\n\n\nEl Béisbol es Global\n\n20 equipos nacionales\n600 jugadores\n28 países de origen\nUn torneo que une al mundo"
+  },
+  {
+    "objectID": "wbc_rosters.html#resumen-ejecutivo",
+    "href": "wbc_rosters.html#resumen-ejecutivo",
+    "title": "⚾ World Baseball Classic",
+    "section": "📊 Resumen Ejecutivo",
+    "text": "📊 Resumen Ejecutivo\n\n\n\n\n\n\n\n\nMétricas Clave del Torneo\n\n\nMétrica\nValor\nPorcentaje\n\n\n\n\nTotal de Jugadores\n600\n100%\n\n\nEquipos\n20\n-\n\n\nPaíses de Nacimiento\n28\n-\n\n\nNacidos en USA\n148\n24.7%\n\n\nNacidos en sus países que representan\n453\n75.5%\n\n\nJugadores de herencia, doble nacionalidad o naturalización\n147\n24.5%"
+  },
+  {
+    "objectID": "wbc_rosters.html#top-15-países-de-nacimiento",
+    "href": "wbc_rosters.html#top-15-países-de-nacimiento",
+    "title": "⚾ World Baseball Classic",
+    "section": "Top 15 Países de Nacimiento",
+    "text": "Top 15 Países de Nacimiento\n\n\n\nUSA representa el 35% de todos los jugadores\nMuchos juegan para otros países por herencia\nLa globalización del béisbol es evidente"
+  },
+  {
+    "objectID": "wbc_rosters.html#distribución-global-treemap",
+    "href": "wbc_rosters.html#distribución-global-treemap",
+    "title": "⚾ World Baseball Classic",
+    "section": "Distribución Global (Treemap)",
+    "text": "Distribución Global (Treemap)"
+  },
+  {
+    "objectID": "wbc_rosters.html#composición-de-rosters",
+    "href": "wbc_rosters.html#composición-de-rosters",
+    "title": "⚾ World Baseball Classic",
+    "section": "Composición de Rosters",
+    "text": "Composición de Rosters\n\nCuracao y Aruba se incluyeron como parte del Kingdom of the Netherlands"
+  },
+  {
+    "objectID": "wbc_rosters.html#porcentaje-de-jugadores-locales",
+    "href": "wbc_rosters.html#porcentaje-de-jugadores-locales",
+    "title": "⚾ World Baseball Classic",
+    "section": "Porcentaje de Jugadores Locales",
+    "text": "Porcentaje de Jugadores Locales\n\n\n\nUSA, Japan, Venezuela y Cuba: 100% puros\nIsrael: Solo 3.3% locales (estrategia heritage)\nItalia y Gran Bretaña: Mayormente heritage"
+  },
+  {
+    "objectID": "wbc_rosters.html#tabla-de-estrategias",
+    "href": "wbc_rosters.html#tabla-de-estrategias",
+    "title": "⚾ World Baseball Classic",
+    "section": "Tabla de Estrategias",
+    "text": "Tabla de Estrategias\n\n\n\n\n\n\n\n\nTop 10 Equipos por % de Jugadores Locales\n\n\nEquipo\nLocal\nHeritage\n% Local\nEstrategia\n\n\n\n\nCuba\n30\n0\n100.0\n🟢 100% Puro\n\n\nJapan\n30\n0\n100.0\n🟢 100% Puro\n\n\nUnited States\n30\n0\n100.0\n🟢 100% Puro\n\n\nVenezuela\n30\n0\n100.0\n🟢 100% Puro\n\n\nAustralia\n28\n2\n93.3\n🔵 Mayormente Local\n\n\nChinese Taipei\n28\n2\n93.3\n🔵 Mayormente Local\n\n\nKingdom of the Netherlands\n28\n2\n93.3\n🔵 Mayormente Local\n\n\nDominican Republic\n27\n3\n90.0\n🔵 Mayormente Local\n\n\nPanama\n27\n3\n90.0\n🔵 Mayormente Local\n\n\nCzechia\n26\n4\n86.7\n🟡 Mixto"
   }
 ]
