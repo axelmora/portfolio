@@ -1,0 +1,122 @@
+---
+title: "WBC 2026 – Rosters"
+subtitle: "Análisis de composición de roster"
+author: "Axel Mora"
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    transition: fade
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(gt)
+library(forcats)
+library(readr)
+
+all_rosters_full <- read_csv("all_rosters_full.csv", show_col_types = FALSE)
+teams <- unique(all_rosters_full$team_name)
+```
+
+## Selecciones Analizadas
+
+`r length(teams)` equipos incluidos.
+
+```{r}
+#| output: asis
+
+for (t in teams) {
+  
+  df <- all_rosters_full %>% 
+    filter(team_name == t)
+  
+  avg_age <- round(mean(df$age, na.rm = TRUE), 1)
+  pitchers_pct <- round(mean(grepl("P", df$pos)) * 100, 1)
+  mlb_pct <- round(mean(!is.na(df$mlb_org)) * 100, 1)
+  
+  # =========================
+  # SLIDE 1 – RESUMEN
+  # =========================
+  
+  cat(paste0(
+    "\n\n## ", t, "\n",
+    "### Resumen General\n\n",
+    "- Jugadores: ", nrow(df), "\n",
+    "- Edad promedio: ", avg_age, "\n",
+    "- % Afiliados MLB: ", mlb_pct, "%\n"
+  ))
+  
+  # =========================
+  # SLIDE 2.1 – TABLA
+  # =========================
+  
+  cat(paste0("\n\n## ", t, " – Roster\n\n"))
+  
+  df %>%
+    arrange(pos)
+  
+  print(
+    df[1:15,] %>%
+      select(person_full_name, pos, age, birth_country, club, league, mlb_org) %>%
+      gt()
+  )
+  
+  # =========================
+  # SLIDE 2.2 – TABLA
+  # =========================
+  
+  cat(paste0("\n\n## ", t, " – Roster\n\n"))
+  
+  df %>%
+    arrange(pos)
+  
+  print(
+    df[16:30,] %>%
+      select(person_full_name, pos, age, birth_country, club, league, mlb_org) %>%
+      gt()
+  )
+  
+  # =========================
+  # SLIDE 3 – LIGAS
+  # =========================
+  
+  cat(paste0("\n\n## ", t, " – Distribución por Liga\n\n"))
+  
+  print(
+    df %>%
+      count(league) %>%
+      mutate(pct = n / sum(n)) %>%
+      ggplot(aes(x = fct_reorder(league, pct), y = pct)) +
+      geom_col() +
+      coord_flip() +
+      scale_y_continuous(labels = percent_format()) +
+      theme_minimal()
+  )
+  
+  # =========================
+  # SLIDE 4 – NACIMIENTO
+  # =========================
+  
+  cat(paste0("\n\n## ", t, " – País de Nacimiento\n\n"))
+  
+  print(
+    df %>%
+      count(birth_country) %>%
+      mutate(pct = n / sum(n)) %>%
+      ggplot(aes(x = fct_reorder(birth_country, pct), y = pct)) +
+      geom_col() +
+      coord_flip() +
+      scale_y_continuous(labels = percent_format()) +
+      theme_minimal()
+  )
+  
+}
+
+```

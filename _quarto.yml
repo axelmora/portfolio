@@ -14,6 +14,8 @@ website:
         href: lmb.qmd
       - text: WBC Rosters Composition
         href: wbc_rosters.qmd
+      - text: WBC Rosters 
+        href: wbc_rosters_full.qmd
       - text: About
         href: about.qmd
     right:

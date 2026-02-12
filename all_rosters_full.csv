@@ -1,0 +1,601 @@
+team_name,person_full_name,birth_country,pos,bats,throws,height,weight,age,mlb_org,club,league
+Czechia,Boris Vecerka,Czech Republic,RHP,R,R,6,230,22,NA,Hroši Brno,CZE
+Czechia,Daniel Padysak,Czech Republic,RHP,L,R,6,225,25,NA,Oisix Niigata Albirex,JPN
+Czechia,Filip Capka,Czech Republic,RHP,L,R,6,205,27,NA,Draci Brno,CZE
+Czechia,Filip Kollmann,Czech Republic,RHP,L,R,6,163,20,NA,Arizona Western College,NJCAA
+Czechia,Jan Novak,Czech Republic,LHP,R,L,6,190,32,NA,Kotlářka Praha,CZE
+Czechia,Jan Pospisil,Czech Republic,INF,L,R,6,185,22,NA,North Greenville University,NCAA
+Czechia,Jeff Barto,USA,LHP,L,L,6,180,36,NA,Třebíč Nuclears,CZE
+Czechia,Lukas Ercoli,Czech Republic,LHP,R,L,6,201,29,NA,Kotlářka Praha,CZE
+Czechia,Lukas Hlouch,Czech Republic,RHP,L,R,6,216,25,NA,Třebíč Nuclears,CZE
+Czechia,Marek Chlup,Czech Republic,OF,R,R,6,244,27,NA,Caliente de Durango,MEX
+Czechia,Marek Krejcirik,Czech Republic,UTL,L,R,5,165,24,NA,Třebíč Nuclears,CZE
+Czechia,Marek Minarik,Czech Republic,RHP,R,R,6,208,32,NA,Sokol Hluboká,CZE
+Czechia,Martin Cervenka,Czech Republic,C,R,R,6,225,33,NA,Kotlářka Praha,CZE
+Czechia,Martin Cervinka,Czech Republic,INF,R,R,6,193,28,NA,Draci Brno,CZE
+Czechia,Martin Muzik,Czech Republic,1B,R,R,6,205,29,NA,Sokol Hluboká,CZE
+Czechia,Martin Schneider,Czech Republic,RHP,R,R,6,180,39,NA,Skokani Olomouc,CZE
+Czechia,Martin Zelenka,Czech Republic,C,R,R,6,225,25,NA,Tempo Praha,CZE
+Czechia,Matous Bubenik,Czech Republic,C,R,R,6,207,20,NA,UNC Wilmington,NCAA
+Czechia,Max Prejda,Czech Republic,OF,L,R,5,154,18,NA,Kotlářka Praha,CZE
+Czechia,Michal Kovala,Czech Republic,RHP,L,R,5,163,22,NA,Chipola College,NJCAA
+Czechia,Michal Sindelka,Czech Republic,OF,R,R,5,198,20,NA,Chipola College,NJCAA
+Czechia,Milan Prokop,Czech Republic,INF,R,R,6,194,22,NA,Draci Brno,CZE
+Czechia,Ondrej Satoria,Czech Republic,RHP,R,R,5,154,28,NA,Arrows Ostrava,CZE
+Czechia,Ondrej Vank,Czech Republic,RHP,R,R,6,192,20,NA,Northeastern Junior College,NJCAA
+Czechia,Ryan Johnson,Canada,UTL,L,L,6,229,33,NA,Hroši Brno,CZE
+Czechia,Terrin Vavra,USA,2B,L,R,6,185,28,NA,Free Agent,NA
+Czechia,Tomas Duffek,Czech Republic,LHP,R,L,6,188,36,NA,Eagles Praha,CZE
+Czechia,Tomas Ondra,Czech Republic,RHP,L,R,6,198,29,NA,Draci Brno,CZE
+Czechia,Vojtech Mensik,Czech Republic,INF,R,R,6,175,27,NA,Hroši Brno,CZE
+Czechia,William Escala,USA,UTL,S,R,5,180,27,NA,Hroši Brno,CZE
+Puerto Rico,Angel Reyes,Puerto Rico,RHP,R,R,6,205,28,NA,Free Agent,NA
+Puerto Rico,Bryan Torres,Puerto Rico,OF,L,R,5,165,28,STL,St. Louis Cardinals,MLB
+Puerto Rico,Carlos Cortes,USA,OF,L,S,5,197,28,ATH,Athletics,MLB
+Puerto Rico,Christian Vázquez,Puerto Rico,C,R,R,5,205,35,NA,Free Agent,NA
+Puerto Rico,Darell Hernaiz,Puerto Rico,INF,R,R,6,190,24,ATH,Athletics,MLB
+Puerto Rico,Eddie Rosario,Puerto Rico,OF,L,R,6,180,34,NA,Free Agent,NA
+Puerto Rico,Eduardo Rivera,Puerto Rico,LHP,L,L,6,237,22,BOS,Portland Sea Dogs,AA
+Puerto Rico,Edwin Arroyo,Puerto Rico,INF,S,R,5,173,22,CIN,Cincinnati Reds,MLB
+Puerto Rico,Edwin Díaz,Puerto Rico,RHP,R,R,6,165,31,LAD,Los Angeles Dodgers,MLB
+Puerto Rico,Elmer Rodríguez,Puerto Rico,RHP,L,R,6,160,22,NYY,New York Yankees,MLB
+Puerto Rico,Emmanuel Rivera,Puerto Rico,INF,R,R,6,225,29,NA,Free Agent,NA
+Puerto Rico,Fernando Cruz,Puerto Rico,RHP,R,R,6,237,35,NYY,New York Yankees,MLB
+Puerto Rico,Gabriel Rodriguez,Puerto Rico,LHP,L,L,6,193,26,NA,Free Agent,NA
+Puerto Rico,Heliot Ramos,Puerto Rico,OF,R,R,5,230,26,SF,San Francisco Giants,MLB
+Puerto Rico,Jorge López,Puerto Rico,RHP,R,R,6,200,32,NA,Free Agent,NA
+Puerto Rico,José De León,Puerto Rico,RHP,R,R,6,220,33,NA,Free Agent,NA
+Puerto Rico,Jose Espada,Puerto Rico,RHP,R,R,6,170,28,BAL,Orioles,AAA
+Puerto Rico,Jovani Morán,Puerto Rico,LHP,L,L,6,167,28,BOS,Boston Red Sox,MLB
+Puerto Rico,Luis Quinones,Puerto Rico,RHP,R,R,6,205,28,MIN,St. Paul Saints,AAA
+Puerto Rico,Luis Vázquez,Puerto Rico,INF,R,R,6,165,26,BAL,Norfolk Tides,MLB
+Puerto Rico,MJ Melendez,USA,OF,L,R,6,190,27,NA,Free Agent,NA
+Puerto Rico,Martín Maldonado,Puerto Rico,C,R,R,6,230,39,NA,Free Agent,NA
+Puerto Rico,Matthew Lugo,Puerto Rico,OF,R,R,6,190,24,LAA,Los Angeles Angels,MLB
+Puerto Rico,Nolan Arenado,USA,INF,R,R,6,215,34,AZ,Arizona Diamondbacks,MLB
+Puerto Rico,Raymond Burgos,Puerto Rico,LHP,L,L,6,209,27,NA,Free Agent,NA
+Puerto Rico,Ricardo Velez,Puerto Rico,RHP,R,R,6,180,27,TEX,Frisco RoughRiders,AA
+Puerto Rico,Rico Garcia,USA,RHP,R,R,5,201,32,BAL,Baltimore Orioles,MLB
+Puerto Rico,Seth Lugo,USA,RHP,R,R,6,225,36,KC,Kansas City Royals,MLB
+Puerto Rico,Willi Castro,Puerto Rico,OF,S,R,6,206,28,COL,Colorado Rockies,MLB
+Puerto Rico,Yacksel Ríos,Puerto Rico,RHP,R,R,6,215,32,CHC,Iowa Cubs,AAA
+Mexico,Alejandro Kirk,Mexico,C,R,R,5,240,27,TOR,Toronto Blue Jays,MLB
+Mexico,Alejandro Osuna,Mexico,OF,L,L,5,185,23,TEX,Texas Rangers,MLB
+Mexico,Alek Thomas,USA,OF,L,L,5,175,25,AZ,Arizona Diamondbacks,MLB
+Mexico,Alex Carrillo,USA,RHP,R,R,6,220,28,NYM,New York Mets,MLB
+Mexico,Alexander Armenta,Mexico,LHP,L,L,6,185,21,NA,Fukuoka Softbank Hawks,JPN
+Mexico,Alexis Wilson,Mexico,C,R,R,5,200,29,NA,Tigres de Quintana Roo,MEX
+Mexico,Andrés Muñoz,Mexico,RHP,R,R,6,222,27,SEA,Seattle Mariners,MLB
+Mexico,Brennan Bernardino,USA,LHP,L,L,6,220,34,COL,Colorado Rockies,MLB
+Mexico,Daniel Duarte,Mexico,RHP,R,R,6,235,29,NYM,Syracuse Mets,AAA
+Mexico,Gerardo Reyes,Mexico,RHP,R,R,5,195,32,NA,Diablos Rojos del México,MEX
+Mexico,Jared Serna,Mexico,UTL,R,R,5,174,23,MIA,Miami Marlins,MLB
+Mexico,Jarren Duran,USA,OF,L,R,6,205,29,BOS,Boston Red Sox,MLB
+Mexico,Javier Assad,Mexico,RHP,R,R,6,200,28,CHC,Chicago Cubs,MLB
+Mexico,Jesus Cruz,Mexico,RHP,R,R,6,230,30,NA,Saraperos de Saltillo,MEX
+Mexico,Joey Meneses,Mexico,UTL,R,R,6,235,33,ATH,Las Vegas Aviators,AAA
+Mexico,Joey Ortiz,USA,SS,R,R,5,183,27,MIL,Milwaukee Brewers,MLB
+Mexico,Jonathan Aranda,Mexico,1B,L,R,6,215,27,TB,Tampa Bay Rays,MLB
+Mexico,José Urquidy,Mexico,RHP,R,R,6,215,30,NA,Free Agent,NA
+Mexico,Julian Ornelas,Mexico,UTL,L,R,6,184,29,NA,Diablos Rojos del México,MEX
+Mexico,Luis Gastelum,Mexico,RHP,R,R,6,175,24,STL,Springfield Cardinals,AA
+Mexico,Luis Urías,Mexico,2B,R,R,5,202,28,NA,Free Agent,NA
+Mexico,Nick Gonzales,USA,2B,R,R,5,200,26,PIT,Pittsburgh Pirates,MLB
+Mexico,Ramón Urías,Mexico,3B,R,R,5,185,31,NA,Free Agent,NA
+Mexico,Randy Arozarena,Cuba,OF,R,R,5,185,30,SEA,Seattle Mariners,MLB
+Mexico,Robert Garcia,USA,LHP,R,L,6,235,29,TEX,Texas Rangers,MLB
+Mexico,Rowdy Tellez,USA,1B/DH,L,L,6,270,30,NA,Free Agent,NA
+Mexico,Samy Natera Jr.,Mexico,LHP,L,L,6,230,26,LAA,Salt Lake Bees,AAA
+Mexico,Taijuan Walker,USA,RHP,R,R,6,245,33,PHI,Philadelphia Phillies,MLB
+Mexico,Taj Bradley,USA,RHP,R,R,6,220,24,MIN,Minnesota Twins,MLB
+Mexico,Victor Vodnik,USA,RHP,R,R,6,214,26,COL,Colorado Rockies,MLB
+Dominican Republic,Abner Uribe,Dominican Republic,RHP,R,R,6,210,25,MIL,Milwaukee Brewers,MLB
+Dominican Republic,Agustín Ramírez,Dominican Republic,C,R,R,6,210,24,MIA,Miami Marlins,MLB
+Dominican Republic,Albert Abreu,Dominican Republic,RHP,R,R,6,190,30,NA,Chunichi Dragons,JPN
+Dominican Republic,Amed Rosario,Dominican Republic,UTL,R,R,6,190,30,NYY,New York Yankees,MLB
+Dominican Republic,Austin Wells,USA,C,L,R,6,220,26,NYY,New York Yankees,MLB
+Dominican Republic,Brayan Bello,Dominican Republic,RHP,R,R,6,195,26,BOS,Boston Red Sox,MLB
+Dominican Republic,Camilo Doval,Dominican Republic,RHP,R,R,6,205,28,NYY,New York Yankees,MLB
+Dominican Republic,Carlos Estévez,Dominican Republic,RHP,R,R,6,277,33,KC,Kansas City Royals,MLB
+Dominican Republic,Carlos Santana,Dominican Republic,1B,S,R,5,210,39,CLE,Cleveland Guardians,MLB
+Dominican Republic,Cristopher Sánchez,Dominican Republic,LHP,L,L,6,200,29,PHI,Philadelphia Phillies,MLB
+Dominican Republic,Dennis Santana,Dominican Republic,RHP,R,R,6,190,29,PIT,Pittsburgh Pirates,MLB
+Dominican Republic,Edwin Uceta,Dominican Republic,RHP,R,R,6,210,28,TB,Tampa Bay Rays,MLB
+Dominican Republic,Elvis Alvarado,Dominican Republic,RHP,R,R,6,183,26,ATH,Athletics,MLB
+Dominican Republic,Fernando Tatis Jr.,Dominican Republic,RF,R,R,6,217,27,SD,San Diego Padres,MLB
+Dominican Republic,Geraldo Perdomo,Dominican Republic,SS,S,R,6,203,26,AZ,Arizona Diamondbacks,MLB
+Dominican Republic,Gregory Soto,Dominican Republic,LHP,L,L,6,234,30,PIT,Pittsburgh Pirates,MLB
+Dominican Republic,Huascar Brazobán,Dominican Republic,RHP,R,R,6,155,36,NYM,New York Mets,MLB
+Dominican Republic,Jeremy Peña,Dominican Republic,SS,R,R,6,202,28,HOU,Houston Astros,MLB
+Dominican Republic,Johan Rojas,Dominican Republic,OF,R,R,5,165,25,PHI,Philadelphia Phillies,MLB
+Dominican Republic,Juan Soto,Dominican Republic,LF,L,L,6,224,27,NYM,New York Mets,MLB
+Dominican Republic,Julio Rodríguez,Dominican Republic,CF,R,R,6,228,25,SEA,Seattle Mariners,MLB
+Dominican Republic,Junior Caminero,Dominican Republic,3B,R,R,6,220,22,TB,Tampa Bay Rays,MLB
+Dominican Republic,Ketel Marte,Dominican Republic,2B,S,R,6,210,32,AZ,Arizona Diamondbacks,MLB
+Dominican Republic,Luis Severino,Dominican Republic,RHP,R,R,6,218,31,ATH,Athletics,MLB
+Dominican Republic,Manny Machado,USA,3B,R,R,6,218,33,SD,San Diego Padres,MLB
+Dominican Republic,Oneil Cruz,Dominican Republic,CF,L,R,6,240,27,PIT,Pittsburgh Pirates,MLB
+Dominican Republic,Sandy Alcantara,Dominican Republic,RHP,R,R,6,200,30,MIA,Miami Marlins,MLB
+Dominican Republic,Seranthony Domínguez,Dominican Republic,RHP,R,R,6,225,31,TOR,Toronto Blue Jays,MLB
+Dominican Republic,Vladimir Guerrero Jr.,Canada,1B,R,R,6,245,26,TOR,Toronto Blue Jays,MLB
+Dominican Republic,Wandy Peralta,Dominican Republic,LHP,L,L,6,227,34,SD,San Diego Padres,MLB
+Israel,Assaf Lowengart,Israel,LF,R,R,6,195,27,NA,New York Boulders,Ind.
+Israel,Ben Simon,USA,RHP,L,R,5,200,23,NYM,Binghamton Rumble Ponies,AA
+Israel,Benjamin Rosengard,USA,SS,L,R,6,190,26,NA,Idaho Falls Chukars,Ind.
+Israel,C.J. Stubbs,USA,C,R,R,6,216,29,TOR,Rochester Red Wings,AAA
+Israel,Carlos Lequerica,USA,RHP,R,R,6,198,25,DET,West Michigan Whitecaps,A+
+Israel,Charlie Beilenson,USA,RHP,R,R,6,215,26,SEA,Arkansas Travelers,AA
+Israel,Cole Carrigg,USA,SS,S,R,6,200,23,COL,Hartford Yard Goats,AA
+Israel,Daniel Federman,USA,RHP,L,R,6,205,27,NA,Aberdeen IronBirds,A+
+Israel,Dean Kremer,USA,RHP,R,R,6,210,30,BAL,Baltimore Orioles,MLB
+Israel,Eli Morgan,USA,RHP,R,R,5,190,29,KC,Omaha Storm Chasers,AAA
+Israel,Garrett Stubbs,USA,C,L,R,5,175,32,PHI,Philadelphia Phillies,MLB
+Israel,Harrison Bader,USA,CF,R,R,6,210,31,SF,San Francisco Giants,MLB
+Israel,Harrison Cohen,USA,RHP,R,R,6,215,26,NYY,Scranton/Wilkes-Barre RailRiders,AAA
+Israel,Jake Gelof,USA,3B,R,R,6,195,23,LAD,Great Lakes Loons,A+
+Israel,Jordan Geber,USA,RHP,R,R,6,200,26,NYM,Binghamton Rumble Ponies,AA
+Israel,Josh Blum,USA,RHP,R,R,6,195,22,NYM,Brooklyn Cyclones,A+
+Israel,Josh Mallitz,USA,RHP,R,R,6,210,24,SD,San Antonio Missions,AA
+Israel,Matt Bowman,USA,RHP,R,R,6,185,34,MIN,St. Paul Saints,AAA
+Israel,Matt Mervis,USA,1B,L,R,6,225,27,WSH,Rochester Red Wings,AAA
+Israel,Max Lazar,USA,RHP,R,R,6,200,26,PHI,Philadelphia Phillies,MLB
+Israel,Noah Mendlinger,USA,3B,L,R,5,180,25,STL,Memphis Redbirds,AAA
+Israel,RJ Schreck,USA,LF,L,R,6,208,25,TOR,New Hampshire Fisher Cats,AA
+Israel,Rob Kaminsky,USA,LHP,R,L,6,195,31,NA,Staten Island FerryHawks,Ind.
+Israel,Robert Stock,USA,RHP,L,R,6,200,36,NYM,Syracuse Mets,AAA
+Israel,Ryan Prager,USA,LHP,L,L,6,205,23,CLE,Lynchburg Hillcats,A
+Israel,Spencer Horwitz,USA,1B,L,R,6,190,28,PIT,Pittsburgh Pirates,MLB
+Israel,Tommy Kahnle,USA,RHP,R,R,6,230,36,NA,Free Agent,NA
+Israel,Troy Johnston,USA,LF,L,L,6,205,28,COL,Colorado Rockies,MLB
+Israel,Zach Levenson,USA,RF,R,R,6,210,23,STL,Springfield Cardinals,AA
+Israel,Zack Weiss,USA,RHP,R,R,6,210,33,NA,Free Agent,NA
+Brazil,Bo Takahashi,Brazil,RHP,R,R,5,180,29,NA,Saitama Selbu Lions,JPN
+Brazil,Daniel Missaki,Japan,RHP,L,R,6,220,29,TEX,Round Rock Express,AAA
+Brazil,Dante Bichette Jr.,USA,1B,R,R,6,205,33,NA,Free Agent,NA
+Brazil,Enzo Hayashida,Brazil,C,R,R,5,180,18,NA,Nippon Blue Jays,BRA
+Brazil,Enzo Sawayama,Japan,LHP,L,L,6,185,22,NA,Free Agent,NA
+Brazil,Eric Pardinho,Brazil,RHP,R,R,5,201,25,NA,Tiburones de La Guaira,VEN
+Brazil,Felipe Koragi,Brazil,2B,R,R,5,150,22,NA,Free Agent,NA
+Brazil,Felipe Mizukosi,Brazil,INF,R,R,5,188,31,NA,Free Agent,NA
+Brazil,Gabriel Barbosa,Brazil,RHP,R,R,6,165,24,PHI,Reading Fightin Phils,AA
+Brazil,Gabriel Carmo,Brazil,C,R,R,5,174,30,NA,Cougars de Montigny,FRA
+Brazil,Gabriel Gomes,Brazil,C,R,R,5,170,21,NA,Free Agent,NA
+Brazil,Gabriel Maciel,Brazil,CF,S,R,5,186,27,NA,Sussex County Miners,Ind.
+Brazil,Hector Villarroel,Venezuela,LHP,L,L,6,192,30,NA,Free Agent,NA
+Brazil,Hugo Kanabushi,Brazil,LHP,L,L,5,180,36,NA,Fazenda Alvorada,BRA
+Brazil,Joseph Contreras,USA,RHP,L,R,6,195,17,NA,Blessed Trinity,HS
+Brazil,Leonardo Reginatto,Brazil,SS,R,R,6,188,35,NA,Olmecas de Tabasco,MEX
+Brazil,Lucas Ramirez,USA,OF,L,R,6,205,20,LAA,Tri-City Dust Devils,A+
+Brazil,Lucas Rojo,Brazil,INF,R,R,5,150,31,NA,Fazenda Alvorada,BRA
+Brazil,Matheus Silva,Brazil,C,R,R,5,168,23,NA,Nippon Blue Jays,BRA
+Brazil,Murilo Gouvea,Brazil,RHP,R,R,6,208,37,NA,Fazenda Alvorada,BRA
+Brazil,Oscar Nakaoshi,Brazil,LHP,L,L,5,182,34,NA,Free Agent,NA
+Brazil,Osvaldo Carvalho,Brazil,OF,L,R,6,209,24,NA,Fazenda Alvorada,BRA
+Brazil,Pedro Da Costa Lemos,Brazil,RHP,R,R,6,179,22,SEA,Tacoma Rainiers,AAA
+Brazil,Pietro Rienzo,Brazil,RHP,R,R,5,154,17,PIT,Pirates Black,DSL
+Brazil,Thyago Vieira,Brazil,RHP,R,R,6,210,33,NA,Toros de Tijuana,MEX
+Brazil,Tiago Da Silva,Brazil,RHP,R,R,5,185,40,NA,Guerreros de Oaxaca,MEX
+Brazil,Tiago Nishiyama,Brazil,INF,L,R,5,182,20,NA,Nittaidai University,JPN
+Brazil,Tomas Lopez,USA,RHP,R,R,6,194,21,NA,Columbia University,NCAA
+Brazil,Victor Mascai,Brazil,OF,L,R,6,219,24,NA,Free Agent,NA
+Brazil,Vitor Ito,Brazil,INF,L,R,5,179,30,NA,Free Agent,NA
+Italy,Aaron Nola,USA,RHP,R,R,6,200,32,NA,Philadelphia Phillies,MLB
+Italy,Adam Ottavino,USA,RHP,R,R,6,246,40,NA,Free Agent,NA
+Italy,Alberto Mineo,Italy,C,L,R,5,198,31,NA,Parma Baseball,ITA
+Italy,Alek Jacob,USA,RHP,L,R,6,190,27,NA,San Diego Padres,MLB
+Italy,Alessandro Ercolani,San Marino,RHP,R,R,6,185,21,NA,Indianapolis Indians,AAA
+Italy,Andrew Fischer,USA,3B,L,R,6,210,21,NA,Wisconsin Timber Rattlers,A+
+Italy,Dan Altavilla,USA,RHP,R,R,5,235,33,NA,St. Paul Saints,AAA
+Italy,Dante Nori,Canada,OF,L,L,5,190,21,NA,Reading Fightin Phils,AA
+Italy,Dominic Canzone,USA,OF,L,R,6,190,28,NA,Seattle Mariners,MLB
+Italy,Dylan DeLucia,USA,RHP,R,R,5,220,25,NA,Columbus Clippers,AAA
+Italy,Gabriele Quattrini,Italy,RHP,R,R,6,260,29,NA,Macerata Angels,ITA
+Italy,Giaconino Lasaracina,Venezuela,INF,R,R,6,220,22,NA,Parma Baseball,ITA
+Italy,Gordon Graceffo,USA,RHP,R,R,6,220,25,NA,St. Louis Cardinals,MLB
+Italy,Greg Weissert,USA,RHP,R,R,6,235,31,NA,Boston Red Sox,MLB
+Italy,Jac Caglianone,USA,OF,L,L,6,250,22,NA,Kansas City Royals,MLB
+Italy,Jakob Marsee,USA,OF,L,L,6,180,24,NA,Miami Marlins,MLB
+Italy,Joe La Sorsa,USA,LHP,L,L,6,232,27,NA,Indianapolis Indians,AAA
+Italy,Jon Berti,USA,INF,R,R,5,190,36,NA,Free Agent,NA
+Italy,Kyle Nicolas,USA,RHP,R,R,6,225,26,NA,Pittsburgh Pirates,MLB
+Italy,Kyle Teel,USA,C,L,R,6,210,23,NA,Chicago White Sox,MLB
+Italy,Matt Festa,USA,RHP,R,R,6,195,32,NA,Cleveland Guardians,MLB
+Italy,Michael Lorenzen,USA,RHP,R,R,6,217,34,NA,Colorado Rockies,MLB
+Italy,Miles Mastrobuoni,USA,UTL,L,R,5,185,30,NA,Seattle Mariners,MLB
+Italy,Nick Morabito,USA,OF,R,R,5,185,22,NA,New York Mets,MLB
+Italy,Ron Marinaccio,USA,RHP,R,R,6,205,30,NA,San Diego Padres,MLB
+Italy,Sam Aldegheri,Italy,LHP,L,L,6,210,24,NA,Los Angeles Angels,MLB
+Italy,Sam Antonacci,USA,INF,L,R,6,193,22,NA,Birmingham Barons,AA
+Italy,Thomas Saggese,USA,2B,R,R,5,185,23,NA,St. Louis Cardinals,MLB
+Italy,Vinnie Pasquantino,USA,1B,L,L,6,245,28,NA,Kansas City Royals,MLB
+Italy,Zach Dezenzo,USA,INF,R,R,6,220,25,NA,Houston Astros,MLB
+Japan,Atsuki Taneichi,Japan,RHP,R,R,6,194,27,NA,Chiba Lotte Marines,JPN
+Japan,Daiichi Ishii,Japan,RHP,R,R,5,176,28,NA,Hanshin Tigers,JPN
+Japan,Hiromi Itoh,Japan,RHP,L,R,5,181,28,NA,Hokkaido Nippon-Ham Fighters,JPN
+Japan,Hiroto Takahashi,Japan,RHP,R,R,6,190,23,NA,Chunichi Dragons,JPN
+Japan,Hiroya Miyagi,Japan,LHP,L,L,5,172,24,NA,ORIX Buffaloes,JPN
+Japan,Kaima Taira,Japan,RHP,L,R,5,220,26,NA,Saitama Seibu Lions,JPN
+Japan,Kaito Kozono,Japan,SS,L,R,5,190,25,NA,Hiroshima Toyo Carp,JPN
+Japan,Kazuma Okamoto,Japan,3B,R,R,6,220,29,TOR,Toronto Blue Jays,MLB
+Japan,Kensuke Kondo,Japan,LF,L,R,5,190,32,NA,Fukuoka SoftBank Hawks,JPN
+Japan,Kenya Wakatsuki,Japan,C,R,R,5,194,30,NA,ORIX Buffaloes,JPN
+Japan,Koki Kitayama,Japan,RHP,R,R,6,190,26,NA,Hokkaido Nippon-Ham Fighters,JPN
+Japan,Masataka Yoshida,Japan,LF,L,R,5,176,32,BOS,Boston Red Sox,MLB
+Japan,Munetaka Murakami,Japan,1B,L,R,6,213,26,CWS,Chicago White Sox,MLB
+Japan,Ryuhei Sotani,Japan,LHP,L,L,6,183,25,NA,ORIX Buffaloes,JPN
+Japan,Seishiro Sakamoto,Japan,C,R,R,5,174,32,NA,Hanshin Tigers,JPN
+Japan,Seiya Suzuki,Japan,RF,R,R,5,182,31,CHC,Chicago Cubs,MLB
+Japan,Shohei Ohtani,Japan,DH,L,R,6,200,31,LAD,Los Angeles Dodgers,MLB
+Japan,Shota Morishita,Japan,RF,R,R,6,205,25,NA,Hanshin Tigers,JPN
+Japan,Shugo Maki,Japan,2B,R,R,5,205,27,NA,Yokohama DeNA BayStars,JPN
+Japan,Sosuke Genda,Japan,SS,L,R,5,165,32,NA,Saitama Seibu Lions,JPN
+Japan,Taisei Makihara,Japan,UTL,L,R,5,161,33,NA,Fukuoka SoftBank Hawks,JPN
+Japan,Taisei Ota,Japan,RHP,R,R,5,194,26,NA,Yomiuri Giants,JPN
+Japan,Teruaki Sato,Japan,3B,L,R,6,209,26,NA,Hanshin Tigers,JPN
+Japan,Tomoyuki Sugano,Japan,RHP,R,R,6,230,36,NA,Free Agent,NA
+Japan,Ukyo Shuto,Japan,CF,L,R,5,154,29,NA,Fukuoka SoftBank Hawks,JPN
+Japan,Yoshinobu Yamamoto,Japan,RHP,R,R,5,180,27,LAD,Los Angeles Dodgers,MLB
+Japan,Yuhei Nakamura,Japan,C,R,R,5,174,35,NA,Tokyo Yakult Swallows,JPN
+Japan,Yuki Matsui,Japan,LHP,L,L,5,165,30,SD,San Diego Padres,MLB
+Japan,Yuki Matsumoto,Japan,RHP,L,R,6,203,29,NA,Fukuoka SoftBank Hawks,JPN
+Japan,Yusei Kikuchi,Japan,LHP,L,L,6,210,34,LAA,Los Angeles Angels,MLB
+United States,Aaron Judge,USA,RF,R,R,6,282,33,NYY,New York Yankees,MLB
+United States,Alex Bregman,USA,3B,R,R,6,215,31,CHC,Chicago Cubs,MLB
+United States,Bobby Witt Jr.,USA,SS,R,R,6,205,25,KC,Kansas City Royals,MLB
+United States,Brad Keller,USA,RHP,R,R,6,250,30,PHI,Philadelphia Phillies,MLB
+United States,Brice Turang,USA,2B,L,R,6,190,26,MIL,Milwaukee Brewers,MLB
+United States,Bryce Harper,USA,1B,L,R,6,210,33,PHI,Philadelphia Phillies,MLB
+United States,Byron Buxton,USA,CF,R,R,6,210,32,MIN,Minnesota Twins,MLB
+United States,Cal Raleigh,USA,C,S,R,6,235,29,SEA,Seattle Mariners,MLB
+United States,Clay Holmes,USA,RHP,R,R,6,245,32,NYM,New York Mets,MLB
+United States,Clayton Kershaw,USA,LHP,L,L,6,225,37,NA,Free Agent,NA
+United States,Corbin Carroll,USA,LF,L,L,5,170,25,AZ,Arizona Diamondbacks,MLB
+United States,David Bednar,USA,RHP,L,R,6,250,31,NYY,New York Yankees,MLB
+United States,Ernie Clement,USA,UTL,R,R,6,185,29,TOR,Toronto Blue Jays,MLB
+United States,Gabe Speier,USA,LHP,L,L,5,200,30,SEA,Seattle Mariners,MLB
+United States,Garrett Cleavinger,USA,LHP,R,L,6,225,31,TB,Tampa Bay Rays,MLB
+United States,Garrett Whitlock,USA,RHP,R,R,6,220,29,BOS,Boston Red Sox,MLB
+United States,Griffin Jax,USA,RHP,R,R,6,201,31,TB,Tampa Bay Rays,MLB
+United States,Gunnar Henderson,USA,SS,L,R,6,220,24,BAL,Baltimore Orioles,MLB
+United States,Joe Ryan,USA,RHP,R,R,6,205,29,MIN,Minnesota Twins,MLB
+United States,Kyle Schwarber,USA,DH,L,R,6,229,32,PHI,Philadelphia Phillies,MLB
+United States,Logan Webb,USA,RHP,R,R,6,223,29,SF,San Francisco Giants,MLB
+United States,Mason Miller,USA,RHP,R,R,6,228,27,SD,San Diego Padres,MLB
+United States,Matthew Boyd,USA,LHP,L,L,6,220,35,CHC,Chicago Cubs,MLB
+United States,Michael Wacha,USA,RHP,R,R,6,215,34,KC,Kansas City Royals,MLB
+United States,Nolan McLean,USA,RHP,R,R,6,214,24,NYM,New York Mets,MLB
+United States,Paul Goldschmidt,USA,1B,R,R,6,225,38,NA,Free Agent,NA
+United States,Paul Skenes,USA,RHP,R,R,6,260,23,PIT,Pittsburgh Pirates,MLB
+United States,Pete Crow-Armstrong,USA,CF,L,L,6,190,23,CHC,Chicago Cubs,MLB
+United States,Tarik Skubal,USA,LHP,R,L,6,212,29,DET,Detroit Tigers,MLB
+United States,Will Smith,USA,C,R,R,5,195,30,LAD,Los Angeles Dodgers,MLB
+Kingdom of the Netherlands,Antwone Kelly,Aruba,RHP,R,R,5,183,22,PIT,Pittsburgh Pirates,MLB
+Kingdom of the Netherlands,Arij Fransen,Netherlands,RHP,R,R,6,215,24,NA,Free Agent,NA
+Kingdom of the Netherlands,Ceddanne Rafaela,Curacao,UTL,R,R,5,152,25,BOS,Boston Red Sox,MLB
+Kingdom of the Netherlands,Chadwick Tromp,Aruba,C,R,R,5,221,30,ATL,Gwinnett Stripers,AAA
+Kingdom of the Netherlands,Dayson Croes,Aruba,UTL,L,R,5,205,26,SF,Richmond Flying Squirrels,AAA
+Kingdom of the Netherlands,Delano Selsassa,Netherlands,UTL,R,R,6,187,26,NA,Amsterdan Pirates,NED
+Kingdom of the Netherlands,Derek West,USA,RHP,R,R,6,257,29,NA,Leones de Yucatán,MEX
+Kingdom of the Netherlands,Didi Gregorius,Netherlands,1B,L,R,6,215,35,NA,Algodoneros de Unión Laguna,MEX
+Kingdom of the Netherlands,Druw Jones,USA,OF,R,R,6,184,22,AZ,Hillsboro Hops,A+
+Kingdom of the Netherlands,Dylan Wilson,Curacao,RHP,R,R,6,160,20,SEA,ACL Mariners,RK.
+Kingdom of the Netherlands,Eric Mendez,Aruba,RHP,R,R,6,175,26,NA,Willemstad Cannons,CUR
+Kingdom of the Netherlands,Hendrik Clementina,Curacao,C,R,R,6,165,28,NA,Algodoneros de Unión Laguna,MEX
+Kingdom of the Netherlands,Jaitoine Kelly,Aruba,RHP,R,R,6,257,18,AZ,Visalia Rawhide,A
+Kingdom of the Netherlands,Jamdrick Cornelia,Curacao,LHP,L,L,6,140,20,NA,Mets Orange,DSL
+Kingdom of the Netherlands,Jaydenn Estanista,Curacao,RHP,R,R,6,180,24,PHI,Reading Fightin Phils,AAA
+Kingdom of the Netherlands,Juan Carlos Sulbaran,Curacao,RHP,R,R,6,205,36,NA,Neptunus,NED
+Kingdom of the Netherlands,Juremi Profar,Curacao,3B,R,R,6,185,30,NA,Karachi Monarchs,United
+Kingdom of the Netherlands,Jurickson Profar,Curacao,LF,S,R,6,185,32,ATL,Atlanta Braves,MLB
+Kingdom of the Netherlands,Justin Morales,Aruba,RHP,R,R,6,190,21,NA,Bethune-Cookman Wildcats,NCAA
+Kingdom of the Netherlands,Kenley Jansen,Curacao,RHP,S,R,6,265,38,DET,Detroit Tigers,MLB
+Kingdom of the Netherlands,Kevin Kelly,Curacao,RHP,R,R,6,200,35,NA,Indios del Bóer,NCA
+Kingdom of the Netherlands,Lars Huijer,Netherlands,RHP,R,R,6,205,32,NA,Amsterdan Pirates,NED
+Kingdom of the Netherlands,Ozzie Albies,Curacao,2B,S,R,5,165,29,ATL,Atlanta Braves,MLB
+Kingdom of the Netherlands,Ray-Patrick Didder,Aruba,UTL,R,R,5,180,31,NA,Free Agent,NA
+Kingdom of the Netherlands,Ryjeteri Merite,Netherlands,LHP,L,L,6,150,20,CIN,ACL Reds,RK.
+Kingdom of the Netherlands,Shairon Martis,Curacao,RHP,R,R,6,225,38,NA,Neptunus,NED
+Kingdom of the Netherlands,Sharlon Schoop,Curacao,SS,R,R,6,210,38,NA,Free Agent,NA
+Kingdom of the Netherlands,Shawndrick Oduber,Aruba,RHP,R,R,6,170,21,LAD,Ontario Tower Buzzers,A
+Kingdom of the Netherlands,Wendell Floranus,Curacao,RHP,R,R,6,160,30,NA,Leones del Escogido,DOM
+Kingdom of the Netherlands,Xander Bogaerts,Aruba,SS,R,R,6,212,33,SD,San Diego Padres,MLB
+Venezuela,Andrés Giménez,Venezuela,2B/SS,L,R,5,160,27,TOR,Toronto Blue Jays,MLB
+Venezuela,Andrés Machado,Venezuela,RHP,R,R,6,220,32,NA,Orix Buffaloes,JPN
+Venezuela,Angel Zerpa,Venezuela,LHP,L,L,6,233,26,MIL,Milwaukee Brewers,MLB
+Venezuela,Antonio Senzatela,Venezuela,RHP,R,R,6,246,31,COL,Colorado Rockies,MLB
+Venezuela,Carlos Guzman,Venezuela,RHP,R,R,6,198,27,NYM,Binghamton Rumble Ponies,AA
+Venezuela,Daniel Palencia,Venezuela,RHP,R,R,6,217,26,CHC,Chicago Cubs,MLB
+Venezuela,Eduard Bazardo,Venezuela,RHP,R,R,6,155,30,SEA,Seattle Mariners,MLB
+Venezuela,Eduardo Rodriguez,Venezuela,LHP,L,L,6,220,32,AZ,Arizona Diamondbacks,MLB
+Venezuela,Enmanuel De Jesus,Venezuela,LHP,L,L,6,185,29,DET,Toledo Mud Hens,AAA
+Venezuela,Eugenio Suárez,Venezuela,3B,R,R,5,205,34,CIN,Cincinnati Reds,MLB
+Venezuela,Ezequiel Tovar,Venezuela,SS,R,R,6,187,24,COL,Colorado Rockies,MLB
+Venezuela,Germán Márquez,Venezuela,RHP,R,R,6,225,30,COL,Colorado Rockies,MLB
+Venezuela,Gleyber Torres,Venezuela,2B,R,R,5,212,29,DET,Detroit Tigers,MLB
+Venezuela,Jackson Chourio,Venezuela,CF,R,R,6,198,21,MIL,Milwaukee Brewers,MLB
+Venezuela,Javier Sanoja,Venezuela,OF,R,R,5,150,23,MIA,Miami Marlins,MLB
+Venezuela,José Alvarado,Venezuela,LHP,L,L,6,270,30,PHI,Philadelphia Phillies,MLB
+Venezuela,José Buttó,Venezuela,RHP,R,R,6,202,27,SF,San Francisco Giants,MLB
+Venezuela,Keider Montero,Venezuela,RHP,R,R,6,213,25,DET,Detroit Tigers,MLB
+Venezuela,Luis Arraez,Venezuela,1B,L,R,5,201,28,SF,San Francisco Giants,MLB
+Venezuela,Maikel Garcia,Venezuela,3B,R,R,6,168,25,KC,Kansas City Royals,MLB
+Venezuela,Oddanier Mosqueda,Venezuela,LHP,L,L,5,155,26,PIT,Indianapolis Indians,AAA
+Venezuela,Pablo López,Venezuela,RHP,L,R,6,221,29,MIN,Minnesota Twins,MLB
+Venezuela,Ranger Suárez,Venezuela,LHP,L,L,6,178,30,BOS,Boston Red Sox,MLB
+Venezuela,Ricardo Sánchez,Venezuela,LHP,L,L,5,220,28,NA,Algodoneros de Unión Laguna,MEX
+Venezuela,Ronald Acuña Jr.,Venezuela,RF,R,R,6,205,28,ATL,Atlanta Braves,MLB
+Venezuela,Salvador Perez,Venezuela,C,R,R,6,278,35,KC,Kansas City Royals,MLB
+Venezuela,William Contreras,Venezuela,C,R,R,6,212,28,MIL,Milwaukee Brewers,MLB
+Venezuela,Willson Contreras,Venezuela,1B,R,R,6,210,33,BOS,Boston Red Sox,MLB
+Venezuela,Wilyer Abreu,Venezuela,RF,L,L,5,215,26,BOS,Boston Red Sox,MLB
+Venezuela,Yoendrys Gómez,Venezuela,RHP,R,R,6,202,26,TB,Tampa Bay Rays,MLB
+Canada,Abraham Toro,Canada,3B,S,R,6,225,29,KC,Omaha Storm Chasers,AAA
+Canada,Adam Hall,Bermuda,SS,R,R,5,170,26,NA,Free Agent,NA
+Canada,Adam Macko,Slovakia,LHP,L,L,6,170,25,TOR,Toronto Blue Jays,MLB
+Canada,Antoine Jean,Canada,LHP,R,L,6,190,24,COL,ACL Rockies,RK.
+Canada,Bo Naylor,Canada,C,L,R,6,205,25,CLE,Cleveland Guardians,MLB
+Canada,Cal Quantrill,Canada,RHP,L,R,6,195,30,TEX,Round Rock Express,AAA
+Canada,Carter Loewen,Canada,RHP,R,R,6,240,27,SD,El Paso Chihuahuas,AAA
+Canada,Denzel Clarke,Canada,OF,R,R,6,220,25,ATH,Athletics,MLB
+Canada,Edouard Julien,Canada,2B,L,R,6,195,26,COL,Colorado Rockies,MLB
+Canada,Eric Cerantola,Canada,RHP,R,R,6,225,25,KC,Kansas City Royals,MLB
+Canada,Indigo Diaz,Canada,RHP,R,R,6,250,27,AZ,Amarillo Sod Poodles,AA
+Canada,Jacob Robson,Canada,OF,L,R,5,182,31,NA,Winnipeg Goldeyes,Ind.
+Canada,James Paxton,Canada,LHP,L,L,6,215,37,NA,Free Agent,NA
+Canada,Jameson Taillon,USA,RHP,R,R,6,230,34,CHC,Chicago Cubs,MLB
+Canada,Jared Young,Canada,UTL,L,R,6,200,30,NYM,New York Mets,MLB
+Canada,Jordan Balazovic,Canada,RHP,R,R,6,215,27,NA,Free Agent,NA
+Canada,Josh Naylor,Canada,1B,L,L,5,235,28,SEA,Seattle Mariners,MLB
+Canada,Liam Hicks,Canada,C,L,R,5,185,26,MIA,Miami Marlins,MLB
+Canada,Logan Allen,USA,LHP,R,L,6,200,28,NA,NC Dinos,KOR
+Canada,Matt Davidson,USA,3B,R,R,6,230,34,NA,NC Dinos,KOR
+Canada,Matt Wilkinson,Canada,LHP,R,L,6,250,23,CLE,Lake County Captains,A+
+Canada,Micah Ashman,USA,LHP,L,L,6,195,23,BAL,Chesapeake Baysox,AA
+Canada,Michael Soroka,Canada,RHP,R,R,6,250,28,AZ,Arizona Diamondbacks,MLB
+Canada,Noah Skirrow,Canada,RHP,R,R,6,215,27,NA,Lancaster Stormers,Ind.
+Canada,Otto Lopez,Dominican Republic,SS,R,R,5,185,27,MIA,Miami Marlins,MLB
+Canada,Owen Caissie,Canada,OF,L,R,6,190,23,MIA,Miami Marlins,MLB
+Canada,Phillippe Aumont,Canada,RHP,L,R,6,265,37,TOR,Buffalo Bisons,AAA
+Canada,Rob Zastryzny,Canada,LHP,R,L,6,205,33,MIL,Milwaukee Brewers,MLB
+Canada,Tyler Black,Canada,UTL,L,R,6,200,25,MIL,Milwaukee Brewers,MLB
+Canada,Tyler O'Neill,Canada,OF,R,R,5,200,30,BAL,Baltimore Orioles,MLB
+Nicaragua,Angel Obando,Nicaragua,RHP,R,R,5,178,27,NA,Gigantes de Rivas,NCA
+Nicaragua,Benjamin Alegria,Nicaragua,INF,R,R,5,165,28,NA,Leones de León,NCA
+Nicaragua,Brandon Leyton,Nicaragua,2B,R,R,5,165,27,NA,Tigres de Chinandega,NCA
+Nicaragua,Bryan Torres,Nicaragua,RHP,R,R,6,180,24,NA,Leones de León,NCA
+Nicaragua,Carlos Rodriguez,Nicaragua,RHP,R,R,5,205,24,MIL,Milwaukee Brewers,MLB
+Nicaragua,Carlos Teller,Nicaragua,LHP,L,L,5,180,39,NA,Leones del Escogido,DR
+Nicaragua,Chase Dawson,USA,OF,L,R,5,185,28,NA,Leones de León,NCA
+Nicaragua,Cheslor Cuthbert,Nicaragua,3B,R,R,6,190,33,NA,Gigantes de Rivas,NCA
+Nicaragua,Cristhian Sandoval,Nicaragua,OF,R,R,5,180,25,NA,Gigantes de Rivas,NCA
+Nicaragua,Danilo Bermudez,Nicaragua,LHP,L,L,6,194,26,NA,Gigantes de Rivas,NCA
+Nicaragua,Dilmer Mejia,Nicaragua,LHP,L,L,5,195,28,NA,Leones de León,NCA
+Nicaragua,Duque Hebbert,Nicaragua,RHP,R,R,5,178,24,DET,West Michigan Whitecaps,A+
+Nicaragua,Elian Rayo,Nicaragua,1B,R,R,6,202,22,NA,Indios del Bóer,NCA
+Nicaragua,Emanuel Trujillo,Nicaragua,1B,R,R,6,205,24,NA,Tigres de Chinandega,NCA
+Nicaragua,Erasmo Ramírez,Nicaragua,RHP,R,R,6,220,35,NA,Free Agent,NA
+Nicaragua,Freddy Zamora,Nicaragua,SS,R,R,6,186,27,MIL,Nashville Sounds,AAA
+Nicaragua,Ismael Munguia,Nicaragua,CF,L,L,5,178,27,TOR,New Hampshire Fisher Cats,AA
+Nicaragua,JC Ramírez,Nicaragua,RHP,R,R,6,175,37,NA,Gigantes de Rivas,NCA
+Nicaragua,Jeter Downs,Colombia,SS,R,R,5,197,27,NA,Fukuoka Softbank Hawks,JPN
+Nicaragua,Jose Orozco,Nicaragua,INF,S,R,5,175,26,NA,Leones de León,NCA
+Nicaragua,Juan Montes,Guatemala,OF,R,R,6,200,30,NA,Free Agent,NA
+Nicaragua,Kenword Burton,Nicaragua,RHP,R,R,6,196,27,NA,Indios del Bóer,NCA
+Nicaragua,Mark Vientos,USA,3B,R,R,6,215,26,NYM,New York Mets,MLB
+Nicaragua,Melvin Novoa,Nicaragua,C,R,R,5,200,29,NA,Indios del Bóer,NCA
+Nicaragua,Omar Mendoza,Nicaragua,LF,R,R,5,210,28,NA,Free Agent,NA
+Nicaragua,Oscar Rayo,Nicaragua,LHP,L,L,6,180,24,KC,Omaha Storm Chasers,AAA
+Nicaragua,Osman Gutierrez,Nicaragua,RHP,R,R,6,250,31,NA,Gigantes de Rivas,NCA
+Nicaragua,Ronald Medrano,Nicaragua,RHP,R,R,6,168,30,NA,Charros de Jalisco,MEX
+Nicaragua,Ronald Rivera,Nicaragua,C,R,R,6,200,32,NA,Tigres de Chinandega,NCA
+Nicaragua,Stiven Cruz,Nicaragua,RHP,R,R,6,185,24,MIL,Biloxi Shuckers,AA
+Korea,Been Gwak,Republic of Korea,RHP,R,R,6,209,26,NA,Doosan Bears,KOR
+Korea,Bo Gyeong Moon,Republic of Korea,3B/1B,L,R,6,196,25,NA,LG Twins,KOR
+Korea,Byeong Hyeon Jo,Republic of Korea,RHP,R,R,6,198,23,NA,SSG Landers,KOR
+Korea,Dane Dunning,USA,RHP,R,R,6,225,31,NA,Free Agent,NA
+Korea,Do Yeong Kim,Republic of Korea,3B,R,R,6,187,22,NA,Kia Tigers,KOR
+Korea,Dong Won Park,Republic of Korea,C,R,R,5,203,35,NA,LG Twins,KOR
+Korea,Hae-Min Park,Republic of Korea,CF,L,R,5,165,35,NA,LG Twins,KOR
+Korea,Hyeong Jun So,Republic of Korea,RHP,R,R,6,203,24,NA,KT Wiz,KOR
+Korea,Hyeseong Kim,Republic of Korea,2B,L,R,5,175,27,LAD,Los Angeles Dodgers,MLB
+Korea,Hyun Bin Moon,Republic of Korea,LF,L,R,5,181,21,NA,Hanwha Eagles,KOR
+Korea,Hyun Jin Ryu,Republic of Korea,LHP,R,L,6,249,38,NA,Hanwha Eagles,KOR
+Korea,Hyun Min Ahn,Republic of Korea,RF,R,R,6,198,22,NA,KT Wiz,KOR
+Korea,Ja Wook Koo,Republic of Korea,LF,L,R,6,165,32,NA,Samsung Lions,KOR
+Korea,Jae Hoon Choi,Republic of Korea,C,R,R,5,207,36,NA,Hanwha Eagles,KOR
+Korea,Jahmai Jones,USA,LF,R,R,5,210,28,DET,Detroit Tigers,MLB
+Korea,Ju Won Kim,Republic of Korea,SS,S,R,6,182,23,NA,NC Dinos,KOR
+Korea,Ju Young Son,Republic of Korea,LHP,L,L,6,209,27,NA,LG Twins,KOR
+Korea,Jung Hoo Lee,Japan,CF,L,R,6,197,27,SF,San Francisco Giants,MLB
+Korea,Kyung-Eun Noh,Republic of Korea,RHP,R,R,6,220,41,NA,SSG Landers,KOR
+Korea,Min Jae Shin,Republic of Korea,2B,L,R,5,147,30,NA,LG Twins,KOR
+Korea,Riley O'Brien,USA,RHP,R,R,6,170,NA,STL,St. Louis Cardinals,MLB
+Korea,Seung Ki Song,Republic of Korea,LHP,L,L,5,198,23,NA,LG Twins,KOR
+Korea,Shay Whitcomb,USA,2B,R,R,6,207,27,HOU,Houston Astros,MLB
+Korea,Si Hwan Roh,Republic of Korea,3B/1B,R,R,6,212,25,NA,Hanwha Eagles,KOR
+Korea,Tae In Won,Republic of Korea,RHP,R,R,6,203,25,NA,Samsung Lions,KOR
+Korea,Woo Joo Jeong,Republic of Korea,RHP,R,R,6,194,19,NA,Hanwha Eagles,KOR
+Korea,Woo-Suk Go,Republic of Korea,RHP,R,R,6,198,27,DET,Toledo,AAA
+Korea,Yeong Hyun Park,Republic of Korea,RHP,R,R,6,200,22,NA,KT Wiz,KOR
+Korea,Young Kyu Kim,Republic of Korea,LHP,L,L,6,190,25,NA,NC Dinos,KOR
+Korea,Young Pyo Ko,Republic of Korea,RHP,R,R,6,194,34,NA,KT Wiz,KOR
+Great Britain,Antonio Knowles,USA,RHP,R,R,6,185,26,NA,Free Agent,NA
+Great Britain,BJ Murray,Bahamas,1B,S,R,6,210,26,CHC,Iowa Cubs,AAA
+Great Britain,Brendan Beck,USA,RHP,R,R,6,215,27,NYY,Scranton/Wilkes-Barre RailRiders,AAA
+Great Britain,Chavez Fernander,Bahamas,RHP,R,R,6,205,28,NA,Free Agent,NA
+Great Britain,Donovan Benoit,USA,RHP,R,R,6,203,27,NA,Free Agent,NA
+Great Britain,Gary Gill Hill,USA,RHP,R,R,6,160,21,TB,Bowling Green Hot Rods,A+
+Great Britain,Graham Spraker,USA,RHP,R,R,6,187,30,NA,Free Agent,NA
+Great Britain,Harry Ford,USA,C,R,R,5,200,22,WSH,Washington Nationals,MLB
+Great Britain,Ian Lewis Jr.,Bahamas,SS,S,R,5,150,23,MIA,Jacksonville Jumbo Shrimp,AAA
+Great Britain,Ivan Johnson,USA,2B,S,R,6,209,27,CIN,Louisville Bats,AAA
+Great Britain,Jack Anderson,USA,RHP,R,R,6,205,26,BOS,Worcester Red Sox,AAA
+Great Britain,Jack Seppings,USA,RHP,R,R,6,192,23,MIL,Wisconsin Timber Rattlers,A+
+Great Britain,Jazz Chisholm Jr.,Bahamas,2B,L,R,5,165,28,NYY,New York Yankees,MLB
+Great Britain,Justin Wylie,USA,OF,R,R,5,195,29,NA,Free Agent,NA
+Great Britain,Kristian Robinson,Bahamas,CF,R,R,6,190,25,AZ,Reno Aces,AAA
+Great Britain,Lucius Fox,Bahamas,SS,S,R,6,175,28,NA,Free Agent,NA
+Great Britain,Matt Koperniak,United Kingdom,RF,L,R,6,205,27,STL,Memphis Redbirds,AAA
+Great Britain,Michael Petersen,United Kingdom,RHP,R,R,6,232,31,MIA,Miami Marlins,MLB
+Great Britain,Miles Langhorne,USA,RHP,R,R,6,235,22,MIL,Wisconsin Timber Rattlers,A+
+Great Britain,Najer Victor,USA,RHP,R,R,6,195,24,LAA,Rancho Cucamonga Quakes,A
+Great Britain,Nate Eaton,USA,3B,R,R,5,209,29,BOS,Boston Red Sox,MLB
+Great Britain,Nick Ward,USA,SS,L,R,5,180,30,NA,Free Agent,NA
+Great Britain,Nick Wells,USA,LHP,L,L,6,185,29,NA,Free Agent,NA
+Great Britain,Owen Wild,USA,RHP,R,R,6,235,23,TB,Montgomery Biscuits,AA
+Great Britain,Ryan Long,USA,RHP,R,R,6,225,26,BAL,Norfolk Tides,AAA
+Great Britain,Trayce Thompson,USA,RF,R,R,6,203,34,NA,Free Agent,NA
+Great Britain,Tristan Beck,USA,RHP,R,R,6,190,29,SF,San Francisco Giants,MLB
+Great Britain,Tyler Viza,USA,RHP,R,R,6,170,31,NA,Free Agent,NA
+Great Britain,Vance Worley,USA,RHP,R,R,6,220,38,NA,Free Agent,NA
+Great Britain,Will Cresswell,USA,C,R,R,6,200,22,TOR,Dunedin Blue Jays,A
+Chinese Taipei,An-Ko Lin,Taiwan,OF,L,L,6,198,28,NA,Saitama Seibu Lions,JPN
+Chinese Taipei,Chen Zhong-Ao Zhuang,Taiwan,RHP,R,R,6,196,25,ATH,Midland RockHounds,AA
+Chinese Taipei,Chen-Wei Chen,Taiwan,OF,L,R,5,159,28,NA,Rakuten Monkeys,TWN
+Chinese Taipei,Chieh-Hsien Chen,Taiwan,OF,L,R,5,172,32,NA,Uni-President 7-ELEVEn Lions,TWN
+Chinese Taipei,Chih-Wei Hu,Taiwan,RHP,R,R,6,198,32,NA,Uni-President 7-ELEVEn Lions,TWN
+Chinese Taipei,Hao-Chun Cheng,Taiwan,RHP,R,R,6,231,28,NA,CTBC Brothers,TWN
+Chinese Taipei,Hao-Yu  Lee,Taiwan,INF,R,R,5,190,23,DET,Toledo Mud Hens,AAA
+Chinese Taipei,Jo-Hsi Hsu,Taiwan,RHP,R,R,5,168,25,NA,Fukuoka SoftBank Hawks,JPN
+Chinese Taipei,Jonathon Long,USA,INF,R,R,6,217,24,CHC,Knoxville Smokies,AA
+Chinese Taipei,Jun-Wei Zhang,Taiwan,RHP,R,R,5,181,20,NA,Fukuoka SoftBank Hawks,JPN
+Chinese Taipei,Jyun-Yue Tseng,Taiwan,RHP,R,R,5,150,24,NA,Fubon Guardians,TWN
+Chinese Taipei,Kai-Wei Lin,Taiwan,RHP,R,R,5,174,29,NA,Wei Chuan Dragons,TWN
+Chinese Taipei,Kuan-Yu Chen,Taiwan,LHP,L,L,5,165,35,NA,Rakuten Monkeys,TWN
+Chinese Taipei,Kun-Yu Chiang,Taiwan,INF,R,R,5,159,25,NA,CTBC Brothers,TWN
+Chinese Taipei,Kungkuan Giljegiljaw,Taiwan,C,R,R,5,200,31,NA,Wei Chuan Dragons,TWN
+Chinese Taipei,Lyle Lin,Taiwan,C,R,R,6,206,28,NA,Free Agent,NA
+Chinese Taipei,Nien-Ting Wu,Taiwan,INF,L,R,5,165,32,NA,TSG Hawks,TWN
+Chinese Taipei,Po-Yu Chen,Taiwan,RHP,L,R,6,187,24,PIT,Indianapolis Indians,AAA
+Chinese Taipei,Ruei-Yang Gu Lin,Taiwan,RHP,R,R,6,198,25,NA,Hokkaido Nipponham Fighters,JPN
+Chinese Taipei,Shao-Hung Chiang,Taiwan,C,R,R,5,220,28,NA,Wei Chuan Dragons,TWN
+Chinese Taipei,Shih-Hsiang Lin,Taiwan,RHP,L,R,5,183,24,NA,TSG Hawks,TWN
+Chinese Taipei,Stuart Fairchild,USA,OF,R,R,6,200,29,CLE,Columbus Clippers,AAA
+Chinese Taipei,Tsung-Che Cheng,Taiwan,INF,L,R,5,177,24,WSH,Washington Nationals,MLB
+Chinese Taipei,Tzu-Chen Sha,Taiwan,RHP,R,R,6,168,22,ATH,Lansing Lugnuts,A+
+Chinese Taipei,Tzu-Wei Lin,Taiwan,UTL,L,R,5,180,31,NA,Rakuten Monkeys,TWN
+Chinese Taipei,Wei-En Lin,Taiwan,LHP,L,L,6,179,20,ATH,Midland RockHounds,AA
+Chinese Taipei,Yi Chang,Taiwan,RHP,R,R,6,190,31,NA,Fubon Guardians,TWN
+Chinese Taipei,Yi-Lei Sun,Taiwan,RHP,L,R,6,179,20,NA,Hokkaido Nipponham Fighters,JPN
+Chinese Taipei,Yu Chang,Taiwan,INF,R,R,6,180,30,NA,Fubon Guardians,TWN
+Chinese Taipei,Yu-Min Lin,Taiwan,LHP,L,L,5,161,22,AZ,Reno Aces,AAA
+Australia,Aaron Whitefield,Australia,OF,R,R,6,210,29,NA,Melbourne Aces,AUS
+Australia,Alex Hall,Australia,C,S,R,5,209,26,NA,Perth Heat,AUS
+Australia,Alex Wells,Australia,LHP,R,L,6,195,28,NA,Sydney Blue Sox,AUS
+Australia,Blake Townsend,Australia,LHP,L,L,6,220,24,TEX,Frisco RoughRiders,AA
+Australia,Chris Burke,Australia,OF,L,R,5,190,24,NA,Melbourne Aces,AUS
+Australia,Coen Wynne,Australia,RHP,R,R,6,180,27,NA,Sydney Blue Sox,AUS
+Australia,Connor MacDonald,Australia,RHP,R,R,6,175,29,NA,Brisbane Bandits,AUS
+Australia,Cooper Morgan,Australia,LHP,L,L,6,175,24,NA,Adelaide Giants,AUS
+Australia,Curtis Mead,Australia,INF,R,R,6,210,25,CWS,Chicago White Sox,MLB
+Australia,George Callil,Australia,SS,R,R,6,198,28,NA,Brisbane Bandits,AUS
+Australia,Jack O'Loughlin,Australia,LHP,L,L,6,218,25,NA,Adelaide Giants,AUS
+Australia,Jarryd Dale,Australia,SS,R,R,6,180,25,NA,Kia Tigers,KOR
+Australia,Jon Kennedy,Australia,LHP,L,L,6,245,31,NA,Brisbane Bandits,AUS
+Australia,Josh Hendrickson,Australia,LHP,L,L,6,220,28,NA,Adelaide Giants,AUS
+Australia,Kieren Hall,Australia,RHP,R,R,6,195,24,NA,Perth Heat,AUS
+Australia,Ky Hampton,Australia,RHP,R,R,6,200,25,NA,Adelaide Giants,AUS
+Australia,Lachlan Wells,Australia,LHP,L,L,6,200,28,NA,LG Twins,KOR
+Australia,Logan Wade,Australia,INF,S,R,6,198,34,NA,Brisbane Bandits,AUS
+Australia,Max Durrington,Australia,UTL,L,R,5,165,18,ATH,Stockton Ports,A
+Australia,Mitch Neunborn,South Africa,RHP,R,R,6,189,28,PHI,Reading Fightin Phils,AA
+Australia,Mitchell Edwards,Australia,C,S,R,5,200,26,NA,Adelaide Giants,AUS
+Australia,Rixon Wingrove,Australia,1B,L,R,6,240,25,NA,Brisbane Bandits,AUS
+Australia,Robbie Glendinning,Australia,UTL,R,R,6,204,30,NA,Adelaide Giants,AUS
+Australia,Robbie Perkins,Australia,C,R,R,6,170,31,NA,Brisbane Bandits,AUS
+Australia,Sam Holland,Australia,RHP,R,R,6,204,31,NA,Brisbane Bandits,AUS
+Australia,Tim Kennelly,Australia,OF,R,R,6,180,39,NA,Perth Heat,AUS
+Australia,Todd Van Steensel,Australia,RHP,R,R,6,215,35,NA,Adelaide Giants,AUS
+Australia,Travis Bazzana,Australia,2B,L,R,6,201,23,CLE,Akron RubberDucks,AA
+Australia,Ulrich Bojarski,South Africa,RF,R,R,6,218,27,NA,Melbourne Aces,AUS
+Australia,Warwick Saupold,Australia,RHP,R,R,6,204,36,NA,Perth Heat,AUS
+Colombia,Adrian Almeida,Venezuela,LHP,L,L,6,190,30,NA,Rieleros de Aguascalientes,MEX
+Colombia,Austin Bergner,USA,RHP,R,R,6,210,28,TEX,Round Rock Express,AAA
+Colombia,Brayan Buelvas,Colombia,CF,R,R,5,187,23,ATH,Midland RockHounds,AA
+Colombia,Carlos Martínez,Colombia,C,R,R,5,200,30,NA,Saraperos de Saltillo,MEX
+Colombia,Danis Correa,Colombia,RHP,R,R,6,180,26,NA,Algodoneros de Unión Laguna,MEX
+Colombia,David Lorduy,Colombia,RHP,R,R,6,184,22,CIN,Daytona Tortugas,A
+Colombia,Dayan Frias,Colombia,SS,S,R,5,180,23,CLE,Akron RubberDucks,AA
+Colombia,Donovan Solano,Colombia,2B,R,R,5,190,38,NA,Free Agent,NA
+Colombia,Elias Díaz,Venezuela,C,R,R,6,223,35,NA,Free Agent,NA
+Colombia,Elkin Alcala,Colombia,RHP,R,R,5,190,28,NA,Caimanes de Barranquilla,COL
+Colombia,Emerson Martinez,Venezuela,RHP,R,R,6,225,31,NA,Caciques de Distrito,VEN
+Colombia,Gio Urshela,Colombia,3B,R,R,6,198,34,MIN,Minnesota Twins,MLB
+Colombia,Guillo Zuñiga,Colombia,RHP,R,R,6,230,27,SEA,Tacoma Rainiers,AAA
+Colombia,Gustavo Campero,Colombia,RF,S,R,5,188,28,LAA,Salt Lake Bees,AAA
+Colombia,Harold Ramírez,Colombia,OF,R,R,5,232,31,NA,Tecos de los Dos Laredos,MEX
+Colombia,Jesus Marriaga,Colombia,LF,R,R,6,226,27,NA,Caimanes de Barranquilla,COL
+Colombia,Jhon Romero,Colombia,RHP,R,R,5,215,31,NA,Tigres de Aragua,VEN
+Colombia,Jordan Diaz,Colombia,INF,R,R,5,205,25,NA,Orix Buffaloes,JPN
+Colombia,Jorge Alfaro,Colombia,C,R,R,6,235,32,KC,Omaha Storm Chasers,AAA
+Colombia,Jose Quintana,Colombia,LHP,R,L,6,224,37,NA,Free Agent,NA
+Colombia,Julio Teheran,Colombia,RHP,R,R,6,189,35,NA,Tigres de Cartagena,COL
+Colombia,Luis Patiño,Colombia,RHP,R,R,6,192,26,NA,Diablos Rojos del México,MEX
+Colombia,Michael Arroyo,Colombia,2B,R,R,5,190,21,SEA,Arkansas Travelers,AA
+Colombia,Nabil Crismatt,Colombia,RHP,R,R,6,220,31,TEX,Round Rock Express,AAA
+Colombia,Pedro Garcia,Venezuela,RHP,R,R,5,220,30,NA,Bravos de León,MEX
+Colombia,Reiver Sanmartin,Colombia,LHP,L,L,6,170,29,CIN,Louisville Bats,AAA
+Colombia,Reynaldo Rodriguez,Colombia,1B,R,R,6,195,39,NA,Guerreros de Oaxaca,MEX
+Colombia,Rio Gomez,USA,LHP,L,L,6,190,31,NA,Free Agent,NA
+Colombia,Tayron Guerrero,Colombia,RHP,R,R,6,225,35,BOS,Worcester Red Sox,AAA
+Colombia,Yapson Gomez,Venezuela,LHP,L,L,5,178,32,NA,Caciques de Distrito,VEN
+Panama,Abdiel Mendoza,Panama,RHP,R,R,5,160,27,SEA,Seattle Mariners,MLB
+Panama,Alberto Baldonado,Panama,LHP,L,L,6,270,33,NA,Yomiuri Giants,JPN
+Panama,Allen Córdoba,Panama,OF,R,R,6,235,30,NA,Diablos Rojos del México,MEX
+Panama,Andy Otero,Panama,LHP,L,L,5,165,33,NA,El Águila de Veracruz,MEX
+Panama,Ariel Jurado,Panama,RHP,R,R,6,240,30,NA,Samsung Lions,KOR
+Panama,Christian Bethancourt,Panama,C/1B,R,R,6,205,34,CHC,Chicago Cubs,MLB
+Panama,Dario Agrazal,Panama,RHP,R,R,6,225,31,NA,Leones de Yucatán,MEX
+Panama,Edmundo Sosa,Panama,2B,R,R,6,210,29,PHI,Philadelphia Phillies,MLB
+Panama,Enrique Bradfield Jr.,USA,CF,L,L,6,170,24,BAL,Baltimore Orioles,MLB
+Panama,Erian Rodriguez,Panama,RHP,R,R,6,190,24,CHC,Iowa Cubs,AAA
+Panama,Humberto Mejía,Panama,RHP,R,R,6,244,28,NA,Chunichi Dragons,JPN
+Panama,Iván Herrera,Panama,C,R,R,5,220,25,STL,St. Louis Cardinals,MLB
+Panama,Jaime Barria,Panama,RHP,R,R,6,210,29,NA,Algodoneros de Unión Laguna,MEX
+Panama,James Gonzalez,Panama,LHP,L,L,6,255,25,ATH,Las Vegas Aviators,AAA
+Panama,Javy Guerra,Panama,RHP,L,R,6,190,30,ATL,Atlanta Braves,MLB
+Panama,Jhonny Santos,Panama,OF,R,R,6,160,29,NA,Acereros de Monclova,MEX
+Panama,Johan Camargo,Panama,3B,S,R,5,195,32,NA,Tecos de los Dos Laredos,MEX
+Panama,Jonathan Araúz,Panama,2B,S,R,6,195,27,NA,Saraperos de Saltillo,MEX
+Panama,Jorge Garcia,Panama,RHP,R,R,6,185,23,NA,Caliente de Durango,MEX
+Panama,José Caballero,Panama,INF,R,R,5,190,29,NYY,New York Yankees,MLB
+Panama,Jose Ramos,Panama,OF,R,R,6,200,25,NYM,New York Mets,MLB
+Panama,Kenny Hernandez,Panama,LHP,L,L,6,197,27,NA,Tigres de Quintana Roo,MEX
+Panama,Leo Jiménez,Panama,SS,R,R,5,215,24,TOR,Toronto Blue Jays,MLB
+Panama,Leonardo Bernal,Panama,C,S,R,6,245,21,STL,St. Louis Cardinals,MLB
+Panama,Logan Allen,USA,LHP,R,L,6,200,27,CLE,Cleveland Guardians,MLB
+Panama,Miguel Amaya,Panama,C,R,R,6,189,26,CHC,Chicago Cubs,MLB
+Panama,Miguel Cienfuegos,Canada,LHP,L,L,6,195,28,SD,El Paso Chihuahuas,AAA
+Panama,Miguel Gomez,Panama,RHP,R,R,6,170,24,NA,Bravos de Leon,MEX
+Panama,Paolo Espino,Panama,RHP,R,R,5,212,39,NA,Conspiradores de Querétaro,MEX
+Panama,Rubén Tejada,Panama,SS,R,R,5,200,36,NA,Caliente de Durango,MEX
+Cuba,Alexander Vargas,Cuba,INF,R,R,5,184,24,CIN,Dayton Dragons,A+
+Cuba,Alexei Ramirez,Cuba,INF,R,R,6,180,44,NA,Vegueros de Pinar del Río,CUB
+Cuba,Alfredo Despaigne,Cuba,OF,R,R,5,209,39,NA,Alazanes de Granma,CUB
+Cuba,Andrys Perez,Cuba,C,R,R,6,207,24,NA,Cocodrilos de Matanzas,CUB
+Cuba,Ariel Martinez,Cuba,UTL,R,R,6,196,29,NA,Hokkaido Nippon-Ham Fighters,JPN
+Cuba,Darien Núñez,Cuba,LHP,L,L,6,205,32,NA,Algodoneros de Unión Laguna,MEX
+Cuba,Daviel Hurtado,Cuba,LHP,L,L,6,166,21,NYM,St. Lucie Mets,A
+Cuba,Denny Larrondo,Cuba,RHP,R,R,6,180,23,NA,Free Agent,NA
+Cuba,Emmanuel Chapman,Cuba,RHP,R,R,6,255,27,PIT,Altoona Curve,AA
+Cuba,Erisbel Arruebarrena,Cuba,INF,R,R,6,230,35,NA,Elefantes de Cienfuegos,CUB
+Cuba,Frank Alvarez,Cuba,RHP,R,R,6,203,27,NA,Vegueros de Pinar del Río,CUB
+Cuba,Josimar Cousin,Cuba,RHP,R,R,6,230,27,NA,Rieleros de Aguascalientes,MEX
+Cuba,Julio Robaina,Cuba,LHP,L,L,5,210,24,NA,Tigres de Quintana Roo,MEX
+Cuba,Leonel Moas Jr.,Cuba,OF,R,R,5,178,29,NA,Toros de Camaguey,CUB
+Cuba,Livan Moinelo,Cuba,LHP,L,L,5,154,30,NA,Fukuoka SoftBank Hawks,JPN
+Cuba,Luis Romero,Cuba,RHP,R,R,6,202,31,NA,El Águila de Veracruz,MEX
+Cuba,Malcom Nuñez,Cuba,INF,R,R,6,205,24,NA,Free Agent,NA
+Cuba,Naykel Cruz,Cuba,LHP,L,L,6,185,26,BAL,Orioles Black,DSL
+Cuba,Omar Hernandez,Cuba,C,S,R,5,170,24,KC,Omaha Storm Chasers,AAA
+Cuba,Osiel Rodriguez,Cuba,RHP,R,R,6,210,24,NA,Bravos de Leon,MEX
+Cuba,Pedro Santos,Cuba,RHP,R,R,6,221,26,NA,Gigantes de Carolina,PUR
+Cuba,Raidel Martinez,Cuba,RHP,R,R,6,189,29,NA,Yomiuri Giants,JPN
+Cuba,Randy Martinez,Cuba,LHP,L,L,5,158,22,NA,Chunichi Dragons,JPN
+Cuba,Roel Santos,Cuba,OF,L,L,5,172,38,NA,Olmecas de Tabasco,MEX
+Cuba,Yariel Rodríguez,Cuba,RHP,R,R,6,165,28,TOR,Toronto Blue Jays,MLB
+Cuba,Yiddi Cappe,Cuba,SS,R,R,6,175,23,MIA,Pensacola Blue Wahoos,AA
+Cuba,Yoan López,Cuba,RHP,R,R,6,208,33,NA,Algodoneros de Unión Laguna,MEX
+Cuba,Yoán Moncada,Cuba,3B,S,R,6,220,30,LAA,Los Angeles Angels,MLB
+Cuba,Yoel Yanqui,Cuba,UTL,L,L,6,220,29,NA,Guerreros de Oaxaca,MEX
+Cuba,Yoelkis Guibert,Cuba,OF,L,L,5,167,31,NA,Avispas de Santiago de Cuba,CUB
