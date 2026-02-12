@@ -4,9 +4,16 @@ subtitle: "Análisis de composición de roster"
 author: "Axel Mora"
 format:
   revealjs:
-    theme: dark
+    theme: [default]
     slide-number: true
-    transition: fade
+    chalkboard: true
+    preview-links: auto
+    logo: wbc_logo.png
+    css: styles.css
+    footer: "World Baseball Classic 2026 | Análisis de Datos"
+    transition: slide
+    background-transition: fade
+    highlight-style: monokai
 execute:
   echo: false
   warning: false
@@ -22,7 +29,12 @@ library(forcats)
 library(readr)
 
 all_rosters_full <- read_csv("all_rosters_full.csv", show_col_types = FALSE)
-teams <- unique(all_rosters_full$team_name)
+nation_ids <- read_csv("nation_ids.csv", show_col_types = FALSE)
+
+all_rosters_full <- all_rosters_full %>%
+  left_join(nation_ids %>% select(team_name, flag), by = "team_name")
+
+teams <- sort(unique(all_rosters_full$team_name))
 ```
 
 ## Selecciones Analizadas
@@ -36,7 +48,7 @@ for (t in teams) {
   
   df <- all_rosters_full %>% 
     filter(team_name == t)
-  
+  flag_url <- df$flag[1]
   avg_age <- round(mean(df$age, na.rm = TRUE), 1)
   pitchers_pct <- round(mean(grepl("P", df$pos)) * 100, 1)
   mlb_pct <- round(mean(!is.na(df$mlb_org)) * 100, 1)
@@ -46,7 +58,9 @@ for (t in teams) {
   # =========================
   
   cat(paste0(
-    "\n\n## ", t, "\n",
+    "\n\n## <img src='", flag_url, 
+    "' height='60' style='vertical-align:middle; margin-right:15px;'> ",
+    t, "\n\n",
     "### Resumen General\n\n",
     "- Jugadores: ", nrow(df), "\n",
     "- Edad promedio: ", avg_age, "\n",
@@ -57,11 +71,15 @@ for (t in teams) {
   # SLIDE 2.1 – TABLA
   # =========================
   
-  cat(paste0("\n\n## ", t, " – Roster\n\n"))
+  cat(paste0(
+    "\n\n## <img src='", flag_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – Roster\n\n"
+  ))
   
   df %>%
     arrange(pos)
-  
+    
   print(
     df[1:15,] %>%
       select(person_full_name, pos, age, birth_country, club, league, mlb_org) %>%
@@ -72,7 +90,11 @@ for (t in teams) {
   # SLIDE 2.2 – TABLA
   # =========================
   
-  cat(paste0("\n\n## ", t, " – Roster\n\n"))
+  cat(paste0(
+    "\n\n## <img src='", flag_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – Roster\n\n"
+  ))
   
   df %>%
     arrange(pos)
@@ -87,7 +109,11 @@ for (t in teams) {
   # SLIDE 3 – LIGAS
   # =========================
   
-  cat(paste0("\n\n## ", t, " – Distribución por Liga\n\n"))
+  cat(paste0(
+    "\n\n## <img src='", flag_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – Distribución por Liga\n\n"
+  ))
   
   print(
     df %>%
@@ -104,7 +130,11 @@ for (t in teams) {
   # SLIDE 4 – NACIMIENTO
   # =========================
   
-  cat(paste0("\n\n## ", t, " – País de Nacimiento\n\n"))
+  cat(paste0(
+    "\n\n## <img src='", flag_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – País de Nacimiento\n\n"
+  ))
   
   print(
     df %>%
