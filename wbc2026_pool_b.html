@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBC 2026 · Pool B · Tiebreaker Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #252a36;
+    --accent: #e8c84a;
+    --accent2: #4ae8a8;
+    --red: #e84a4a;
+    --text: #e8e9ed;
+    --muted: #6b7280;
+    --italy: #009246;
+    --italy2: #ce2b37;
+    --mexico: #006847;
+    --mexico2: #ce1126;
+    --usa: #3c3b6e;
+    --usa2: #b22234;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0a0c10 0%, #111828 50%, #0a0c10 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: 'POOL B';
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 9rem;
+    color: rgba(232,200,74,0.04);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .wbc-badge {
+    background: var(--accent);
+    color: #000;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* ── LIVE GAME BANNER ── */
+  .game-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .game-teams {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .game-team {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .flag {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .team-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  .game-score {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .score-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.4rem 1rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    min-width: 3rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .score-dash { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--muted); }
+
+  .game-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
+
+  .live-dot {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .live-dot::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .live-dot.finished::before { background: var(--muted); animation: none; }
+  .live-dot.preview::before { background: var(--accent); animation: none; }
+
+  .inning-info {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .last-updated {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .refresh-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ── STANDINGS TABLE ── */
+  .standings-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .standings-header {
+    padding: 1rem 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  thead th:first-child { text-align: left; }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(37,42,54,0.6);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  td {
+    padding: 0.85rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    text-align: right;
+    vertical-align: middle;
+  }
+
+  td:first-child { text-align: left; }
+
+  .team-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .team-flag { font-size: 1.4rem; }
+
+  .team-label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-abbr {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .team-full {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.65rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  .tbq-cell {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+
+  .adv-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+  }
+
+  .adv-badge.advances { background: rgba(74,232,168,0.15); color: var(--accent2); border: 1px solid rgba(74,232,168,0.3); }
+  .adv-badge.eliminated { background: rgba(232,74,74,0.15); color: var(--red); border: 1px solid rgba(232,74,74,0.3); }
+  .adv-badge.pending { background: rgba(232,200,74,0.1); color: var(--accent); border: 1px solid rgba(232,200,74,0.25); }
+
+  /* ── MATRIX ── */
+  .matrix-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+  }
+
+  .matrix-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .matrix-table {
+    border-collapse: separate;
+    border-spacing: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+  }
+
+  .matrix-table th {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .matrix-table td {
+    padding: 0.35rem 0.45rem;
+    text-align: center;
+    border-radius: 2px;
+    min-width: 80px;
+    font-size: 0.65rem;
+    line-height: 1.3;
+    vertical-align: middle;
+  }
+
+  .cell-ita-mex { background: rgba(0,146,70,0.2); color: #7de8b0; border: 1px solid rgba(0,146,70,0.3); }
+  .cell-mex-usa { background: rgba(206,27,37,0.18); color: #f0a0a0; border: 1px solid rgba(206,27,37,0.25); }
+  .cell-usa-ita { background: rgba(60,59,110,0.35); color: #a0a8e0; border: 1px solid rgba(60,59,110,0.5); }
+  .cell-tie     { background: rgba(232,200,74,0.12); color: var(--accent); border: 1px solid rgba(232,200,74,0.25); }
+  .cell-header  { background: var(--surface2); color: var(--text); font-weight: 600; }
+
+  /* ── SCENARIOS ── */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .scenario-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid transparent;
+  }
+
+  .scenario-card.ko { border-left-color: var(--red); }
+  .scenario-card.extra { border-left-color: #9b59b6; }
+  .scenario-card.triple-tie { border-left-color: var(--accent); }
+
+  .scenario-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .scenario-body {
+    font-size: 0.78rem;
+    color: #b0b8c8;
+    line-height: 1.65;
+  }
+
+  .scenario-body strong { color: var(--text); }
+
+  /* ── TBQ EXPLAINER ── */
+  .tbq-explainer {
+    background: var(--surface2);
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .tbq-explainer code {
+    font-family: 'IBM Plex Mono', monospace;
+    background: rgba(232,200,74,0.08);
+    color: var(--accent);
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+    font-size: 0.8rem;
+  }
+
+  /* progress bar in table */
+  .tbq-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .tbq-bar {
+    width: 50px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .tbq-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  /* highlight updated rows */
+  @keyframes rowHighlight {
+    0% { background: rgba(232,200,74,0.08); }
+    100% { background: transparent; }
+  }
+
+  tr.updated { animation: rowHighlight 2s ease-out; }
+
+  /* spinner */
+  .spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-msg {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--red);
+    padding: 0.5rem 0;
+  }
+
+  /* footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    font-family: 'IBM Plex Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .game-banner { flex-direction: column; }
+    .game-meta { align-items: flex-start; }
+    td, th { padding: 0.6rem 0.5rem; }
+    .team-full { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span class="wbc-badge">WBC 2026</span>
+    <span class="wbc-badge" style="background:transparent;border:1px solid var(--accent);color:var(--accent);">POOL B</span>
+  </div>
+  <h1>Tiebreaker <span>Tracker</span></h1>
+  <div class="subtitle">Italy · Mexico · United States — March 11, 2026</div>
+</header>
+
+<main>
+
+  <!-- ── LIVE GAME ── -->
+  <div>
+    <div class="section-title">🔴 Live Game · ITA vs MEX · Game ID 788121</div>
+    <div class="game-banner" id="gameBanner">
+      <div class="game-teams">
+        <div class="game-team">
+          <span class="flag">🇮🇹</span>
+          <span class="team-name">ITALY</span>
+        </div>
+        <div class="game-score">
+          <div class="score-box" id="scoreAway">—</div>
+          <span class="score-dash">·</span>
+          <div class="score-box" id="scoreHome">—</div>
+        </div>
+        <div class="game-team">
+          <span class="flag">🇲🇽</span>
+          <span class="team-name">MEXICO</span>
+        </div>
+      </div>
+      <div class="game-meta">
+        <div class="live-dot preview" id="statusDot" id="liveStatus">LOADING…</div>
+        <div class="inning-info" id="inningInfo">Fetching game data…</div>
+        <div class="last-updated" id="lastUpdated">—</div>
+        <button class="refresh-btn" onclick="fetchGame()">↻ Refresh</button>
+      </div>
+    </div>
+    <div class="error-msg" id="errorMsg" style="display:none;"></div>
+  </div>
+
+  <!-- ── STANDINGS ── -->
+  <div>
+    <div class="section-title">📊 Pool B Standings · Updated</div>
+    <div class="standings-wrap">
+      <div class="standings-header">
+        <div class="tbq-explainer">
+          <strong>Tiebreaker Quotient (TBQ)</strong> — <code>TBQ = Runs Allowed ÷ Defensive Outs</code>.
+          Used only when teams finish tied in W-L record. Lower TBQ = fewer runs allowed per out = better. Only head-to-head games between tied teams count.
+          <br>Current scope: all games among ITA · MEX · USA (triple tie scenario).
+        </div>
+      </div>
+      <table id="standingsTable">
+        <thead>
+          <tr>
+            <th style="text-align:left">Team</th>
+            <th>W</th>
+            <th>L</th>
+            <th>W%</th>
+            <th>RA</th>
+            <th>DO</th>
+            <th>TBQ</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="standingsBody">
+          <!-- filled by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── SCORE MATRIX ── -->
+  <div>
+    <div class="section-title">🔢 Score Matrix · Possible Outcomes (9-Inning Game)</div>
+    <div class="matrix-section">
+      <div class="matrix-note">
+        Each cell shows who advances based on that final score. Post-game TBQ is computed for each scenario
+        assuming Italy is the away team. Mexico's current pre-game stats: <strong>5 RA / 24 DO → TBQ .208</strong>.
+        Italy's current pre-game stats: <strong>6 RA / 27 DO → TBQ .222</strong>. USA: <strong>11 RA / 54 DO → TBQ .203</strong>.
+        A "9-inning game" adds 27 defensive outs per team (the losing team's half-innings matter too — see note).
+        <em>Matrix uses simplified 27 DO per side for a complete 9-inning game; partial last innings shift final DO counts slightly.</em>
+      </div>
+      <div id="matrixContainer"></div>
+    </div>
+  </div>
+
+  <!-- ── SCENARIOS ── -->
+  <div>
+    <div class="section-title">📋 Special Scenarios</div>
+    <div class="scenarios-grid">
+
+      <div class="scenario-card ko">
+        <div class="scenario-title">🚫 Run-Rule / Mercy Rule (KO)</div>
+        <div class="scenario-body">
+          In the WBC, a <strong>10-run mercy rule applies after 7 innings</strong> (or 15 runs after 5 innings in pool play).
+          If the game ends early by mercy rule, <strong>defensive outs are only those actually recorded</strong> — not padded to 27.
+          A 10-run win in 7 innings = ~21 outs for the winner's defense.
+          <br><br>
+          A dominant Italy mercy-rule win gives Italy a <strong>much lower TBQ</strong> than a close 9-inning win.
+          A dominant Mexico mercy-rule win similarly benefits Mexico's TBQ significantly vs. USA.
+          The team that gets run-ruled <strong>records fewer defensive outs</strong>, which also affects their denominator.
+        </div>
+      </div>
+
+      <div class="scenario-card extra">
+        <div class="scenario-title">⏱ Extra Innings</div>
+        <div class="scenario-body">
+          WBC uses the <strong>international tiebreaker rule</strong> starting in the 10th inning (runner on 2nd to start each half-inning).
+          Every extra inning adds <strong>3 more defensive outs per side</strong> to the TBQ denominator.
+          <br><br>
+          Extra-inning games tend to <strong>lower TBQ for both teams</strong> (more DO, runs are already "allocated").
+          The losing team in extras often surrenders a run late, slightly <strong>hurting their TBQ</strong>.
+          If USA is watching, more extra innings can only help Mexico or Italy narrow the TBQ gap vs USA's .203.
+        </div>
+      </div>
+
+      <div class="scenario-card triple-tie">
+        <div class="scenario-title">⚡ True Triple Tie Conditions</div>
+        <div class="scenario-body">
+          A triple tie (all three at 3-1) requires <strong>Italy to win today</strong>.
+          <br>— Italy wins → All three finish 3-1 → TBQ tiebreaker activates.
+          <br>— Mexico wins → Mexico finishes 3-1; Italy 3-1 but USA already 3-1 → <strong>No triple tie</strong>; Mexico and USA advance automatically.
+          <br><br>
+          In the triple-tie scenario the <strong>current leader is USA (.203)</strong>, followed by Mexico (.208), then Italy (.222).
+          Italy needs to both win AND hold Mexico to very few runs to leapfrog USA.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>Data sourced via MLB Stats API · statsapi.mlb.com · WBC 2026 Pool B · Auto-refreshes every 60s during live games</footer>
+
+<script>
+// ── BASE DATA ──
+const BASE = {
+  ITA: { name:'Italy',  flag:'🇮🇹', abbr:'ITA', w:3, l:0, ra:6,  doOuts:27, fullName:'Italy' },
+  MEX: { name:'Mexico', flag:'🇲🇽', abbr:'MEX', w:2, l:1, ra:5,  doOuts:24, fullName:'Mexico' },
+  USA: { name:'USA',    flag:'🇺🇸', abbr:'USA', w:3, l:1, ra:11, doOuts:54, fullName:'United States' }
+};
+
+// Live game state
+let gameState = {
+  status: 'preview',   // preview | live | final
+  awayScore: null,     // Italy score
+  homeScore: null,     // Mexico score
+  inning: null,
+  inningHalf: null,
+  outs: null,
+  isFinal: false
+};
+
+// ── TBQ calculation ──
+function calcTBQ(ra, doOuts) {
+  if (doOuts === 0) return 0;
+  return ra / doOuts;
+}
+
+// ── Fetch live game from MLB Stats API ──
+async function fetchGame() {
+  const url = 'https://statsapi.mlb.com/api/v1.1/game/788121/feed/live';
+  try {
+    const resp = await fetch(url, { mode: 'cors' });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    parseGame(data);
+    document.getElementById('errorMsg').style.display = 'none';
+  } catch(e) {
+    document.getElementById('errorMsg').style.display = 'block';
+    document.getElementById('errorMsg').textContent =
+      '⚠ Could not reach MLB Stats API: ' + e.message +
+      ' — showing pre-game baseline data. Check browser CORS policy or try refreshing.';
+    // Keep showing baseline
+    renderStandings(null, null);
+    updateGameBanner();
+  }
+}
+
+function parseGame(data) {
+  const gs = data.gameData?.status?.abstractGameState;
+  const linescore = data.liveData?.linescore;
+  const teams = linescore?.teams;
+
+  gameState.awayScore = teams?.away?.runs ?? null;   // Italy = away
+  gameState.homeScore = teams?.home?.runs ?? null;   // Mexico = home
+  gameState.inning = linescore?.currentInning ?? null;
+  gameState.inningHalf = linescore?.inningHalf ?? null;
+  gameState.outs = linescore?.outs ?? null;
+  gameState.isFinal = (gs === 'Final');
+  gameState.isLive = (gs === 'Live');
+  gameState.status = gs === 'Final' ? 'final' : gs === 'Live' ? 'live' : 'preview';
+
+  updateGameBanner();
+
+  // Compute added runs/outs from this game
+  let addedRaITA = 0, addedDoITA = 0;
+  let addedRaMEX = 0, addedDoMEX = 0;
+
+  if (gameState.awayScore !== null) {
+    // Mexico allowed Italy's runs = Italy's score
+    addedRaMEX = gameState.awayScore;
+    // Italy allowed Mexico's runs
+    addedRaITA = gameState.homeScore;
+
+    // Defensive outs: for a final game, use linescore
+    if (gameState.isFinal) {
+      // Italy's defense (away) retired Mexico batters → home team's outs recorded by away pitching
+      // In a standard game: home team gets 27 outs if game goes full 9 (or fewer if walk-off)
+      // We approximate from linescore innings
+      const innings = linescore?.currentInning ?? 9;
+      const isTopHalf = linescore?.inningHalf === 'Top';
+
+      // Italy's defensive outs ~ home team retired outs = home team at-bats outs
+      // Simplified: away pitching = home outs = ~3*innings if game complete, minus potential walk-off
+      addedDoITA = teams?.home?.leftOnBase !== undefined
+        ? Math.min(27, innings * 3)
+        : innings * 3;
+
+      // Mexico's defensive outs ~ away team's outs = 3 * innings (away always completes)
+      addedDoMEX = innings * 3;
+
+      // Walk-off: if home (Mexico) wins and last inning not completed by away
+      // Actually Italy is away, so if Mexico wins in walk-off, Italy records one fewer out in last half
+      if (gameState.homeScore > gameState.awayScore) {
+        // Mexico wins (home) — possible walk-off means Italy didn't get last out in 9th top... 
+        // Italy is AWAY, bats first. Mexico bats last. Walk-off = Mexico scores in bottom half.
+        // Italy's defense (recording Mexico's outs) might not get all 3 outs in final inning.
+        // Use currentInningOuts from linescore
+        const finalOuts = linescore?.outs ?? 3;
+        addedDoITA = (innings - 1) * 3 + finalOuts;
+      } else {
+        addedDoITA = innings * 3;
+      }
+
+    } else if (gameState.isLive) {
+      const innings = gameState.inning ?? 1;
+      const isTop = gameState.inningHalf === 'Top';
+      const outs = gameState.outs ?? 0;
+
+      // Live: approximate outs so far
+      if (isTop) {
+        addedDoMEX = (innings - 1) * 3 + outs; // Mexico has been pitching through top innings
+        addedDoITA = (innings - 1) * 3;
+      } else {
+        addedDoMEX = innings * 3;
+        addedDoITA = (innings - 1) * 3 + outs;
+      }
+    }
+  }
+
+  renderStandings(
+    { ra: addedRaITA, doOuts: addedDoITA },
+    { ra: addedRaMEX, doOuts: addedDoMEX }
+  );
+}
+
+function updateGameBanner() {
+  const dot = document.getElementById('statusDot');
+  const inningEl = document.getElementById('inningInfo');
+  const awayEl = document.getElementById('scoreAway');
+  const homeEl = document.getElementById('scoreHome');
+
+  awayEl.textContent = gameState.awayScore !== null ? gameState.awayScore : '—';
+  homeEl.textContent = gameState.homeScore !== null ? gameState.homeScore : '—';
+
+  if (gameState.status === 'final') {
+    dot.textContent = 'FINAL';
+    dot.className = 'live-dot finished';
+    inningEl.textContent = 'Game Over';
+  } else if (gameState.status === 'live') {
+    dot.textContent = 'LIVE';
+    dot.className = 'live-dot';
+    const half = gameState.inningHalf === 'Top' ? '▲' : '▼';
+    inningEl.textContent = `${half} ${gameState.inning} · ${gameState.outs ?? 0} out(s)`;
+  } else {
+    dot.textContent = 'PREVIEW';
+    dot.className = 'live-dot preview';
+    inningEl.textContent = 'Game not yet started';
+  }
+
+  document.getElementById('lastUpdated').textContent =
+    'Updated ' + new Date().toLocaleTimeString();
+}
+
+// ── Render Standings ──
+function renderStandings(itaGame, mexGame) {
+  const teams = ['USA', 'MEX', 'ITA'].map(k => {
+    const t = { ...BASE[k] };
+
+    if (k === 'ITA' && itaGame) {
+      t.ra = BASE.ITA.ra + itaGame.ra;
+      t.doOuts = BASE.ITA.doOuts + itaGame.doOuts;
+      if (gameState.isFinal) {
+        t.w = BASE.ITA.w + (gameState.awayScore > gameState.homeScore ? 1 : 0);
+        t.l = BASE.ITA.l + (gameState.awayScore < gameState.homeScore ? 1 : 0);
+      }
+    }
+    if (k === 'MEX' && mexGame) {
+      t.ra = BASE.MEX.ra + mexGame.ra;
+      t.doOuts = BASE.MEX.doOuts + mexGame.doOuts;
+      if (gameState.isFinal) {
+        t.w = BASE.MEX.w + (gameState.homeScore > gameState.awayScore ? 1 : 0);
+        t.l = BASE.MEX.l + (gameState.homeScore < gameState.awayScore ? 1 : 0);
+      }
+    }
+
+    t.tbq = calcTBQ(t.ra, t.doOuts);
+    t.wpct = t.w + t.l > 0 ? t.w / (t.w + t.l) : 0;
+    return t;
+  });
+
+  // Sort: by W desc, then TBQ asc
+  teams.sort((a,b) => b.w - a.w || a.tbq - b.tbq);
+
+  // Determine advancement
+  const classified = determineAdvancement(teams);
+
+  const tbody = document.getElementById('standingsBody');
+  tbody.innerHTML = '';
+
+  // TBQ range for bar scaling
+  const maxTBQ = Math.max(...teams.map(t => t.tbq));
+
+  teams.forEach((t, i) => {
+    const status = classified[t.abbr];
+    const tr = document.createElement('tr');
+    if (itaGame || mexGame) tr.classList.add('updated');
+
+    tr.innerHTML = `
+      <td>
+        <div class="team-cell">
+          <span class="team-flag">${t.flag}</span>
+          <div class="team-label">
+            <span class="team-abbr">${t.abbr}</span>
+            <span class="team-full">${t.fullName}</span>
+          </div>
+        </div>
+      </td>
+      <td><strong>${t.w}</strong></td>
+      <td>${t.l}</td>
+      <td>${(t.wpct).toFixed(3).replace(/^0/, '')}</td>
+      <td>${t.ra}</td>
+      <td>${t.doOuts}</td>
+      <td class="tbq-cell">
+        <div class="tbq-bar-wrap">
+          <div class="tbq-bar">
+            <div class="tbq-bar-fill" style="width:${maxTBQ > 0 ? (t.tbq/maxTBQ*100).toFixed(1) : 50}%"></div>
+          </div>
+          <span>${t.tbq.toFixed(3)}</span>
+        </div>
+      </td>
+      <td style="text-align:right">
+        <span class="adv-badge ${status.cls}">${status.label}</span>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function determineAdvancement(teams) {
+  const result = {};
+
+  if (!gameState.isFinal) {
+    // Game in progress or preview
+    teams.forEach(t => {
+      if (t.abbr === 'USA' && t.w >= 3) {
+        result[t.abbr] = { cls: 'advances', label: 'Advances' };
+      } else {
+        result[t.abbr] = { cls: 'pending', label: 'TBD' };
+      }
+    });
+
+    // Italy still 3-0 (pre-game), USA 3-1 → both could advance
+    // Mexico needs win to guarantee
+    if (!gameState.isLive) {
+      result['USA'] = { cls: 'advances', label: 'Advances' };
+      result['ITA'] = { cls: 'pending', label: 'TBD' };
+      result['MEX'] = { cls: 'pending', label: 'TBD' };
+    }
+    return result;
+  }
+
+  // Game is final
+  const itaWon = gameState.awayScore > gameState.homeScore;
+  const mexWon = !itaWon;
+
+  if (mexWon) {
+    // Mexico 3-1, USA 3-1 advance; Italy 3-1 but tiebreaker with USA/MEX
+    // Actually: Italy 3-1, Mexico 3-1, USA 3-1 → triple tie if Italy wins
+    // Mexico wins → Italy 3-1, Mexico 3-1, USA 3-1 → triple tie doesn't apply?
+    // Wait: if Mexico wins today, all three are 3-1 → triple tie!
+    // Actually Italy was 3-0 before today → if Mexico wins, Italy goes 3-1, Mexico 3-1, USA 3-1 → triple tie
+    // If Italy wins, same: Italy 4-0... no, this is final game of pool for Italy.
+    // Re-check: ITA 3W-0L before today's game (their 4th). MEX 2W-1L (their 4th). USA 3W-1L (done).
+    // Italy win → ITA 4-0, MEX 2-2 → Italy #1, USA #2 advances. Mexico eliminated.
+    // Actually wait: ITA was 3-0, this is game 4. Win→ 4-0. MEX was 2-1, loss → 2-2.
+    // USA 3-1. So ITA 4-0 and USA 3-1 advance. MEX eliminated.
+    // Mexico win → ITA 3-1, MEX 3-1, USA 3-1 → THREE-WAY TIE → TBQ tiebreaker!
+    result['ITA'] = { cls: 'eliminated', label: 'Eliminated' };
+    result['MEX'] = { cls: 'advances', label: 'Advances' };
+    result['USA'] = { cls: 'advances', label: 'Advances' };
+  } else {
+    // Italy wins → ITA 4-0, MEX 2-2, USA 3-1
+    result['ITA'] = { cls: 'advances', label: 'Advances' };
+    result['USA'] = { cls: 'advances', label: 'Advances' };
+    result['MEX'] = { cls: 'eliminated', label: 'Eliminated' };
+  }
+
+  // Recompute TBQ tiebreaker for Mexico win scenario (triple tie)
+  if (mexWon) {
+    const sorted = [...teams].sort((a,b) => a.tbq - b.tbq);
+    result[sorted[0].abbr] = { cls: 'advances', label: '1st · TBQ' };
+    result[sorted[1].abbr] = { cls: 'advances', label: '2nd · TBQ' };
+    result[sorted[2].abbr] = { cls: 'eliminated', label: 'Eliminated' };
+  }
+
+  return result;
+}
+
+// ── Score Matrix ──
+function buildMatrix() {
+  const container = document.getElementById('matrixContainer');
+
+  // Mexico scores (home, rows) vs Italy scores (away, columns)
+  const scores = [0,1,2,3,4,5,6,7,8,9,10];
+
+  // For each (italyR, mexicoR) final score, compute final TBQ and who advances
+  // Italy is away: pitches to Mexico (home) → Mexico's runs allowed by Italy = italyScore for Mexico's defense (wait, confusing)
+  // TBQ = Runs Allowed / Defensive Outs (in games between tied teams)
+  // Italy's RA += Mexico's runs in THIS game (Mexico scored against Italy's pitching)
+  // Mexico's RA += Italy's runs in THIS game (Italy scored against Mexico's pitching)
+  // USA RA stays same.
+
+  // Pre-game baselines (from initial data)
+  const BASE_ITA_RA = 6, BASE_ITA_DO = 27;
+  const BASE_MEX_RA = 5, BASE_MEX_DO = 24;
+  const BASE_USA_RA = 11, BASE_USA_DO = 54;
+
+  // For a 9-inning game:
+  // Away (Italy) bats first; Home (Mexico) bats last
+  // If Italy wins: Mexico doesn't bat in the bottom of the 9th → Mexico records only 24 outs (8 full innings + possibly 3 in 9th top)
+  // But Italy always records 27 outs (pitching for full 9 from Mexico's side)
+  // Simplification: winner's defense gets 27 DO from this game, loser's defense gets 27 DO (tie) or 24 (walk-off)
+  // We'll use: if MEX wins → ITA defense = 27 DO (pitched full 9 to home batters), MEX defense = 24 DO (away doesn't bat in 9th)
+  // if ITA wins → MEX defense = 27 DO (pitch through all of away's 9 innings), ITA defense = 24 DO (home doesn't bat in final)
+  // Actually standard: If away team wins, they bat 9 times (27 outs) and home pitches 27 outs. Home bats 8.x times.
+  // Let's say ~24 outs for home when away wins (walk-off not applicable), 27 for home when home wins.
+
+  function scenario(itaR, mexR) {
+    if (itaR === mexR) return { label: 'TIE?', cls: 'cell-tie', who: 'Extra Innings' };
+
+    const itaWins = itaR > mexR;
+    const itaDO_add = itaWins ? 24 : 27; // Italy's defense (home side = Mexico bats)
+    const mexDO_add = itaWins ? 27 : 24;
+
+    const itaRA_new = BASE_ITA_RA + mexR;    // Mexico scored against Italy
+    const mexRA_new = BASE_MEX_RA + itaR;    // Italy scored against Mexico
+    const usaRA = BASE_USA_RA;
+
+    const itaDO_new = BASE_ITA_DO + itaDO_add;
+    const mexDO_new = BASE_MEX_DO + mexDO_add;
+    const usaDO = BASE_USA_DO;
+
+    const itaTBQ = itaRA_new / itaDO_new;
+    const mexTBQ = mexRA_new / mexDO_new;
+    const usaTBQ = usaRA / usaDO;
+
+    if (itaWins) {
+      // Italy 4-0, USA 3-1 advance. Mexico 2-2 eliminated.
+      return { label: '🇮🇹+🇺🇸 Adv\n🇲🇽 Out', cls: 'cell-ita-mex', who: 'ITA+USA Advance' };
+    } else {
+      // Mexico wins → triple tie ITA 3-1, MEX 3-1, USA 3-1 → TBQ
+      const tbqs = [
+        { abbr: 'ITA', tbq: itaTBQ },
+        { abbr: 'MEX', tbq: mexTBQ },
+        { abbr: 'USA', tbq: usaTBQ }
+      ].sort((a,b) => a.tbq - b.tbq);
+
+      const adv1 = tbqs[0].abbr, adv2 = tbqs[1].abbr, elim = tbqs[2].abbr;
+      const flagMap = { ITA:'🇮🇹', MEX:'🇲🇽', USA:'🇺🇸' };
+      const clsMap = {
+        ITA: itaTBQ < mexTBQ && itaTBQ < usaTBQ ? 'cell-ita-mex' : 'cell-mex-usa',
+        MEX: mexTBQ < itaTBQ && mexTBQ < usaTBQ ? 'cell-mex-usa' : 'cell-ita-mex',
+        USA: usaTBQ < itaTBQ && usaTBQ < mexTBQ ? 'cell-usa-ita' : 'cell-mex-usa'
+      };
+
+      const cellCls = elim === 'USA' ? 'cell-usa-ita' : elim === 'MEX' ? 'cell-mex-usa' : 'cell-ita-mex';
+      return {
+        label: `${flagMap[adv1]}${flagMap[adv2]} Adv\n${flagMap[elim]} Out\nTBQ: ${itaTBQ.toFixed(3)}/${mexTBQ.toFixed(3)}/${usaTBQ.toFixed(3)}`,
+        cls: cellCls,
+        who: `${adv1}+${adv2} via TBQ`
+      };
+    }
+  }
+
+  // Build table — columns = Italy runs (away), rows = Mexico runs (home)
+  const scoreRange = [0,1,2,3,4,5,6,7,8,9,10];
+  const colRange   = [0,1,2,3,4,5,6,7,8,9,10];
+
+  let html = `<table class="matrix-table"><thead><tr>
+    <th class="cell-header">MEX\\ ITA</th>`;
+  colRange.forEach(c => { html += `<th>ITA ${c}</th>`; });
+  html += `</tr></thead><tbody>`;
+
+  scoreRange.forEach(mexR => {
+    html += `<tr><th class="cell-header">MEX ${mexR}</th>`;
+    colRange.forEach(itaR => {
+      const s = scenario(itaR, mexR);
+      const lines = s.label.split('\n');
+      html += `<td class="${s.cls}" title="${s.who}">
+        ${lines.map(l => `<div>${l}</div>`).join('')}
+      </td>`;
+    });
+    html += `</tr>`;
+  });
+
+  html += `</tbody></table>`;
+  html += `<div style="margin-top:0.8rem;font-size:0.68rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;">
+    🟢 = Italy + USA advance &nbsp;|&nbsp; 🔴 = Mexico + USA advance (with TBQ tiebreaker) &nbsp;|&nbsp; 🟣 = Mexico/ITA push USA out &nbsp;|&nbsp; 🟡 = Tie → extra innings
+    <br>TBQ shown in cells as ITA/MEX/USA for Mexico-win triple-tie scenarios. <em>Lower TBQ = advances.</em>
+  </div>`;
+
+  container.innerHTML = html;
+}
+
+// ── Init ──
+buildMatrix();
+renderStandings(null, null);
+fetchGame();
+
+// Auto-refresh every 60s
+setInterval(() => {
+  if (!gameState.isFinal) fetchGame();
+}, 60000);
+</script>
+</body>
+</html>
