@@ -1,0 +1,621 @@
+"","Number","Name","Position","Birth date","Birth Country","Bats","Throws","Team","position_group","age"
+"1","10","Alan Garcia","OF","1997-01-31","USA","L","L","Bravos de Leon","Outfield",29
+"2","46","Angel Lopez","P","2002-09-16","Mexico","L","L","Bravos de Leon","Pitchers",23
+"3","45","Carlos Espinal","P","1996-10-21","Dominican Republic","R","R","Bravos de Leon","Pitchers",29
+"4","14","Carlos Martínez","C","1995-05-02","Colombia","R","R","Bravos de Leon","Catchers",30
+"5","95","Carlos Morales","P","1997-01-05","Mexico","R","R","Bravos de Leon","Pitchers",29
+"6","70","Cristian Mejia","C","1999-07-20","Mexico","R","R","Bravos de Leon","Catchers",26
+"7","52","Deury Carrasco","P","1999-09-20","Dominican Republic","L","R","Bravos de Leon","Pitchers",26
+"8","88","Esteban Quiroz","2B","1992-02-17","Mexico","L","R","Bravos de Leon","Infield",34
+"9","38","Felipe Gonzalez","P","1991-08-15","Mexico","R","R","Bravos de Leon","Pitchers",34
+"10","64","Francisco Pérez","P","1997-07-20","Dominican Republic","S","L","Bravos de Leon","Pitchers",28
+"11","28","Gabriel Cancel","2B","1996-12-08","Puerto Rico","R","R","Bravos de Leon","Infield",29
+"12","8","Gaige Howard","OF","1998-05-22","USA","L","R","Bravos de Leon","Outfield",27
+"13","7","Gilberto Carrera","2B","1994-11-16","Mexico","R","R","Bravos de Leon","Infield",31
+"14","18","Jeff Lindgren","P","1996-09-17","USA","R","R","Bravos de Leon","Pitchers",29
+"15","27","Jonah Dipoto","P","1996-09-03","USA","R","R","Bravos de Leon","Pitchers",29
+"16","76","Jonas Garibay","P","2000-06-07","Mexico","R","R","Bravos de Leon","Pitchers",25
+"17","2","Luis Medina","3B","1998-02-16","Cuba","R","R","Bravos de Leon","Infield",28
+"18","17","Marco Chicuate","C","1992-07-14","Mexico","R","R","Bravos de Leon","Catchers",33
+"19","62","Oliver Ortega","P","1996-10-02","Dominican Republic","R","R","Bravos de Leon","Pitchers",29
+"20","98","Robert Corniel","P","1995-06-23","Dominican Republic","R","R","Bravos de Leon","Pitchers",30
+"21","65","Robert Gsellman","P","1993-07-18","USA","R","R","Bravos de Leon","Pitchers",32
+"22","6","Roberto Castro","OF","2000-08-10","Mexico","L","R","Bravos de Leon","Outfield",25
+"23","91","Rogelio Martinez","P","1991-09-22","Mexico","R","R","Bravos de Leon","Pitchers",34
+"24","53","Sandber Pimentel","1B","1994-09-12","Dominican Republic","L","L","Bravos de Leon","Infield",31
+"25","32","Thaddeus Ward","P","1997-01-16","USA","R","R","Bravos de Leon","Pitchers",29
+"26","50","Agustin Murillo","3B","1982-05-05","Mexico","R","R","Olmecas de Tabasco","Infield",43
+"27","16","Alan Espinoza","C","1991-01-30","Mexico","R","R","Olmecas de Tabasco","Catchers",35
+"28","9","Alexandro Tovalin","P","1997-11-25","USA","R","R","Olmecas de Tabasco","Pitchers",28
+"29","40","Antonio Almeida","C","2003-12-12","Mexico","R","R","Olmecas de Tabasco","Catchers",22
+"30","3","Carlos Arellano","SS","1998-08-18","USA","R","R","Olmecas de Tabasco","Infield",27
+"31","33","Carlos Vazquez","P","1991-09-03","Mexico","L","L","Olmecas de Tabasco","Pitchers",34
+"32","51","Deivy Grullón","C","1996-02-17","Dominican Republic","R","R","Olmecas de Tabasco","Catchers",30
+"33","12","Domingo Leyba","3B","1995-09-11","Dominican Republic","S","R","Olmecas de Tabasco","Infield",30
+"34","24","Jacob Rhinesmith","RF","1996-05-23","USA","L","L","Olmecas de Tabasco","Outfield",29
+"35","7","Jasson Atondo","3B","1995-08-27","Mexico","R","R","Olmecas de Tabasco","Infield",30
+"36","22","Jeremy Rhoades","P","1993-02-12","USA","R","R","Olmecas de Tabasco","Pitchers",33
+"37","94","Jimmy Cordero","P","1991-10-19","Dominican Republic","R","R","Olmecas de Tabasco","Pitchers",34
+"38","93","Jonathan Cortes","P","2004-07-31","Mexico","R","R","Olmecas de Tabasco","Pitchers",21
+"39","55","Jose Samayoa","P","1990-03-09","Mexico","R","R","Olmecas de Tabasco","Pitchers",36
+"40","35","Keone Kela","P","1993-04-16","USA","R","R","Olmecas de Tabasco","Pitchers",33
+"41","95","Leobaldo Cabrera","OF","1998-01-21","Venezuela","R","R","Olmecas de Tabasco","Outfield",28
+"42","85","Luis Cessa","P","1992-04-25","Mexico","R","R","Olmecas de Tabasco","Pitchers",33
+"43","13","Marco Hernández","2B","1992-09-06","Dominican Republic","L","R","Olmecas de Tabasco","Infield",33
+"44","45","Michael Feliz","P","1993-06-28","Dominican Republic","R","R","Olmecas de Tabasco","Pitchers",32
+"45","23","Nolan Blackwood","P","1995-03-16","USA","R","R","Olmecas de Tabasco","Pitchers",31
+"46","19","Oddy Nunez","P","1996-12-20","Dominican Republic","L","L","Olmecas de Tabasco","Pitchers",29
+"47","20","Ozzie Mendez","P","1988-04-16","Mexico","L","L","Olmecas de Tabasco","Pitchers",38
+"48","72","Pedro Garcia","P","1995-03-21","Venezuela","R","R","Olmecas de Tabasco","Pitchers",31
+"49","2","Randy Romero","OF","1999-08-10","Mexico","R","R","Olmecas de Tabasco","Outfield",26
+"50","28","Seth Beer","1B","1996-09-18","USA","L","R","Olmecas de Tabasco","Infield",29
+"51","15","Tyler Danish","P","1994-09-12","USA","R","R","Olmecas de Tabasco","Pitchers",31
+"52","62","Tyler Myrick","P","1998-06-25","USA","R","R","Olmecas de Tabasco","Pitchers",27
+"53","8","Yamaico Navarro","1B","1987-10-31","Dominican Republic","R","R","Olmecas de Tabasco","Infield",38
+"54","52","Yunior Severino","1B","1999-10-03","Dominican Republic","S","R","Olmecas de Tabasco","Infield",26
+"55","99","Adrian Tovalin","IF","1996-02-11","USA","R","R","Algodoneros Union Laguna","Infield",30
+"56","62","Albert Lara","IF","1998-09-10","Cuba","R","R","Algodoneros Union Laguna","Infield",27
+"57","36","Alfonso Rivas III","OF","1996-09-13","USA","L","L","Algodoneros Union Laguna","Outfield",29
+"58","38","Brian O'Grady","RF","1992-05-17","USA","L","R","Algodoneros Union Laguna","Outfield",33
+"59","90","Cristhofer Lozoya","P","2005-02-09","Mexico","R","R","Algodoneros Union Laguna","Pitchers",21
+"60","27","Damon Dues","LF","1998-06-21","USA","L","R","Algodoneros Union Laguna","Outfield",27
+"61","5","Dean Nevarez","C","1997-01-04","Mexico","R","R","Algodoneros Union Laguna","Catchers",29
+"62","18","Didi Gregorius","SS","1990-02-18","Netherlands","L","R","Algodoneros Union Laguna","Infield",36
+"63","64","Diego Castillo","SS","1997-10-28","Venezuela","R","R","Algodoneros Union Laguna","Infield",28
+"64","66","Edgar Robles","LF","1996-08-21","Mexico","L","L","Algodoneros Union Laguna","Outfield",29
+"65","26","Emmanuel Rivera","3B","1996-06-29","Puerto Rico","R","R","Algodoneros Union Laguna","Infield",29
+"66","50","Erasmo Ramírez","P","1990-05-02","Nicaragua","R","R","Algodoneros Union Laguna","Pitchers",35
+"67","32","Fabian Cota","P","1992-04-13","Mexico","L","L","Algodoneros Union Laguna","Pitchers",34
+"68","12","Hendrik Clementina","C","1997-06-17","Curacao","R","R","Algodoneros Union Laguna","Catchers",28
+"69","1","Isan Díaz","2B","1996-05-27","Puerto Rico","L","R","Algodoneros Union Laguna","Infield",29
+"70","83","Jesús Reyes","P","1993-02-21","Dominican Republic","R","R","Algodoneros Union Laguna","Pitchers",33
+"71","76","José Torres","P","1993-09-24","Venezuela","L","L","Algodoneros Union Laguna","Pitchers",32
+"72","70","Joseph Sequera","C","2005-12-12","Mexico","R","R","Algodoneros Union Laguna","Catchers",20
+"73","3","Julian Escobedo","CF","1998-06-10","USA","L","L","Algodoneros Union Laguna","Outfield",27
+"74","14","Katsunori Hirai","P","1991-12-20","Japan","R","R","Algodoneros Union Laguna","Pitchers",34
+"75","98","Lupe Chavez","P","1997-12-03","Mexico","R","R","Algodoneros Union Laguna","Pitchers",28
+"76","31","Mason Martin","1B","1999-06-02","USA","L","R","Algodoneros Union Laguna","Infield",26
+"77","80","Matt Foster","P","1995-01-27","USA","R","R","Algodoneros Union Laguna","Pitchers",31
+"78","40","Miguel Leon","P","2002-12-04","Mexico","R","R","Algodoneros Union Laguna","Pitchers",23
+"79","56","Miguel Vazquez","P","1995-11-18","Mexico","R","R","Algodoneros Union Laguna","Pitchers",30
+"80","20","Nick Snyder","P","1995-10-10","USA","R","R","Algodoneros Union Laguna","Pitchers",30
+"81","46","Omar Araujo","P","1999-02-07","Mexico","R","R","Algodoneros Union Laguna","Pitchers",27
+"82","2","Ramon Mora","IF","2000-03-08","Mexico","R","L","Algodoneros Union Laguna","Infield",26
+"83","95","Thomas McIlraith","P","1994-02-17","USA","R","R","Algodoneros Union Laguna","Pitchers",32
+"84","54","Valentin Hernández","OF","2002-07-04","Mexico","R","R","Algodoneros Union Laguna","Outfield",23
+"85","89","Anthony Gose","P","1990-08-10","USA","L","L","Leones de Yucatan","Pitchers",35
+"86","32","Carlos Figueroa","CF","1992-04-10","Mexico","S","R","Leones de Yucatan","Outfield",34
+"87","51","César Valdez","P","1985-03-17","Dominican Republic","R","R","Leones de Yucatan","Pitchers",41
+"88","98","Colten Brewer","P","1992-10-29","USA","R","R","Leones de Yucatan","Pitchers",33
+"89","5","Dalton Guthrie","3B","1995-12-23","USA","R","R","Leones de Yucatan","Infield",30
+"90","96","Dalton Rodriguez","P","1996-08-20","Mexico","R","R","Leones de Yucatan","Pitchers",29
+"91","67","Derek West","P","1996-12-02","USA","R","R","Leones de Yucatan","Pitchers",29
+"92","47","Edwin Escobar","P","1992-04-22","Venezuela","L","L","Leones de Yucatan","Pitchers",33
+"93","43","Edwin Rios","1B","1994-04-21","Puerto Rico","L","R","Leones de Yucatan","Infield",31
+"94","39","Erik González","SS","1991-08-31","Dominican Republic","R","R","Leones de Yucatan","Infield",34
+"95","27","Estevan Florial","LF","1997-11-25","Dominican Republic","L","R","Leones de Yucatan","Outfield",28
+"96","78","Fabian Urbina","C","2001-10-25","Mexico","L","R","Leones de Yucatan","Catchers",24
+"97","91","Hector Perez","P","1996-06-06","Dominican Republic","R","R","Leones de Yucatan","Pitchers",29
+"98","14","Henry Ramos","OF","1992-04-15","Puerto Rico","S","R","Leones de Yucatan","Outfield",34
+"99","79","Ichiro Rodriguez","IF","2006-06-21","Mexico","S","R","Leones de Yucatan","Infield",19
+"100","99","Irving Vazquez","P","2003-07-13","Mexico","R","R","Leones de Yucatan","Pitchers",22
+"101","55","Jafet Ojeda","C","2004-02-29","Mexico","R","R","Leones de Yucatan","Catchers",22
+"102","48","Jake Sanchez","P","1989-08-19","USA","R","R","Leones de Yucatan","Pitchers",36
+"103","20","Jared Wetherbee","P","1998-08-14","USA","L","L","Leones de Yucatan","Pitchers",27
+"104","44","Jose Gaitan","OF","1998-02-23","Mexico","R","R","Leones de Yucatan","Outfield",28
+"105","77","Marco Jaime","2B","1996-07-07","USA","S","R","Leones de Yucatan","Infield",29
+"106","38","Miguel Castro","P","1994-12-24","Dominican Republic","R","R","Leones de Yucatan","Pitchers",31
+"107","9","Norberto Obeso","OF","1995-07-09","Mexico","L","R","Leones de Yucatan","Outfield",30
+"108","61","Reivaj Garcia","3B","2001-08-12","Mexico","S","R","Leones de Yucatan","Infield",24
+"109","68","Ricardo Rodríguez","P","1992-08-31","Venezuela","R","R","Leones de Yucatan","Pitchers",33
+"110","28","Ronaldo Hernández","C","1997-11-11","Colombia","R","R","Leones de Yucatan","Catchers",28
+"111","0","Ronnie Williams","P","1996-01-06","USA","R","R","Leones de Yucatan","Pitchers",30
+"112","49","Tommy Doyle","P","1996-05-01","USA","R","R","Leones de Yucatan","Pitchers",29
+"113","36","Wynton Bernard","OF","1990-09-24","USA","R","R","Leones de Yucatan","Outfield",35
+"114","24","Xorge Carrillo","C","1989-04-12","Mexico","R","R","Leones de Yucatan","Catchers",37
+"115","33","Yadir Drake","IF","1990-04-12","Cuba","R","R","Leones de Yucatan","Infield",36
+"116","25","Yoanner Negrin","P","1984-04-29","Cuba","R","R","Leones de Yucatan","Pitchers",41
+"117","18","Alberth Martinez","OF","1991-01-23","Venezuela","R","R","Saraperos de Saltillo","Outfield",35
+"118","75","Alex Claudio","P","1992-01-31","Puerto Rico","L","L","Saraperos de Saltillo","Pitchers",34
+"119","9","Alex D. Mejia","1B","1991-01-18","USA","R","R","Saraperos de Saltillo","Infield",35
+"120","92","Brandon Villarreal","OF","1994-11-25","Mexico","R","R","Saraperos de Saltillo","Outfield",31
+"121","11","Cam Alldred","P","1996-07-25","USA","L","L","Saraperos de Saltillo","Pitchers",29
+"122","35","Cameron Cotter","P","1998-12-17","USA","R","R","Saraperos de Saltillo","Pitchers",27
+"123","33","Chris Carter","1B","1986-12-18","USA","R","R","Saraperos de Saltillo","Infield",39
+"124","22","Christian Villanueva","3B","1991-06-19","Mexico","R","R","Saraperos de Saltillo","Infield",34
+"125","48","Cole Roederer","CF","1999-09-24","USA","L","L","Saraperos de Saltillo","Outfield",26
+"126","67","Daniel Sanchez","C","1992-12-16","Mexico","R","R","Saraperos de Saltillo","Catchers",33
+"127","46","Deolis Guerra","P","1989-04-17","Venezuela","R","R","Saraperos de Saltillo","Pitchers",37
+"128","6","Drew Stankiewicz","2B","1993-06-18","USA","S","R","Saraperos de Saltillo","Infield",32
+"129","96","Emerson Martinez","P","1995-01-11","Venezuela","R","R","Saraperos de Saltillo","Pitchers",31
+"130","87","Enderson Franco","P","1992-12-29","Venezuela","R","R","Saraperos de Saltillo","Pitchers",33
+"131","8","Fernando Villegas","OF","1998-06-28","Mexico","R","R","Saraperos de Saltillo","Outfield",27
+"132","3","Gio Brusa","1B","1993-07-26","USA","S","R","Saraperos de Saltillo","Infield",32
+"133","77","Ivan Izaguirre","P","2001-09-16","Mexico","R","R","Saraperos de Saltillo","Pitchers",24
+"134","49","Jesus Cruz","P","1995-04-15","Mexico","R","R","Saraperos de Saltillo","Pitchers",31
+"135","81","Jorge Morales","C","2001-05-03","Mexico","R","R","Saraperos de Saltillo","Catchers",24
+"136","13","Jose Martinez","SS","1996-08-15","Venezuela","S","R","Saraperos de Saltillo","Infield",29
+"137","26","Julio E. Rodriguez","C","1997-06-11","Dominican Republic","R","R","Saraperos de Saltillo","Catchers",28
+"138","54","Kazuki Yabuta","P","1992-08-07","Japan","R","R","Saraperos de Saltillo","Pitchers",33
+"139","65","Luis Frías","P","1998-05-23","Dominican Republic","R","R","Saraperos de Saltillo","Pitchers",27
+"140","0","Manny Barreda","P","1988-10-08","USA","R","R","Saraperos de Saltillo","Pitchers",37
+"141","50","Mario Meza","P","1990-11-24","Mexico","R","R","Saraperos de Saltillo","Pitchers",35
+"142","24","Patrick Mazeika","C","1993-10-14","USA","L","R","Saraperos de Saltillo","Catchers",32
+"143","4","Ramon Rios","2B","1988-03-04","Mexico","R","R","Saraperos de Saltillo","Infield",38
+"144","14","Samuel Zazueta","P","1996-11-21","Mexico","L","L","Saraperos de Saltillo","Pitchers",29
+"145","83","Sergio Garcia-Repper","P","2004-04-15","Mexico","R","R","Saraperos de Saltillo","Pitchers",22
+"146","68","Shoh Ishikawa","P","1999-12-14","Japan","R","R","Saraperos de Saltillo","Pitchers",26
+"147","72","Zach Mort","P","1997-05-22","USA","R","R","Saraperos de Saltillo","Pitchers",28
+"148","46","Antonio Santos","P","1996-10-06","Dominican Republic","R","R","Pericos de Puebla","Pitchers",29
+"149","47","Axel Sauceda","P","2001-05-19","Mexico","R","R","Pericos de Puebla","Pitchers",24
+"150","66","Brayan Quintero","2B","1999-02-19","Mexico","R","R","Pericos de Puebla","Infield",27
+"151","49","César Vargas","P","1991-12-30","Mexico","R","R","Pericos de Puebla","Pitchers",34
+"152","7","Ciro Norzagaray","SS","1994-08-17","Mexico","R","R","Pericos de Puebla","Infield",31
+"153","13","Cristhian Adames","SS","1991-07-26","Dominican Republic","S","R","Pericos de Puebla","Infield",34
+"154","77","Danny Ortiz","OF","1990-01-05","Puerto Rico","L","L","Pericos de Puebla","Outfield",36
+"155","16","David Rodríguez","1B","1996-02-25","Venezuela","R","R","Pericos de Puebla","Infield",30
+"156","52","Edgar Rodriguez","P","1988-01-29","Mexico","R","R","Pericos de Puebla","Pitchers",38
+"157","57","Edgar Torres","P","1996-04-09","Mexico","L","L","Pericos de Puebla","Pitchers",30
+"158","35","Emailin Montilla","P","1995-10-02","Dominican Republic","L","L","Pericos de Puebla","Pitchers",30
+"159","27","Estamy Urena","2B","1999-05-27","Dominican Republic","R","R","Pericos de Puebla","Infield",26
+"160","38","Fernando Lozano","P","2000-01-11","Mexico","R","R","Pericos de Puebla","Pitchers",26
+"161","67","Francis Peguero","P","1997-08-11","Dominican Republic","R","R","Pericos de Puebla","Pitchers",28
+"162","44","Gerardo Castaneda","C","1999-05-12","Mexico","S","R","Pericos de Puebla","Catchers",26
+"163","17","Herlis Rodriguez","OF","1994-06-10","Venezuela","L","L","Pericos de Puebla","Outfield",31
+"164","26","Hunter McMahon","P","1998-04-09","USA","R","R","Pericos de Puebla","Pitchers",28
+"165","76","Ivan Salas","P","1990-12-30","Mexico","L","L","Pericos de Puebla","Pitchers",35
+"166","56","Jose E. Martinez","P","1999-04-23","Venezuela","R","R","Pericos de Puebla","Pitchers",26
+"167","15","Juan Kirk","C","1996-06-15","Mexico","R","R","Pericos de Puebla","Catchers",29
+"168","32","Liarvis Breto","P","1993-04-10","Venezuela","L","L","Pericos de Puebla","Pitchers",33
+"169","8","Lorenzo Cedrola","CF","1998-01-12","Venezuela","R","R","Pericos de Puebla","Outfield",28
+"170","6","Mark Simon","P","1995-08-04","USA","R","R","Pericos de Puebla","Pitchers",30
+"171","55","Michael De La Cruz","C","1993-05-15","Dominican Republic","S","R","Pericos de Puebla","Catchers",32
+"172","43","Miguel Guzman","IF","1995-08-23","Mexico","R","R","Pericos de Puebla","Infield",30
+"173","31","Moisés Gómez","OF","1998-08-27","Venezuela","R","R","Pericos de Puebla","Outfield",27
+"174","28","Patrick Wicklander","P","1999-12-31","USA","R","L","Pericos de Puebla","Pitchers",26
+"175","39","Rogelio Cobos","OF","1999-07-13","Mexico","L","R","Pericos de Puebla","Outfield",26
+"176","12","Samar Leyva","SS","1994-09-20","Mexico","R","R","Pericos de Puebla","Infield",31
+"177","72","Tiago Da Silva","P","1985-03-28","Brazil","R","R","Pericos de Puebla","Pitchers",41
+"178","53","Vladimir Gutierrez","P","1995-09-18","Cuba","R","R","Pericos de Puebla","Pitchers",30
+"179","74","Yoimer Camacho","P","1990-02-24","Venezuela","R","R","Pericos de Puebla","Pitchers",36
+"180","27","Addison Russell","SS","1994-01-23","USA","R","R","Piratas de Campeche","Infield",32
+"181","4","Andrew Stevenson","CF","1994-06-01","USA","L","L","Piratas de Campeche","Outfield",31
+"182","3","Andrew Young","2B","1994-05-10","USA","R","R","Piratas de Campeche","Infield",31
+"183","30","Bernardo Flores Jr.","P","1995-08-23","USA","L","L","Piratas de Campeche","Pitchers",30
+"184","12","Bobby Milacki","P","1996-11-06","USA","R","R","Piratas de Campeche","Pitchers",29
+"185","24","Cal Mitchell","LF","1999-03-08","USA","L","L","Piratas de Campeche","Outfield",27
+"186","13","Christian Ibarra","3B","1992-09-10","USA","R","R","Piratas de Campeche","Infield",33
+"187","96","Connor Hollis","2B","1994-11-18","USA","R","R","Piratas de Campeche","Infield",31
+"188","11","Dan Kubiuk","P","1995-09-30","USA","R","R","Piratas de Campeche","Pitchers",30
+"189","71","Darrell Thompson","P","1994-04-27","USA","L","L","Piratas de Campeche","Pitchers",31
+"190","93","Domingo Acevedo","P","1994-03-06","Dominican Republic","R","R","Piratas de Campeche","Pitchers",32
+"191","31","Emmanuel Avila","3B","1988-11-26","Mexico","L","R","Piratas de Campeche","Infield",37
+"192","45","Felix Perez","1B","1984-11-14","Cuba","L","L","Piratas de Campeche","Infield",41
+"193","18","Fernando Perez","2B","1993-09-13","Mexico","L","R","Piratas de Campeche","Infield",32
+"194","36","Jesus Fabela","CF","1994-12-07","Mexico","R","R","Piratas de Campeche","Outfield",31
+"195","65","Jesus Higuera","2B","2006-10-27","Mexico","R","R","Piratas de Campeche","Infield",19
+"196","77","Joe Record","P","1995-01-12","USA","R","R","Piratas de Campeche","Pitchers",31
+"197","17","Jose Isidro Marquez","P","1994-06-17","Mexico","R","R","Piratas de Campeche","Pitchers",31
+"198","91","Miller Hogan","P","1996-07-18","USA","R","R","Piratas de Campeche","Pitchers",29
+"199","70","Onelki Garcia","P","1989-08-02","Cuba","L","L","Piratas de Campeche","Pitchers",36
+"200","64","Pablo Tellez","P","1999-08-26","Mexico","R","R","Piratas de Campeche","Pitchers",26
+"201","62","Phil Clarke","C","1998-03-24","USA","L","R","Piratas de Campeche","Catchers",28
+"202","0","R.J. Martinez","P","1998-09-14","USA","L","L","Piratas de Campeche","Pitchers",27
+"203","75","Raul Torres","C","2004-02-19","Mexico","R","R","Piratas de Campeche","Catchers",22
+"204","2","Roberto Urias","IF","2005-06-30","Mexico","R","R","Piratas de Campeche","Infield",20
+"205","32","Ryan Garcia","P","1998-01-24","USA","R","R","Piratas de Campeche","Pitchers",28
+"206","44","Ryder Yakel","P","1997-04-09","USA","R","R","Piratas de Campeche","Pitchers",29
+"207","9","Terrin Vavra","2B","1997-05-12","USA","L","R","Piratas de Campeche","Infield",28
+"208","7","Tyler Thomas","P","1995-12-22","USA","R","L","Piratas de Campeche","Pitchers",30
+"209","47","Yordi Martinez","OF","2002-05-29","Mexico","L","L","Piratas de Campeche","Outfield",23
+"210","51","Zac Rosscup","P","1988-06-09","USA","R","L","Piratas de Campeche","Pitchers",37
+"211","19","Adrian Almeida","P","1995-02-25","Venezuela","L","L","Rieleros de Aguascalientes","Pitchers",31
+"212","27","Amilcar Gomez","OF","1995-01-27","Mexico","S","R","Rieleros de Aguascalientes","Outfield",31
+"213","18","Andretty Cordero","1B","1997-05-03","Dominican Republic","R","R","Rieleros de Aguascalientes","Infield",28
+"214","15","Angel Camacho","3B","2000-10-12","Mexico","R","R","Rieleros de Aguascalientes","Infield",25
+"215","30","Angel Reyes","OF","1995-05-06","Venezuela","R","R","Rieleros de Aguascalientes","Outfield",30
+"216","85","Angel Rondón","P","1997-12-01","Dominican Republic","R","R","Rieleros de Aguascalientes","Pitchers",28
+"217","63","Calvin Estrada","OF","1997-05-18","USA","R","R","Rieleros de Aguascalientes","Outfield",28
+"218","50","Cam Robinson","P","1999-09-06","USA","R","R","Rieleros de Aguascalientes","Pitchers",26
+"219","1","Carlos Mendivil","C","1993-08-29","Mexico","L","R","Rieleros de Aguascalientes","Catchers",32
+"220","38","Deylen Miley","P","1998-01-25","USA","R","R","Rieleros de Aguascalientes","Pitchers",28
+"221","13","Eduardo Torrealba","3B","1999-03-26","Venezuela","R","R","Rieleros de Aguascalientes","Infield",27
+"222","3","Fernando Villalobos","C","2002-06-24","Mexico","L","R","Rieleros de Aguascalientes","Catchers",23
+"223","35","Greg Duncan","P","1998-07-13",NA,"R","R","Rieleros de Aguascalientes","Pitchers",27
+"224","39","Harold Chirino","P","1998-01-12","Venezuela","R","R","Rieleros de Aguascalientes","Pitchers",28
+"225","24","Jimmy Burnette","P","1998-10-19","USA","L","L","Rieleros de Aguascalientes","Pitchers",27
+"226","37","Jonathan Vargas","P","1989-05-29","Venezuela","L","L","Rieleros de Aguascalientes","Pitchers",36
+"227","25","Jose Carlos Medina","P","1996-08-25","Mexico","L","L","Rieleros de Aguascalientes","Pitchers",29
+"228","9","José Rondon","SS","1994-03-03","Venezuela","R","R","Rieleros de Aguascalientes","Infield",32
+"229","40","Leonel Valera","SS","1999-07-09","Venezuela","R","R","Rieleros de Aguascalientes","Infield",26
+"230","32","Maikel Serrano","OF","1993-03-31","CUB","R","R","Rieleros de Aguascalientes","Outfield",33
+"231","45","Mario Garcia","P","1998-12-27","Mexico","R","R","Rieleros de Aguascalientes","Pitchers",27
+"232","29","Nick Trogrlic-Iverson","P","1997-10-03","Canada","R","R","Rieleros de Aguascalientes","Pitchers",28
+"233","5","Oscar Campos","C","1996-12-08","Venezuela","R","R","Rieleros de Aguascalientes","Catchers",29
+"234","48","Oscar Cuello","P","2002-07-29","USA","L","L","Rieleros de Aguascalientes","Pitchers",23
+"235","49","Oscar De La Cruz","P","1995-03-04","Dominican Republic","R","R","Rieleros de Aguascalientes","Pitchers",31
+"236","81","Porfirio Guerrero","P","2003-11-29","Mexico","R","R","Rieleros de Aguascalientes","Pitchers",22
+"237","58","Samuel Reyes","P","1996-03-13","Dominican Republic","R","R","Rieleros de Aguascalientes","Pitchers",30
+"238","47","Sergio Perez","LF","1989-10-27","Mexico","L","R","Rieleros de Aguascalientes","Outfield",36
+"239","7","Símon Muzziotti","CF","1998-12-27","Venezuela","L","L","Rieleros de Aguascalientes","Outfield",27
+"240","62","Yosshel Hurtado","P","1996-09-16","Mexico","R","R","Rieleros de Aguascalientes","Pitchers",29
+"241","36","Carlos Pérez","C","1996-09-10","Venezuela","R","R","Diablos Rojos del Mexico","Catchers",29
+"242","8","Carlos Sepulveda","2B","1996-08-27","Mexico","L","R","Diablos Rojos del Mexico","Infield",29
+"243","18","Francisco Mejía","C","1995-10-27","Dominican Republic","S","R","Diablos Rojos del Mexico","Catchers",30
+"244","27","Franklin Barreto","OF","1996-02-27","Venezuela","R","R","Diablos Rojos del Mexico","Outfield",30
+"245","70","Gabriel Gutierrez","C","1983-11-24","Mexico","R","R","Diablos Rojos del Mexico","Catchers",42
+"246","51","Gerardo Reyes","P","1993-05-13","Mexico","R","R","Diablos Rojos del Mexico","Pitchers",32
+"247","9","Humberto Castellanos","P","1998-04-03","Mexico","R","R","Diablos Rojos del Mexico","Pitchers",28
+"248","54","J.C. Mejía","P","1996-08-26","Dominican Republic","R","R","Diablos Rojos del Mexico","Pitchers",29
+"249","60","James Kaprielian","P","1994-03-02","USA","R","R","Diablos Rojos del Mexico","Pitchers",32
+"250","76","Jesus Villalobos","IF","2007-04-12","Mexico","R","R","Diablos Rojos del Mexico","Infield",19
+"251","43","Jimmy Yacabonis","P","1992-03-21","USA","R","R","Diablos Rojos del Mexico","Pitchers",34
+"252","24","Jon Singleton","1B","1991-09-18","USA","L","L","Diablos Rojos del Mexico","Infield",34
+"253","59","Jordy Arias","P","2005-08-04","Mexico","R","R","Diablos Rojos del Mexico","Pitchers",20
+"254","84","Jorge Monroy","P","2002-03-21","Mexico","R","R","Diablos Rojos del Mexico","Pitchers",24
+"255","46","José Marmolejos","OF","1993-01-02","USA","L","L","Diablos Rojos del Mexico","Outfield",33
+"256","47","Juan Carlos Gamboa","SS","1991-04-18","Mexico","L","R","Diablos Rojos del Mexico","Infield",34
+"257","93","Juan Pablo Lopez","P","1999-02-17","Mexico","L","L","Diablos Rojos del Mexico","Pitchers",27
+"258","31","Julian Ornelas","OF","1996-12-28","Mexico","L","R","Diablos Rojos del Mexico","Outfield",29
+"259","13","Justin Courtney","P","1996-07-24","USA","R","R","Diablos Rojos del Mexico","Pitchers",29
+"260","69","Luis F. Castillo","P","1995-03-10","Dominican Republic","R","R","Diablos Rojos del Mexico","Pitchers",31
+"261","38","Maikel Franco","3B","1992-08-26","DOM","R","R","Diablos Rojos del Mexico","Infield",33
+"262","61","Moises Gutierrez","3B","1994-11-19","Mexico","S","R","Diablos Rojos del Mexico","Infield",31
+"263","53","Nick Vespi","P","1995-10-10","USA","L","L","Diablos Rojos del Mexico","Pitchers",30
+"264","92","Oscar Rojas","P","1999-05-05","Mexico","R","R","Diablos Rojos del Mexico","Pitchers",26
+"265","23","Ramón Flores","OF","1992-03-26","Venezuela","L","L","Diablos Rojos del Mexico","Outfield",34
+"266","77","Ricardo Pinto","P","1994-01-20","Venezuela","R","R","Diablos Rojos del Mexico","Pitchers",32
+"267","22","Robinson Canó","2B","1982-10-22","Dominican Republic","L","R","Diablos Rojos del Mexico","Infield",43
+"268","68","Sebastian Enriquez","OF","2008-02-15","USA","R","R","Diablos Rojos del Mexico","Outfield",18
+"269","19","Shane Greene","P","1988-11-17","USA","R","R","Diablos Rojos del Mexico","Pitchers",37
+"270","66","Stephen Nogosek","P","1995-01-11","USA","R","R","Diablos Rojos del Mexico","Pitchers",31
+"271","20","Tomohiro Anraku","P","1996-11-04","Japan","L","R","Diablos Rojos del Mexico","Pitchers",29
+"272","12","Victor González","P","1995-11-16","Mexico","L","L","Diablos Rojos del Mexico","Pitchers",30
+"273","6","Adolfo Ramirez","P","1999-06-01","Mexico","R","R","Tecos de los Dos Laredos","Pitchers",26
+"274","18","Adrian De Horta","P","1995-03-13","USA","R","R","Tecos de los Dos Laredos","Pitchers",31
+"275","65","Alan Lopez","2B","1996-01-03","Mexico","L","R","Tecos de los Dos Laredos","Infield",30
+"276","54","Austin Adams","P","1991-05-05","USA","R","R","Tecos de los Dos Laredos","Pitchers",34
+"277","90","Brandon Brennan","P","1991-07-26","USA","R","R","Tecos de los Dos Laredos","Pitchers",34
+"278","99","Cade Gotta","OF","1991-08-01","USA","R","R","Tecos de los Dos Laredos","Outfield",34
+"279","15","Daniel Mengden","P","1993-02-19","USA","R","R","Tecos de los Dos Laredos","Pitchers",33
+"280","50","Dario Gardea","P","1999-01-29","Mexico","R","R","Tecos de los Dos Laredos","Pitchers",27
+"281","38","David Leal","P","1997-04-22","USA","L","L","Tecos de los Dos Laredos","Pitchers",28
+"282","94","Diego Hernandez","P","2004-08-12","Mexico","R","R","Tecos de los Dos Laredos","Pitchers",21
+"283","37","Francisco Arcia","C","1989-09-14","Venezuela","L","R","Tecos de los Dos Laredos","Catchers",36
+"284","44","Francisco Cordoba","C","1984-06-01","Mexico","R","R","Tecos de los Dos Laredos","Catchers",41
+"285","43","Harold Ramírez","RF","1994-09-06","Colombia","R","R","Tecos de los Dos Laredos","Outfield",31
+"286","32","Italo Motta","2B","1998-08-07","Mexico","L","R","Tecos de los Dos Laredos","Infield",27
+"287","7","J.D. Davis","3B","1993-04-27","USA","R","R","Tecos de los Dos Laredos","Infield",32
+"288","40","Jackson Rees","P","1994-07-30","USA","R","R","Tecos de los Dos Laredos","Pitchers",31
+"289","53","Jesse Castillo","1B","1983-03-03","Mexico","L","R","Tecos de los Dos Laredos","Infield",43
+"290","25","Jonathan Haab","P","1999-08-31","USA","R","R","Tecos de los Dos Laredos","Pitchers",26
+"291","13","Jordan Diaz","2B","2000-08-13","Colombia","R","R","Tecos de los Dos Laredos","Infield",25
+"292","35","Kennys Vargas","1B","1990-08-01","Puerto Rico","S","R","Tecos de los Dos Laredos","Infield",35
+"293","23","Luis De Los Santos","3B","1998-06-09","Dominican Republic","R","R","Tecos de los Dos Laredos","Infield",27
+"294","86","Marcos Valenzuela","SS","2003-04-25","Mexico","L","R","Tecos de los Dos Laredos","Infield",22
+"295","5","Michael Gomez","P","1996-08-15","USA","R","R","Tecos de los Dos Laredos","Pitchers",29
+"296","71","Nate Antone","P","1991-07-15","USA","R","R","Tecos de los Dos Laredos","Pitchers",34
+"297","49","Rio Gomez","P","1994-10-20","USA","L","L","Tecos de los Dos Laredos","Pitchers",31
+"298","55","Roenis Elías","P","1988-08-01","Cuba","L","L","Tecos de los Dos Laredos","Pitchers",37
+"299","11","Ryan Aguilar","RF","1994-09-11","USA","L","L","Tecos de los Dos Laredos","Outfield",31
+"300","36","Ryan Hendrix","P","1994-12-16","USA","R","R","Tecos de los Dos Laredos","Pitchers",31
+"301","45","Tyler Ivey","P","1996-05-12","USA","R","R","Tecos de los Dos Laredos","Pitchers",29
+"302","75","Wilking Rodríguez","P","1990-03-02","Venezuela","R","R","Tecos de los Dos Laredos","Pitchers",36
+"303","20","Yadiel Hernandez","OF","1987-10-09","Cuba","L","R","Tecos de los Dos Laredos","Outfield",38
+"304","81","Zoilo Almonte","OF","1989-06-10","Dominican Republic","S","R","Tecos de los Dos Laredos","Outfield",36
+"305","13","Alan Trejo","SS","1996-05-30","USA","R","R","Acereros del Norte","Infield",29
+"306","55","Aldo Nunez","2B","2001-04-23","MEX","S","R","Acereros del Norte","Infield",24
+"307","38","Balbino Fuenmayor","1B","1989-11-26","Venezuela","R","R","Acereros del Norte","Infield",36
+"308","3","Brady Miller","P","1999-10-19",NA,"R","R","Acereros del Norte","Pitchers",26
+"309","95","Bryan Corral","OF","2005-01-28",NA,"L","L","Acereros del Norte","Outfield",21
+"310","59","Carlos Romero","P","1999-07-15","Venezuela","R","R","Acereros del Norte","Pitchers",26
+"311","14","Carlos Tirado","1B","2005-03-13","MEX","L","R","Acereros del Norte","Infield",21
+"312","16","Chavez Fernander","P","1997-07-07","Bahamas","R","R","Acereros del Norte","Pitchers",28
+"313","57","Christian Cosby","P","1996-12-21","USA","R","R","Acereros del Norte","Pitchers",29
+"314","4","Eric Filia","OF","1992-07-06","USA","L","R","Acereros del Norte","Outfield",33
+"315","51","Estalin Ortiz","P","1998-11-20","Dominican Republic","L","L","Acereros del Norte","Pitchers",27
+"316","30","Fernando Flores","C","1991-08-21","Mexico","S","R","Acereros del Norte","Catchers",34
+"317","77","Ivan Armstrong","P","2000-07-27","Dominican Republic","R","R","Acereros del Norte","Pitchers",25
+"318","66","Jecksson Flores","OF","1993-10-28","Venezuela","R","R","Acereros del Norte","Outfield",32
+"319","93","Jonathan Lopez","P","2002-05-22","Mexico","R","R","Acereros del Norte","Pitchers",23
+"320","69","Jorge Rodriguez","P","2000-08-25","Mexico","L","L","Acereros del Norte","Pitchers",25
+"321","45","Jorge Tavarez","P","1995-08-04","Dominican Republic","R","R","Acereros del Norte","Pitchers",30
+"322","18","José Peraza","2B","1994-04-30","Venezuela","R","R","Acereros del Norte","Infield",31
+"323","98","Jose Soria","P","2003-05-08","Mexico","R","R","Acereros del Norte","Pitchers",22
+"324","70","Juan Mora","OF","1999-09-30","Mexico","R","R","Acereros del Norte","Outfield",26
+"325","10","Luis González","RF","1995-09-10","Mexico","L","L","Acereros del Norte","Outfield",30
+"326","62","Miguel Palos","IF","2007-07-01","Mexico","R","R","Acereros del Norte","Infield",18
+"327","71","Oscar Jimenez","C","2004-12-27","Mexico","R","R","Acereros del Norte","Catchers",21
+"328","75","Oscar Soria","P","2004-08-24","Mexico","R","R","Acereros del Norte","Pitchers",21
+"329","87","Pedro Reyes","P","2002-11-26","Mexico","R","R","Acereros del Norte","Pitchers",23
+"330","41","Ramon Hernandez","3B","1996-03-02","Dominican Republic","R","R","Acereros del Norte","Infield",30
+"331","48","Rodolfo Amador","3B","1992-11-11","Mexico","L","R","Acereros del Norte","Infield",33
+"332","54","Rodolfo Martinez","P","1994-04-04","Dominican Republic","R","R","Acereros del Norte","Pitchers",32
+"333","94","Rolando Mora","P","2001-10-26","Mexico","R","R","Acereros del Norte","Pitchers",24
+"334","44","Ryley Gilliam","P","1996-08-11","USA","R","R","Acereros del Norte","Pitchers",29
+"335","15","Santiago Chávez","C","1995-08-05","Mexico","R","R","Acereros del Norte","Catchers",30
+"336","20","Wilmer Rios","P","1994-03-03","Mexico","R","R","Acereros del Norte","Pitchers",32
+"337","28","Alexis Vera","P","2000-03-19","Mexico","R","R","Sultanes de Monterrey","Pitchers",26
+"338","66","Alonso Becerra","P","2004-07-06","Mexico","L","L","Sultanes de Monterrey","Pitchers",21
+"339","89","Andre Sanchez","P","2003-02-05","Mexico","R","R","Sultanes de Monterrey","Pitchers",23
+"340","69","Brayan Mendoza","OF","2001-05-30","Mexico","L","R","Sultanes de Monterrey","Outfield",24
+"341","8","Carlos Soto","C","1999-04-27","Mexico","L","R","Sultanes de Monterrey","Catchers",26
+"342","75","Chris Ellis","P","1992-09-22","USA","L","R","Sultanes de Monterrey","Pitchers",33
+"343","80","Daniel Cruz","P","1999-09-08","Mexico","R","R","Sultanes de Monterrey","Pitchers",26
+"344","29","Erick Rodriguez","P","2002-03-21","Mexico","R","R","Sultanes de Monterrey","Pitchers",24
+"345","97","Geronimo Franzua","P","1993-09-25","Dominican Republic","L","L","Sultanes de Monterrey","Pitchers",32
+"346","4","Gustavo Nunez","2B","1988-02-08","Dominican Republic","S","R","Sultanes de Monterrey","Infield",38
+"347","67","Ismael Alcantara","OF","1998-09-25","Dominican Republic","R","R","Sultanes de Monterrey","Outfield",27
+"348","12","Jake Higginbotham","P","1996-01-11","USA","L","L","Sultanes de Monterrey","Pitchers",30
+"349","2","Javier Salazar","SS","1996-10-28","Mexico","L","R","Sultanes de Monterrey","Infield",29
+"350","41","Jesus Pirela","P","1989-03-13","Venezuela","R","R","Sultanes de Monterrey","Pitchers",37
+"351","58","Josh Lester","1B","1994-07-17","USA","L","R","Sultanes de Monterrey","Infield",31
+"352","61","Justus Sheffield","P","1996-05-13","USA","L","L","Sultanes de Monterrey","Pitchers",29
+"353","50","Louis Okoye","OF","1997-07-21","Japan","R","R","Sultanes de Monterrey","Outfield",28
+"354","62","Luis Santos","2B","2000-01-04","Mexico","R","R","Sultanes de Monterrey","Infield",26
+"355","92","Manny Banuelos","P","1991-03-13","Mexico","R","L","Sultanes de Monterrey","Pitchers",35
+"356","53","Manuel Urias","P","2001-03-08","Mexico","R","R","Sultanes de Monterrey","Pitchers",25
+"357","45","Nolan Kingham","P","1996-08-18","USA","R","R","Sultanes de Monterrey","Pitchers",29
+"358","38","Omar Narváez","C","1992-02-10","Venezuela","L","R","Sultanes de Monterrey","Catchers",34
+"359","15","Raimel Tapia","OF","1994-02-04","Dominican Republic","L","L","Sultanes de Monterrey","Outfield",32
+"360","19","Ramiro Pena","2B","1985-07-18","Mexico","S","R","Sultanes de Monterrey","Infield",40
+"361","39","Ricardo Genovés","C","1999-05-14","Venezuela","R","R","Sultanes de Monterrey","Catchers",26
+"362","48","Richard Rodríguez","P","1990-03-04","Dominican Republic","R","R","Sultanes de Monterrey","Pitchers",36
+"363","54","Ronaldo Alesandro","P","1998-05-07","Dominican Republic","R","R","Sultanes de Monterrey","Pitchers",27
+"364","30","Sócrates Brito","OF","1992-09-06","Dominican Republic","L","L","Sultanes de Monterrey","Outfield",33
+"365","16","Stephen Tarpley","P","1993-02-17","USA","R","L","Sultanes de Monterrey","Pitchers",33
+"366","25","Victor Mendoza","1B","1990-11-30","Mexico","L","L","Sultanes de Monterrey","Infield",35
+"367","10","Wilson Garcia","1B","1994-01-11","Venezuela","S","R","Sultanes de Monterrey","Infield",32
+"368","65","Yohander Méndez","P","1995-01-17","VEN","L","L","Sultanes de Monterrey","Pitchers",31
+"369","16","Adrian Herrera","P","2004-08-10","USA","R","R","Tigres de Quintana Roo","Pitchers",21
+"370","82","Aldo Flores","SS","1995-09-30","Mexico","L","R","Tigres de Quintana Roo","Infield",30
+"371","7","Alexis Wilson","C","1996-08-13","Mexico","R","R","Tigres de Quintana Roo","Catchers",29
+"372","37","Ariel Gracia","P","1994-09-17","Mexico","L","L","Tigres de Quintana Roo","Pitchers",31
+"373","33","Carlos Castro","C","1994-05-24","Dominican Republic","R","R","Tigres de Quintana Roo","Catchers",31
+"374","77","Carlos Urias","IF","2002-08-16","Mexico","L","R","Tigres de Quintana Roo","Infield",23
+"375","19","Cristopher Gastelum","IF","2004-10-19","Mexico","R","R","Tigres de Quintana Roo","Infield",21
+"376","13","Diego Madero","SS","1992-01-17","Mexico","R","R","Tigres de Quintana Roo","Infield",34
+"377","0","Diosbel Arias","2B","1996-07-21","Cuba","R","R","Tigres de Quintana Roo","Infield",29
+"378","69","Enrique Castillo","P","1996-07-30","Mexico","R","R","Tigres de Quintana Roo","Pitchers",29
+"379","15","Eric Meza","1B","1998-03-05","Mexico","L","L","Tigres de Quintana Roo","Infield",28
+"380","47","Ernesto Borges","P","2001-05-17","Mexico","R","R","Tigres de Quintana Roo","Pitchers",24
+"381","17","J.J. Matijevic","OF","1995-11-14","USA","L","R","Tigres de Quintana Roo","Outfield",30
+"382","31","Jalen Miller","P","1993-03-15","Italy","R","R","Tigres de Quintana Roo","Pitchers",33
+"383","45","Joan Gonzalez","P","1998-05-27","Dominican Republic","R","R","Tigres de Quintana Roo","Pitchers",27
+"384","58","Jonathan Partida","P","1998-06-22","Mexico","L","L","Tigres de Quintana Roo","Pitchers",27
+"385","72","Jose Adames","P","1993-01-17","Dominican Republic","R","R","Tigres de Quintana Roo","Pitchers",33
+"386","99","Jose Albertos","P","1998-11-07","Mexico","R","R","Tigres de Quintana Roo","Pitchers",27
+"387","67","Juan Zapata","P","1998-11-19","Dominican Republic","R","R","Tigres de Quintana Roo","Pitchers",27
+"388","38","Julio Robaina","P","2001-03-23","Cuba","L","L","Tigres de Quintana Roo","Pitchers",25
+"389","3","Manuel Boscan","1B","1993-03-10","Venezuela","L","R","Tigres de Quintana Roo","Infield",33
+"390","32","Michele Vassalotti","P","2000-08-02","VEN","R","R","Tigres de Quintana Roo","Pitchers",25
+"391","50","Miguel Ojeda Jr.","C","2000-06-16","Mexico","R","R","Tigres de Quintana Roo","Catchers",25
+"392","6","Miles Simington","OF","1999-08-24","USA","L","L","Tigres de Quintana Roo","Outfield",26
+"393","93","Pedro Peniche","P","2005-01-18","Mexico","R","R","Tigres de Quintana Roo","Pitchers",21
+"394","18","Raico Santos","OF","1994-04-20","Cuba","L","L","Tigres de Quintana Roo","Outfield",31
+"395","73","Rainer Nunez","1B","2000-12-04","Dominican Republic","R","R","Tigres de Quintana Roo","Infield",25
+"396","71","Roberto Gonzalez","OF","2001-08-28","USA","L","R","Tigres de Quintana Roo","Outfield",24
+"397","44","Trevor Kelley","P","1992-10-20","USA","R","R","Tigres de Quintana Roo","Pitchers",33
+"398","8","Troy Viola","OF","1998-06-21","USA","R","R","Tigres de Quintana Roo","Outfield",27
+"399","49","Vicente Valenzuela","P","2001-06-01","Mexico","R","R","Tigres de Quintana Roo","Pitchers",24
+"400","30","Xzavion Curry","P","1998-07-27","USA","R","R","Tigres de Quintana Roo","Pitchers",27
+"401","1","Aaron Lugo","SS","2001-01-23","Mexico","R","R","Dorados de Chihuahua","Infield",25
+"402","44","Alan Valdez","P","2000-12-07","Mexico","R","R","Dorados de Chihuahua","Pitchers",25
+"403","96","Alejandro Mejia","1B","1993-03-10","Dominican Republic","R","R","Dorados de Chihuahua","Infield",33
+"404","19","Andrelton Simmons","SS","1989-09-04","Curacao","R","R","Dorados de Chihuahua","Infield",36
+"405","22","Arturo Roque","P","2000-12-02","Mexico","R","R","Dorados de Chihuahua","Pitchers",25
+"406","30","Braden Webb","P","1995-04-25","USA","R","R","Dorados de Chihuahua","Pitchers",30
+"407","14","Brainer Bonaci","SS","2002-07-09","Venezuela","S","R","Dorados de Chihuahua","Infield",23
+"408","23","Caleb Smith","P","1991-07-28","USA","R","L","Dorados de Chihuahua","Pitchers",34
+"409","29","Carlos Munoz","1B","1994-06-29","Mexico","L","L","Dorados de Chihuahua","Infield",31
+"410","33","Demetrio Gutierrez","P","1990-02-14","Mexico","L","L","Dorados de Chihuahua","Pitchers",36
+"411","49","Devin Smeltzer","P","1995-09-07","USA","R","L","Dorados de Chihuahua","Pitchers",30
+"412","97","Emilio Vargas","P","1996-08-12","Dominican Republic","R","R","Dorados de Chihuahua","Pitchers",29
+"413","2","Gabriel Ponce","P","1999-04-29","USA","R","R","Dorados de Chihuahua","Pitchers",26
+"414","25","Gabriel Ynoa","P","1993-05-26","Dominican Republic","R","R","Dorados de Chihuahua","Pitchers",32
+"415","73","Gilberto Vizcarra","C","1999-03-01","Mexico","R","R","Dorados de Chihuahua","Catchers",27
+"416","60","Gustavo Ruiz","C","2000-03-22","Mexico","R","R","Dorados de Chihuahua","Catchers",26
+"417","18","Jesus Loya","LF","1992-06-15","Mexico","L","R","Dorados de Chihuahua","Outfield",33
+"418","91","Joel Flores","OF","2004-07-30","Chile","R","R","Dorados de Chihuahua","Outfield",21
+"419","6","Jonathan Schoop","2B","1991-10-16","Curacao","R","R","Dorados de Chihuahua","Infield",34
+"420","48","Josh Maciejewski","P","1995-08-14","USA","R","L","Dorados de Chihuahua","Pitchers",30
+"421","59","Josue Gamez","P","2002-05-15","Mexico","R","R","Dorados de Chihuahua","Pitchers",23
+"422","20","Leobaldo Piña","SS","1994-06-29","Venezuela","R","R","Dorados de Chihuahua","Infield",31
+"423","35","Leonardo Taveras","P","1998-09-07","Dominican Republic","R","R","Dorados de Chihuahua","Pitchers",27
+"424","8","Mark Contreras","LF","1995-01-24","USA","L","R","Dorados de Chihuahua","Outfield",31
+"425","55","Nick Struck","P","1989-10-07","USA","R","R","Dorados de Chihuahua","Pitchers",36
+"426","9","Oziel Flores","OF","1997-09-12","Mexico","S","R","Dorados de Chihuahua","Outfield",28
+"427","70","Pedro Rodriguez","P","1987-10-31","Venezuela","R","R","Dorados de Chihuahua","Pitchers",38
+"428","54","Raul Barron","P","1986-04-04","USA","S","R","Dorados de Chihuahua","Pitchers",40
+"429","40","Rusber Estrada","C","1995-06-05","Venezuela","R","R","Dorados de Chihuahua","Catchers",30
+"430","50","Samuel Alvarado","P","1994-06-30","USA","R","R","Dorados de Chihuahua","Pitchers",31
+"431","11","Shayne Fontana","LF","1997-06-21","USA","L","L","Dorados de Chihuahua","Outfield",28
+"432","98","Yamil Castillo","P","1999-08-18","Mexico","R","R","Dorados de Chihuahua","Pitchers",26
+"433","32","Alemao Hernandez","P","1999-09-27","Mexico","L","L","Guerreros de Oaxaca","Pitchers",26
+"434","2","Alexi Amarista","2B","1989-04-06","Venezuela","L","R","Guerreros de Oaxaca","Infield",37
+"435","7","Alfredo Lopez","IF","1989-10-07","USA","R","R","Guerreros de Oaxaca","Infield",36
+"436","97","Andres Sosa","C","1997-11-07","Mexico","R","R","Guerreros de Oaxaca","Catchers",28
+"437","62","Angel Hernandez","P","2004-01-24","Mexico","R","R","Guerreros de Oaxaca","Pitchers",22
+"438","56","Aristides Aquino","RF","1994-04-22","Dominican Republic","R","R","Guerreros de Oaxaca","Outfield",31
+"439","14","Carlos Garzon","C","1992-05-14","Mexico","R","R","Guerreros de Oaxaca","Catchers",33
+"440","90","Chester Pimentel","P","1995-11-12","Dominican Republic","R","R","Guerreros de Oaxaca","Pitchers",30
+"441","65","Cristian Alvarado","P","1994-09-20","Venezuela","R","R","Guerreros de Oaxaca","Pitchers",31
+"442","52","Eduardo Mares","P","2003-04-11","Mexico","L","L","Guerreros de Oaxaca","Pitchers",23
+"443","44","Edwar Colina","P","1997-05-03","Venezuela","R","R","Guerreros de Oaxaca","Pitchers",28
+"444","88","Heber Villalobos","C","2003-09-24","Mexico","R","R","Guerreros de Oaxaca","Catchers",22
+"445","40","Joey Krehbiel","P","1992-12-20","USA","R","R","Guerreros de Oaxaca","Pitchers",33
+"446","3","Jorge Flores","SS","1991-11-25","Mexico","R","R","Guerreros de Oaxaca","Infield",34
+"447","24","Jose Carlos Urena","OF","1995-01-14","Mexico","R","R","Guerreros de Oaxaca","Outfield",31
+"448","27","Juan Santana","SS","1994-08-16","Dominican Republic","R","R","Guerreros de Oaxaca","Infield",31
+"449","5","Juniel Querecuto","3B","1992-09-19","Venezuela","S","R","Guerreros de Oaxaca","Infield",33
+"450","66","Kyle Funkhouser","P","1994-03-16","USA","R","R","Guerreros de Oaxaca","Pitchers",32
+"451","18","Luis Barrera","OF","1995-11-15","Dominican Republic","L","L","Guerreros de Oaxaca","Outfield",30
+"452","45","Luis Miranda","P","1994-09-05","Mexico","R","R","Guerreros de Oaxaca","Pitchers",31
+"453","15","Mel Rojas Jr.","OF","1990-05-24","USA","S","R","Guerreros de Oaxaca","Outfield",35
+"454","38","Pedro Castellano","IF","1996-08-26","USA","L","R","Guerreros de Oaxaca","Infield",29
+"455","58","Radhames Liz","P","1983-10-06","Dominican Republic","R","R","Guerreros de Oaxaca","Pitchers",42
+"456","46","Raymond Burgos","P","1998-11-29","Puerto Rico","L","L","Guerreros de Oaxaca","Pitchers",27
+"457","77","Reid Birlingmair","P","1996-11-13","USA","L","R","Guerreros de Oaxaca","Pitchers",29
+"458","28","Ricardo Valenzuela","C","1990-08-04","Mexico","R","R","Guerreros de Oaxaca","Catchers",35
+"459","89","Robert Dugger","P","1995-07-03","USA","R","R","Guerreros de Oaxaca","Pitchers",30
+"460","8","Sebastian Garcia","3B","2002-11-08","Mexico","R","R","Guerreros de Oaxaca","Infield",23
+"461","48","Taylor Lehman","P","1995-12-30","USA","L","L","Guerreros de Oaxaca","Pitchers",30
+"462","51","Victor Morales","P","2001-10-10","Mexico","R","R","Guerreros de Oaxaca","Pitchers",24
+"463","33","Yariel Gonzalez","1B","1994-06-01","Puerto Rico","S","R","Guerreros de Oaxaca","Infield",31
+"464","31","Yonathan Daza","CF","1994-02-28","Venezuela","R","R","Guerreros de Oaxaca","Outfield",32
+"465","51","A.J. Block","P","1998-04-16","USA","L","L","Caliente de Durango","Pitchers",28
+"466","36","Aaron Brooks","P","1990-04-27","USA","R","R","Caliente de Durango","Pitchers",35
+"467","7","Andre Lipcius","OF","1998-05-22","USA","R","R","Caliente de Durango","Outfield",27
+"468","66","Baltazar Arredondo","P","2004-01-22","Mexico","L","L","Caliente de Durango","Pitchers",22
+"469","58","Clayton Andrews","P","1997-01-04","USA","L","L","Caliente de Durango","Pitchers",29
+"470","8","David Hensley","SS","1996-03-28","USA","R","R","Caliente de Durango","Infield",30
+"471","14","David Villar","1B","1997-01-27","USA","R","R","Caliente de Durango","Infield",29
+"472","90","Edwyn  Valle","P","1998-06-30","Mexico","R","R","Caliente de Durango","Pitchers",27
+"473","50","Elier Hernandez","OF","1994-11-21","Dominican Republic","R","R","Caliente de Durango","Outfield",31
+"474","55","Esteban Bloch","P","1999-08-06","Mexico","R","R","Caliente de Durango","Pitchers",26
+"475","23","Felix Doubront","P","1987-10-23","Venezuela","L","L","Caliente de Durango","Pitchers",38
+"476","47","Francisco Rios","P","1995-05-06","Mexico","R","R","Caliente de Durango","Pitchers",30
+"477","18","Gabriel Noriega","3B","1990-09-13","Venezuela","R","R","Caliente de Durango","Infield",35
+"478","57","Hansel Robles","P","1990-08-13","Dominican Republic","R","R","Caliente de Durango","Pitchers",35
+"479","93","Hector Villalobos","P","1996-08-19","Mexico","L","L","Caliente de Durango","Pitchers",29
+"480","32","Jairus Richards","OF","1997-01-30","USA","L","R","Caliente de Durango","Outfield",29
+"481","95","Jesus Rios","P","2001-12-27","Mexico","R","R","Caliente de Durango","Pitchers",24
+"482","2","Jonathan Villar","2B","1991-05-02","Dominican Republic","S","R","Caliente de Durango","Infield",34
+"483","59","Jorge Sauceda","P","2002-01-17","Mexico","R","R","Caliente de Durango","Pitchers",24
+"484","91","Jose Alvarez","1B","1989-02-07","Mexico","R","R","Caliente de Durango","Infield",37
+"485","87","José De León","P","1992-08-07","Puerto Rico","R","R","Caliente de Durango","Pitchers",33
+"486","72","Juan Uriarte","C","1997-09-17","Mexico","R","R","Caliente de Durango","Catchers",28
+"487","44","Luis Rijo","P","1998-09-06","Venezuela","R","R","Caliente de Durango","Pitchers",27
+"488","43","Manuel Chavez","P","1993-11-22","Mexico","L","L","Caliente de Durango","Pitchers",32
+"489","29","Manuel Orduno","OF","1996-01-21","Mexico","R","R","Caliente de Durango","Outfield",30
+"490","89","Nestor Anguamea","P","2000-03-11","Mexico","R","R","Caliente de Durango","Pitchers",26
+"491","5","Nick Williams","LF","1993-09-08","USA","L","L","Caliente de Durango","Outfield",32
+"492","40","Odrisamer Despaigne","P","1987-04-04","Cuba","R","R","Caliente de Durango","Pitchers",39
+"493","17","Reynaldo Rodriguez","1B","1986-07-02","Colombia","R","R","Caliente de Durango","Infield",39
+"494","3","Scott Engler","P","1996-12-12","USA","R","R","Caliente de Durango","Pitchers",29
+"495","16","Victor Marquez","IF","2001-12-21","Mexico","S","R","Caliente de Durango","Infield",24
+"496","27","Webster Rivas","C","1990-08-08","Dominican Republic","R","R","Caliente de Durango","Catchers",35
+"497","64","Aderlin Rodríguez","1B","1991-11-18","Dominican Republic","R","R","Toros de Tijuana","Infield",34
+"498","63","Brett de Geus","P","1997-11-04","USA","R","R","Toros de Tijuana","Pitchers",28
+"499","66","Caleb Baragar","P","1994-04-09","USA","R","L","Toros de Tijuana","Pitchers",32
+"500","16","Chris Williams","C","1996-11-23","USA","R","R","Toros de Tijuana","Catchers",29
+"501","65","Daniel Martinez","P","1998-07-28","USA","L","R","Toros de Tijuana","Pitchers",27
+"502","52","David Gutierrez","P","1993-08-18","Mexico","R","R","Toros de Tijuana","Pitchers",32
+"503","40","David Reyes","P","1990-04-12","Mexico","R","R","Toros de Tijuana","Pitchers",36
+"504","59","Domingo Germán","P","1992-08-04","Dominican Republic","R","R","Toros de Tijuana","Pitchers",33
+"505","99","Edson Garcia","OF","1992-09-11","Mexico","S","R","Toros de Tijuana","Outfield",33
+"506","51","Florencio Serrano","P","2000-02-23","USA","R","R","Toros de Tijuana","Pitchers",26
+"507","38","Franchy Cordero","OF","1994-09-02","Dominican Republic","L","R","Toros de Tijuana","Outfield",31
+"508","22","Greg Allen","CF","1993-03-15","USA","S","R","Toros de Tijuana","Outfield",33
+"509","14","Hernán Pérez","SS","1991-03-26","Venezuela","R","R","Toros de Tijuana","Infield",35
+"510","74","Isaac Rodriguez","2B","1991-03-03","Mexico","R","R","Toros de Tijuana","Infield",35
+"511","25","Jack Mayfield","2B","1990-09-30","USA","R","R","Toros de Tijuana","Infield",35
+"512","35","Jorge Perez","P","1993-07-10","USA","R","R","Toros de Tijuana","Pitchers",32
+"513","11","Juan Hillman","P","1997-05-15","USA","L","L","Toros de Tijuana","Pitchers",28
+"514","27","Junior Lake","LF","1990-03-27","Dominican Republic","R","R","Toros de Tijuana","Outfield",36
+"515","60","Luis Amador","C","2003-07-15","Mexico","R","R","Toros de Tijuana","Catchers",22
+"516","13","Luis Guillorme","3B","1994-09-27","Venezuela","L","R","Toros de Tijuana","Infield",31
+"517","45","Miguel Díaz","P","1994-11-28","Dominican Republic","R","R","Toros de Tijuana","Pitchers",31
+"518","32","Noah Skirrow","P","1998-07-21","Canada","R","R","Toros de Tijuana","Pitchers",27
+"519","26","Phillip Evans","3B","1992-09-10","USA","R","R","Toros de Tijuana","Infield",33
+"520","46","Rafael Castaneda","P","2004-05-18","Mexico","R","R","Toros de Tijuana","Pitchers",21
+"521","5","Rafael Ortega","CF","1991-05-15","Venezuela","L","R","Toros de Tijuana","Outfield",34
+"522","44","Roberto Ramos","1B","1994-12-28","Mexico","L","R","Toros de Tijuana","Infield",31
+"523","53","Roel Ramírez","P","1995-05-26","USA","R","R","Toros de Tijuana","Pitchers",30
+"524","8","Sam McWilliams","P","1995-09-04","USA","R","R","Toros de Tijuana","Pitchers",30
+"525","20","Tomás Telis","C","1991-06-18","Venezuela","S","R","Toros de Tijuana","Catchers",34
+"526","41","Wilmer Flores","1B","1991-08-06","Venezuela","R","R","Toros de Tijuana","Infield",34
+"527","44","Ali Solis","C","1987-09-29","Mexico","R","R","El Aguila de Veracruz","Catchers",38
+"528","28","Austin Schulfer","P","1995-12-22","USA","R","R","El Aguila de Veracruz","Pitchers",30
+"529","18","Braulio Torres-Perez","P","1993-04-09","USA","L","L","El Aguila de Veracruz","Pitchers",33
+"530","20","Carlos Franco","3B","1991-12-20","Dominican Republic","L","R","El Aguila de Veracruz","Infield",34
+"531","6","Cesar Izturis Jr.","SS","1999-11-11","Venezuela","S","R","El Aguila de Veracruz","Infield",26
+"532","14","Corey Rosier","RF","1999-09-07","USA","L","R","El Aguila de Veracruz","Outfield",26
+"533","18","Cristopher Molina","P","1997-06-10","Dominican Republic","R","R","El Aguila de Veracruz","Pitchers",28
+"534","41","Daniel Montano","LF","1999-03-31","Venezuela","L","R","El Aguila de Veracruz","Outfield",27
+"535","13","Danry Vasquez","RF","1994-01-08","Venezuela","L","R","El Aguila de Veracruz","Outfield",32
+"536","29","Dinelson Lamet","P","1992-07-18","Dominican Republic","R","R","El Aguila de Veracruz","Pitchers",33
+"537","71","Eric De La Rosa","LF","1997-06-03","USA","R","R","El Aguila de Veracruz","Outfield",28
+"538","95","Gerardo Gutierrez","P","1998-09-15","Mexico","R","R","El Aguila de Veracruz","Pitchers",27
+"539","3","Jack López","2B","1992-12-16","Puerto Rico","R","R","El Aguila de Veracruz","Infield",33
+"540","43","Jack Weisenburger","P","1997-10-08","USA","R","R","El Aguila de Veracruz","Pitchers",28
+"541","24","Jackson Loftin","SS","2000-05-14","USA","R","R","El Aguila de Veracruz","Infield",25
+"542","45","Jeff Ibarra","P","1987-08-18","USA","L","L","El Aguila de Veracruz","Pitchers",38
+"543","49","Jhan Mariñez","P","1988-08-12","Dominican Republic","R","R","El Aguila de Veracruz","Pitchers",37
+"544","99","Jonathan Aro","P","1990-10-10","Dominican Republic","R","R","El Aguila de Veracruz","Pitchers",35
+"545","2","Jonathan Bermúdez","P","1995-10-16","Puerto Rico","L","L","El Aguila de Veracruz","Pitchers",30
+"546","50","Jose Ary Torres","C","2004-06-04","Mexico","R","R","El Aguila de Veracruz","Catchers",21
+"547","27","Jose Heberto Felix","C","1988-06-28","Mexico","R","R","El Aguila de Veracruz","Catchers",37
+"548","36","Kazutomo Iguchi","P","1994-01-07","Japan","R","R","El Aguila de Veracruz","Pitchers",32
+"549","68","Kristian Delgado","3B","1993-07-19","Mexico","R","R","El Aguila de Veracruz","Infield",32
+"550","16","Luis Marquez","P","1997-11-29","Mexico","L","L","El Aguila de Veracruz","Pitchers",28
+"551","12","Mario Jimenez","P","1995-12-06","Mexico","R","R","El Aguila de Veracruz","Pitchers",30
+"552","31","Nick Gardewine","P","1993-08-15","USA","R","R","El Aguila de Veracruz","Pitchers",32
+"553","26","Norman Elenes","P","1992-07-10","Mexico","L","R","El Aguila de Veracruz","Pitchers",33
+"554","30","Roberto Valenzuela","SS","1995-03-03","Mexico","R","R","El Aguila de Veracruz","Infield",31
+"555","15","Sebastián Elizalde","OF","1991-11-20","Mexico","L","R","El Aguila de Veracruz","Outfield",34
+"556","42","TT Bowens","1B","1998-05-27","USA","R","R","El Aguila de Veracruz","Infield",27
+"557","46","Yorvin Pantoja","P","1997-09-22","Venezuela","L","L","El Aguila de Veracruz","Pitchers",28
+"558","33","Abraham Almonte","OF","1989-06-27","Dominican Republic","S","R","Conspiradores de Queretaro","Outfield",36
+"559","7","Alen Hanson","OF","1992-10-22","Dominican Republic","S","R","Conspiradores de Queretaro","Outfield",33
+"560","76","Anthony Vizcaya","P","1993-10-24","Venezuela","R","R","Conspiradores de Queretaro","Pitchers",32
+"561","84","Arturo Rodriguez","C","1991-10-03","Mexico","R","R","Conspiradores de Queretaro","Catchers",34
+"562","44","Christopher Escarrega","C","1999-07-17","Mexico","S","R","Conspiradores de Queretaro","Catchers",26
+"563","22","Daniel Castro","SS","1992-11-14","Mexico","R","R","Conspiradores de Queretaro","Infield",33
+"564","17","Denny Roman","P","1998-09-30","Mexico","L","L","Conspiradores de Queretaro","Pitchers",27
+"565","58","Diego Soto","OF","2003-12-09","Mexico","R","R","Conspiradores de Queretaro","Outfield",22
+"566","24","Dwight Smith Jr.","OF","1992-10-26","USA","L","R","Conspiradores de Queretaro","Outfield",33
+"567","8","Ernesto Zaragoza","P","1992-09-26","USA","R","R","Conspiradores de Queretaro","Pitchers",33
+"568","32","Esmil Rogers","P","1985-08-14","Dominican Republic","R","R","Conspiradores de Queretaro","Pitchers",40
+"569","51","Henry Urrutia","1B","1987-02-13","Cuba","L","R","Conspiradores de Queretaro","Infield",39
+"570","10","Isaac Jimenez","P","1995-12-12","Mexico","R","R","Conspiradores de Queretaro","Pitchers",30
+"571","53","Jio Orozco","P","1997-08-15","USA","R","R","Conspiradores de Queretaro","Pitchers",28
+"572","43","Joel Cesar","P","1996-01-26","Dominican Republic","R","R","Conspiradores de Queretaro","Pitchers",30
+"573","13","Jose Betances","P","1999-10-17","Dominican Republic","R","R","Conspiradores de Queretaro","Pitchers",26
+"574","20","Jose Robledo","SS","2003-09-14","Mexico","S","R","Conspiradores de Queretaro","Infield",22
+"575","41","Junior Guerra","P","1985-01-16","VEN","R","R","Conspiradores de Queretaro","Pitchers",41
+"576","39","Kelvin Gutiérrez","3B","1994-08-28","Dominican Republic","R","R","Conspiradores de Queretaro","Infield",31
+"577","37","Keven Lamas","SS","1998-11-08","Mexico","R","R","Conspiradores de Queretaro","Infield",27
+"578","60","Luis Ochoa","P","2001-06-19","Mexico","R","R","Conspiradores de Queretaro","Pitchers",24
+"579","11","Luis Romero","P","1994-04-23","Cuba","R","R","Conspiradores de Queretaro","Pitchers",31
+"580","69","Rainel Rosario","OF","1989-03-29","Dominican Republic","R","R","Conspiradores de Queretaro","Outfield",37
+"581","5","Rangel Ravelo","1B","1992-04-24","Cuba","R","R","Conspiradores de Queretaro","Infield",33
+"582","89","Reymin Guduan","P","1992-03-16","Dominican Republic","L","L","Conspiradores de Queretaro","Pitchers",34
+"583","83","Roman Mendez","P","1990-07-25","Dominican Republic","R","R","Conspiradores de Queretaro","Pitchers",35
+"584","27","Sebastian Lizarraga","C","1999-08-27","Mexico","L","R","Conspiradores de Queretaro","Catchers",26
+"585","31","Tyler Alexander","P","1991-09-22","USA","L","L","Conspiradores de Queretaro","Pitchers",34
+"586","46","Tyler Viza","P","1994-10-21","USA","R","R","Conspiradores de Queretaro","Pitchers",31
+"587","25","Wellington Diaz","P","1997-04-25","Dominican Republic","R","R","Conspiradores de Queretaro","Pitchers",28
+"588","26","Yangervis Solarte","3B","1987-07-03","Venezuela","S","R","Conspiradores de Queretaro","Infield",38
+"589","47","Yurisbel Gracial","3B","1985-10-14","Cuba","R","R","Conspiradores de Queretaro","Infield",40
+"590","16","A.J. Puckett","P","1995-05-27","USA","R","R","Charros de Jalisco","Pitchers",30
+"591","32","Aaron McGarity","P","1995-01-31","USA","R","R","Charros de Jalisco","Pitchers",31
+"592","68","Alejandro Quezada","OF","2001-12-01","Mexico","L","R","Charros de Jalisco","Outfield",24
+"593","8","Alfredo Hurtado","C","1997-09-19","Mexico","S","R","Charros de Jalisco","Catchers",28
+"594","13","Allen Córdoba","OF","1995-12-06","Panama","R","R","Charros de Jalisco","Outfield",30
+"595","6","Billy Hamilton","OF","1990-09-09","USA","S","R","Charros de Jalisco","Outfield",35
+"596","23","Cesar Gomez","P","1998-07-09","USA","L","R","Charros de Jalisco","Pitchers",27
+"597","2","Donny Sands","C","1996-05-16","USA","R","R","Charros de Jalisco","Catchers",29
+"598","31","Elkin Alcala","P","1997-08-02","Colombia","R","R","Charros de Jalisco","Pitchers",28
+"599","96","Hugo Sanchez","1B","2002-11-06","Mexico","L","R","Charros de Jalisco","Infield",23
+"600","18","Irving Lopez","2B","1995-06-30","Mexico","L","R","Charros de Jalisco","Infield",30
+"601","25","Jared Walsh","OF","1993-07-30","USA","L","L","Charros de Jalisco","Outfield",32
+"602","85","Jesus Cordova","C","2001-06-12","Mexico","R","R","Charros de Jalisco","Catchers",24
+"603","48","Johneshwy Fargas","OF","1994-12-15","Puerto Rico","R","R","Charros de Jalisco","Outfield",31
+"604","87","Jose Aguilar","RF","1990-05-19","Mexico","R","R","Charros de Jalisco","Outfield",35
+"605","77","Jose Montijo","P","2007-09-14","Mexico","R","R","Charros de Jalisco","Pitchers",18
+"606","35","Josh Green","P","1995-08-31","USA","R","R","Charros de Jalisco","Pitchers",30
+"607","19","Joshua Fuentes","3B","1993-02-19","USA","R","R","Charros de Jalisco","Infield",33
+"608","66","Juan Robles","P","1997-11-06","Mexico","R","R","Charros de Jalisco","Pitchers",28
+"609","27","Kurt Heyer","P","1991-01-23","USA","L","R","Charros de Jalisco","Pitchers",35
+"610","41","Kyle Garlick","1B","1992-01-26","USA","R","R","Charros de Jalisco","Infield",34
+"611","73","Luis Carlos Martinez","IF","2002-12-11","Mexico","R","R","Charros de Jalisco","Infield",23
+"612","54","Luis Ivan Rodriguez","P","1996-08-24","Mexico","R","R","Charros de Jalisco","Pitchers",29
+"613","92","Luis Payan","P","1995-08-29","Mexico","R","R","Charros de Jalisco","Pitchers",30
+"614","3","Mateo Gil","3B","2000-07-24","USA","R","R","Charros de Jalisco","Infield",25
+"615","60","Miguel Aguilar","P","1991-09-26","Mexico","L","L","Charros de Jalisco","Pitchers",34
+"616","91","Rafael Cordova","P","1994-11-16","USA","R","R","Charros de Jalisco","Pitchers",31
+"617","56","Stephen Gonsalves","P","1994-07-08","USA","L","L","Charros de Jalisco","Pitchers",31
+"618","5","Willie Calhoun","1B","1994-11-04","USA","L","R","Charros de Jalisco","Infield",31
+"619","93","Zac Grotz","P","1993-02-17","USA","R","R","Charros de Jalisco","Pitchers",33
+"620","65","Zach Plesac","P","1995-01-21","USA","R","R","Charros de Jalisco","Pitchers",31

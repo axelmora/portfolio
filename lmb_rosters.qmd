@@ -1,0 +1,129 @@
+---
+title: "LMB 2026"
+subtitle: "Rosters"
+author: "Axel Mora"
+format:
+  revealjs:
+    theme: [default]
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    logo: lmb_logo.png
+    css: styles.css
+    footer: "Liga Mexicana de Béisbol | Análisis de Datos"
+    transition: slide
+    background-transition: fade
+    highlight-style: monokai
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(gt)
+library(forcats)
+library(readr)
+
+rosters_lmb_full <- read_csv("rosters_lmb_full.csv", show_col_types = FALSE)
+teams_ids <- read_csv("teams_ids.csv", show_col_types = FALSE)
+
+rosters_lmb_full <- rosters_lmb_full %>%
+  left_join(teams_ids %>% select(Team, logo), by = "Team")
+
+teams <- sort(unique(rosters_lmb_full$Team))
+```
+
+## Rosters 2026
+
+`r length(teams)` Equipos.
+
+```{r}
+#| output: asis
+
+for (t in teams) {
+  
+  df <- rosters_lmb_full %>% 
+    filter(Team == t)
+  n_players <- nrow(df)
+  logo_url <- df$logo[1]
+  avg_age <- round(mean(df$age, na.rm = TRUE), 1)
+
+  # =========================
+  # SLIDE 1 – RESUMEN
+  # =========================
+  
+  cat(paste0(
+    "\n\n## <img src='", logo_url, 
+    "' height='60' style='vertical-align:middle; margin-right:15px;'> ",
+    t, "\n\n",
+    "### Resumen General\n\n",
+    "- Jugadores: ", nrow(df), "\n",
+    "- Edad promedio: ", avg_age, "\n"
+  ))
+  
+  # =========================
+  # SLIDE 2.1 – TABLA
+  # =========================
+  
+  cat(paste0(
+    "\n\n## <img src='", logo_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – Roster\n\n"
+  ))
+  
+  df <- df %>%
+    arrange(Position)
+    
+  print(
+    df[1:15,] %>%
+      select(Name, Number, Position, age, `Birth Country`, Bats, Throws) %>%
+      gt()
+  )
+  
+  # =========================
+  # SLIDE 2.2 – TABLA
+  # =========================
+  
+  cat(paste0(
+    "\n\n## <img src='", logo_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – Roster\n\n"
+  ))
+  
+  df <- df %>%
+    arrange(Position)
+  
+  print(
+    df[16:n_players,] %>%
+      select(Name, Number, Position, age, `Birth Country`, Bats, Throws) %>%
+      gt()
+  )
+  
+  # =========================
+  # SLIDE 3 – NACIMIENTO
+  # =========================
+  
+  cat(paste0(
+    "\n\n## <img src='", logo_url, 
+    "' height='50' style='vertical-align:middle; margin-right:10px;'> ",
+    t, " – País de Nacimiento\n\n"
+  ))
+  
+  print(
+    df %>%
+      count(`Birth Country`) %>%
+      mutate(pct = n / sum(n)) %>%
+      ggplot(aes(x = fct_reorder(`Birth Country`, pct), y = pct)) +
+      geom_col() +
+      coord_flip() +
+      scale_y_continuous(labels = percent_format()) +
+      theme_minimal()
+  )
+  
+}
+
+```
