@@ -1,0 +1,660 @@
+---
+title: "LMB Park Factors 2024–2026"
+subtitle: "Análisis de condiciones de juego por sede · Liga Mexicana de Béisbol"
+author: "Axel Mora"
+date: today
+lang: es
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-title: "Contenido"
+    toc-location: left
+    number-sections: false
+    code-fold: true
+    code-tools: true
+    smooth-scroll: true
+    embed-resources: true
+    fig-width: 10
+    fig-height: 6
+    fig-dpi: 150
+execute:
+  echo: false
+  warning: false
+  message: false
+knitr:
+  opts_chunk:
+    out.width: "100%"
+---
+
+```{r setup}
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(ggtext)
+library(scales)
+library(glue)
+library(ggrepel)
+
+# ── Paleta LMB ───────────────────────────────────────────────────────────────
+COL_HITTER  <- "#E63946"   # rojo — parque de bateadores
+COL_PITCHER <- "#2A9D8F"   # verde azulado — parque de pitchers
+COL_NEUTRAL <- "#ADB5BD"   # gris
+COL_ACCENT  <- "#F4A261"   # naranja acento
+COL_BG      <- "#0F1117"   # fondo oscuro (para gt)
+
+# ── Abreviaturas ─────────────────────────────────────────────────────────────
+abbr <- c(
+  "Acereros del Norte"            = "MVA",
+  "Algodoneros Union Laguna"      = "LAG",
+  "Bravos de Leon"                = "LEO",
+  "Caliente de Durango"           = "DUR",
+  "Charros de Jalisco"            = "JAL",
+  "Conspiradores de Queretaro"    = "QRO",
+  "Diablos Rojos del Mexico"      = "MEX",
+  "Dorados de Chihuahua"          = "CHI",
+  "El Aguila de Veracruz"         = "VER",
+  "Guerreros de Oaxaca"           = "OAX",
+  "Leones de Yucatan"             = "YUC",
+  "Olmecas de Tabasco"            = "TAB",
+  "Pericos de Puebla"             = "PUE",
+  "Piratas de Campeche"           = "CAM",
+  "Rieleros de Aguascalientes"    = "AGS",
+  "Saraperos de Saltillo"         = "SLW",
+  "Sultanes de Monterrey"         = "MTY",
+  "Tecos de los Dos Laredos"      = "LAR",
+  "Tigres de Quintana Roo"        = "TIG",
+  "Toros de Tijuana"              = "TIJ"
+)
+
+# ── Cargar datos ──────────────────────────────────────────────────────────────
+pf      <- read_csv("data/park_factors_career.csv")     |> mutate(abbr = abbr[team])
+vbp     <- read_csv("data/venue_batting_profile_career.csv") |> mutate(abbr = abbr[team])
+vbb     <- read_csv("data/venue_batted_ball_career.csv") |>
+             rename(team = venue) |> mutate(abbr = abbr[team])
+pf_bs   <- read_csv("data/pf_batside_career.csv")       |> mutate(abbr = abbr[venue])
+vbb_bs  <- read_csv("data/venue_batted_ball_by_batside.csv")
+
+# ── Clasificación de parques ──────────────────────────────────────────────────
+pf <- pf |>
+  mutate(
+    park_class = case_when(
+      PF_HR_avg_idx >= 115 & PF_R_avg_idx >= 115  ~ "Extremo bateadores",
+      PF_HR_avg_idx >= 105 | PF_R_avg_idx >= 110  ~ "Favorable bateadores",
+      PF_HR_avg_idx <= 85  & PF_R_avg_idx <= 90   ~ "Extremo pitchers",
+      PF_HR_avg_idx <= 95  | PF_R_avg_idx <= 95   ~ "Favorable pitchers",
+      TRUE                                          ~ "Neutro"
+    ),
+    park_class = factor(park_class, levels = c(
+      "Extremo bateadores", "Favorable bateadores",
+      "Neutro",
+      "Favorable pitchers", "Extremo pitchers"
+    ))
+  )
+
+CLASS_COLORS <- c(
+  "Extremo bateadores"    = "#C1121F",
+  "Favorable bateadores"  = "#E76F51",
+  "Neutro"                = "#ADB5BD",
+  "Favorable pitchers"    = "#457B9D",
+  "Extremo pitchers"      = "#1D3557"
+)
+```
+
+## Resumen ejecutivo {.unnumbered}
+
+```{r exec-summary}
+# KPIs globales
+top_hr   <- pf |> slice_max(PF_HR_avg_idx, n = 1)
+bot_hr   <- pf |> slice_min(PF_HR_avg_idx, n = 1)
+top_ops  <- vbp |> slice_max(OPS, n = 1)
+bot_ops  <- vbp |> slice_min(OPS, n = 1)
+top_temp <- vbp |> slice_max(avg_temp, n = 1)
+bot_temp <- vbp |> slice_min(avg_temp, n = 1)
+```
+
+::: {.callout-note appearance="minimal"}
+Análisis basado en **`r sum(pf$total_games)`** juegos de temporada regular
+disputados entre **2024 y 2026** en las 20 sedes de la Liga Mexicana de Béisbol.
+Desde 2024 se mantienen los mismos 20 equipos y el mismo rol de juegos (93 juegos por temporada)
+La temperatura promedio varía **`r round(bot_temp$avg_temp)`°F** en
+`r bot_temp$team` hasta **`r round(top_temp$avg_temp)`°F** en `r top_temp$team`,
+un rango que influye directamente en el vuelo de la pelota.
+:::
+
+```{r kpi-cards}
+#| fig-height: 2
+
+kpis <- tibble(
+  label  = c("Parque más HR", "Parque menos HR", "Mayor OPS", "Menor OPS",
+             "Mayor temperatura", "Menor temperatura"),
+  value  = c(
+    glue("{top_hr$abbr} · {round(top_hr$PF_HR_avg_idx)} idx"),
+    glue("{bot_hr$abbr} · {round(bot_hr$PF_HR_avg_idx)} idx"),
+    glue("{top_ops$abbr} · {round(top_ops$OPS, 3)}"),
+    glue("{bot_ops$abbr} · {round(bot_ops$OPS, 3)}"),
+    glue("{top_temp$abbr} · {round(top_temp$avg_temp)}°F"),
+    glue("{bot_temp$abbr} · {round(bot_temp$avg_temp)}°F")
+  ),
+  color  = c(COL_HITTER, COL_PITCHER, COL_HITTER, COL_PITCHER, COL_ACCENT, "#457B9D")
+)
+
+kpis |>
+  gt() |>
+  cols_label(label = "", value = "") |>
+  tab_style(
+    style = list(cell_text(weight = "bold", size = "large"),
+                 cell_fill(color = from_column("color")),
+                 cell_text(color = "white")),
+    locations = cells_body(columns = value)
+  ) |>
+  tab_style(
+    style = cell_text(color = "#555", size = "small"),
+    locations = cells_body(columns = label)
+  ) |>
+  cols_hide(color) |>
+  tab_options(table.border.top.style = "hidden",
+              table.border.bottom.style = "hidden",
+              column_labels.hidden = TRUE) |>
+  opt_table_font(font = google_font("IBM Plex Sans"))
+```
+
+---
+
+## 1 · Park Factors — Vista global
+
+### 1.1 Índice de HR y Carreras por parque
+
+> **Interpretación:** Índice 100 = promedio de la liga. Por encima = parque favorece al bateador en esa categoría.
+
+```{r pf-bubble}
+#| fig-height: 7
+
+pf |>
+  ggplot(aes(x = PF_HR_avg_idx, y = PF_R_avg_idx, color = park_class, size = avg_temp)) +
+  geom_vline(xintercept = 100, linetype = "dashed", color = "#888", linewidth = 0.4) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "#888", linewidth = 0.4) +
+  annotate("rect", xmin = 100, xmax = Inf, ymin = 100, ymax = Inf,
+           fill = COL_HITTER, alpha = 0.04) +
+  annotate("rect", xmin = -Inf, xmax = 100, ymin = -Inf, ymax = 100,
+           fill = COL_PITCHER, alpha = 0.04) +
+  annotate("text", x = 165, y = 101, label = "Bateadores ↗",
+           color = COL_HITTER, size = 3, fontface = "italic", hjust = 1) +
+  annotate("text", x = 68, y = 99, label = "↙ Pitchers",
+           color = COL_PITCHER, size = 3, fontface = "italic", hjust = 0) +
+  geom_point(alpha = 0.85) +
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
+                  min.segment.length = 0.2, max.overlaps = 20) +
+  scale_color_manual(values = CLASS_COLORS, name = "Clasificación") +
+  scale_size_continuous(range = c(4, 12), name = "Temp. prom. (°F)") +
+  scale_x_continuous(labels = function(x) paste0(x)) +
+  scale_y_continuous(labels = function(x) paste0(x)) +
+  labs(
+    title = "Park Factors LMB 2024–2026",
+    subtitle = "Índice HR (eje X) vs Índice Carreras (eje Y) · Tamaño = temperatura promedio del parque",
+    x = "PF HR Index", y = "PF Carreras Index",
+    caption = "Índice 100 = promedio de liga · Ponderado por PA sobre 3 temporadas"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title    = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(color = "#555", size = 11),
+    legend.position = "right",
+    panel.grid.minor = element_blank()
+  )
+```
+
+### 1.2 Ranking completo de park factors
+
+```{r pf-table}
+pf |>
+  arrange(desc(PF_HR_avg_idx)) |>
+  select(team, park_class, PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx,
+         PF_2B_avg_idx, PF_K_avg_idx, PF_BB_avg_idx, avg_temp, total_games) |>
+  gt() |>
+  tab_header(
+    title    = "Park Factors — LMB 2024–2026",
+    subtitle = "Índice 100 = promedio de liga · Ordenado por PF HR"
+  ) |>
+  cols_label(
+    team           = "Equipo",
+    park_class     = "Perfil",
+    PF_HR_avg_idx  = "HR",
+    PF_R_avg_idx   = "Carreras",
+    PF_H_avg_idx   = "Hits",
+    PF_2B_avg_idx  = "2B",
+    PF_K_avg_idx   = "K",
+    PF_BB_avg_idx  = "BB",
+    avg_temp       = "Temp °F",
+    total_games    = "Juegos"
+  ) |>
+  fmt_number(columns = c(PF_HR_avg_idx:PF_BB_avg_idx), decimals = 1) |>
+  fmt_number(columns = avg_temp, decimals = 1) |>
+  fmt_integer(columns = total_games) |>
+  data_color(
+    columns = c(PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_2B_avg_idx),
+    method  = "numeric",
+    palette = c("#1D3557", "#ADB5BD", "#C1121F")
+  ) |>
+  data_color(
+    columns = PF_K_avg_idx,
+    method  = "numeric",
+    palette = c("#C1121F", "#ADB5BD", "#1D3557")   # K alto = pitcher friendly
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = team)
+  ) |>
+  tab_spanner(label = "Ofensivos (bateador)", columns = c(PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_2B_avg_idx)) |>
+  tab_spanner(label = "Defensivos (pitcher)", columns = c(PF_K_avg_idx, PF_BB_avg_idx)) |>
+  tab_style(
+    style = list(cell_fill(color = "#FFF3CD")),
+    locations = cells_body(rows = team == "Toros de Tijuana")
+  ) |>
+  opt_stylize(style = 1) |>
+  opt_table_font(font = google_font("IBM Plex Sans")) |>
+  tab_options(table.font.size = 12)
+```
+
+---
+
+## 2 · Perfil ofensivo por parque
+
+### 2.1 Slash line comparativa (AVG / OBP / SLG)
+
+```{r slash-bars}
+#| fig-height: 8
+
+vbp_long <- vbp |>
+  arrange(desc(OPS)) |>
+  mutate(team_f = fct_inorder(abbr)) |>
+  select(team_f, AVG, OBP, SLG) |>
+  pivot_longer(-team_f, names_to = "stat", values_to = "value") |>
+  mutate(stat = factor(stat, levels = c("SLG", "OBP", "AVG")))
+
+# Promedios de liga para referencia
+lg_avg <- vbp |> summarise(AVG = mean(AVG), OBP = mean(OBP), SLG = mean(SLG))
+
+vbp_long |>
+  ggplot(aes(x = value, y = team_f, fill = stat)) +
+  geom_col(position = "identity", alpha = 0.85, width = 0.65) +
+  geom_vline(xintercept = lg_avg$AVG, linetype = "dotted", color = "#333", linewidth = 0.5) +
+  scale_fill_manual(
+    values = c("AVG" = "#457B9D", "OBP" = "#2A9D8F", "SLG" = "#E76F51"),
+    name   = NULL
+  ) +
+  scale_x_continuous(labels = label_number(accuracy = 0.001)) +
+  labs(
+    title    = "Slash line por parque — LMB 2024–2026",
+    subtitle = "Ordenado por OPS · línea punteada = AVG promedio de liga",
+    x        = NULL, y = NULL,
+    caption  = "SLG incluido como barra superpuesta para mostrar potencia relativa"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title    = element_text(face = "bold"),
+    legend.position = "top",
+    panel.grid.major.y = element_blank()
+  )
+```
+
+### 2.2 Temperatura vs Ofensiva
+
+```{r temp-ops}
+#| fig-height: 5
+
+vbp |>
+  ggplot(aes(x = avg_temp, y = OPS)) +
+  geom_smooth(method = "lm", se = TRUE, color = COL_ACCENT,
+              fill = COL_ACCENT, alpha = 0.15, linewidth = 0.8) +
+  geom_point(aes(color = OPS), size = 4, alpha = 0.9) +
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold") +
+  scale_color_gradient(low = COL_PITCHER, high = COL_HITTER, guide = "none") +
+  scale_x_continuous(labels = function(x) paste0(x, "°F")) +
+  labs(
+    title    = "Temperatura promedio del parque vs OPS",
+    subtitle = "Parques más calientes generan más ofensiva — correlación positiva esperada",
+    x        = "Temperatura promedio (°F)", y = "OPS generado en el parque",
+    caption  = "Línea de tendencia con intervalo de confianza 95%"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
+### 2.3 Condiciones de juego: horario y cielo
+
+```{r conditions-tile}
+#| fig-height: 5
+
+vbp |>
+  arrange(desc(OPS)) |>
+  mutate(abbr = fct_inorder(abbr)) |>
+  select(abbr, pct_day, pct_evening, pct_night, pct_cloudy, avg_temp) |>
+  pivot_longer(-c(abbr, avg_temp), names_to = "condition", values_to = "pct") |>
+  mutate(
+    condition = recode(condition,
+      pct_day     = "Diurno (<5pm)",
+      pct_evening = "Tarde (5–7pm)",
+      pct_night   = "Nocturno (≥8pm)",
+      pct_cloudy  = "% Nublado"
+    ),
+    condition = factor(condition, levels = c("Diurno (<5pm)", "Tarde (5–7pm)",
+                                             "Nocturno (≥8pm)", "% Nublado"))
+  ) |>
+  ggplot(aes(x = condition, y = abbr, fill = pct)) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  geom_text(aes(label = percent(pct, accuracy = 1)), size = 2.8, color = "white", fontface = "bold") +
+  scale_fill_gradient(low = "#1D3557", high = COL_HITTER,
+                      name = "% juegos", labels = percent) +
+  labs(
+    title    = "Condiciones de juego por parque",
+    subtitle = "Equipos ordenados por OPS (mayor arriba)",
+    x = NULL, y = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 20, hjust = 1),
+    panel.grid  = element_blank()
+  )
+```
+
+---
+
+## 3 · Batted Ball profile
+
+### 3.1 Distribución de trayectorias por parque
+
+```{r trajectory-bars}
+#| fig-height: 8
+
+vbb |>
+  arrange(desc(fb_pct)) |>
+  mutate(abbr = fct_inorder(abbr)) |>
+  select(abbr, gb_pct, fb_pct, ld_pct, pu_pct) |>
+  pivot_longer(-abbr, names_to = "traj", values_to = "pct") |>
+  mutate(
+    traj = recode(traj,
+      gb_pct = "Ground Ball",
+      fb_pct = "Fly Ball",
+      ld_pct = "Line Drive",
+      pu_pct = "Pop Up"
+    ),
+    traj = factor(traj, levels = c("Ground Ball", "Fly Ball", "Line Drive", "Pop Up"))
+  ) |>
+  ggplot(aes(x = pct, y = abbr, fill = traj)) +
+  geom_col(width = 0.75) +
+  scale_fill_manual(
+    values = c("Ground Ball" = "#457B9D", "Fly Ball" = "#E76F51",
+               "Line Drive"  = "#2A9D8F", "Pop Up"   = "#ADB5BD"),
+    name = NULL
+  ) +
+  scale_x_continuous(labels = percent) +
+  labs(
+    title    = "Distribución de tipos de contacto por parque",
+    subtitle = "Ordenado por % Fly Ball (mayor arriba)",
+    x = "Porcentaje de BIP", y = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "top",
+    panel.grid.major.y = element_blank()
+  )
+```
+
+### 3.2 HR/FB vs Hit Rate
+
+```{r hrfb-scatter}
+#| fig-height: 6
+
+vbb |>
+  left_join(select(pf, team, park_class, PF_HR_avg_idx), by = "team") |>
+  ggplot(aes(x = hr_per_fb, y = hit_pct, color = park_class, size = fb_pct)) +
+  geom_point(alpha = 0.85) +
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
+                  min.segment.length = 0.2) +
+  scale_color_manual(values = CLASS_COLORS, name = "Perfil del parque") +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = percent) +
+  scale_size_continuous(range = c(3, 10), name = "% Fly Ball",
+                        labels = percent) +
+  labs(
+    title    = "HR por Fly Ball vs Hit Rate por parque",
+    subtitle = "Tamaño = proporción de Fly Balls generados en el parque",
+    x = "HR / FB", y = "Hit Rate (BIP)",
+    caption  = "Parques en el cuadrante superior-derecho = máximos generadores de ofensiva"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
+---
+
+## 4 · Ventaja por mano de bateo (Bat Side)
+
+### 4.1 HR Rate por parque: Zurdos vs Derechos
+
+```{r batside-hr}
+#| fig-height: 7
+
+pf_bs |>
+  filter(matchup.batSide.code %in% c("L", "R")) |>
+  select(venue, matchup.batSide.code, HR_rate, XBH_rate, H_rate) |>
+  pivot_wider(names_from = matchup.batSide.code,
+              values_from = c(HR_rate, XBH_rate, H_rate)) |>
+  mutate(
+    hr_adv_L = HR_rate_L / HR_rate_R,    # >1 = parque favorece más a zurdos
+    abbr     = abbr[venue]
+  ) |>
+  arrange(desc(hr_adv_L)) |>
+  mutate(abbr = fct_inorder(abbr)) |>
+  ggplot(aes(x = HR_rate_L, y = HR_rate_R, color = hr_adv_L)) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed",
+              color = "#888", linewidth = 0.5) +
+  geom_point(size = 5, alpha = 0.9) +
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold") +
+  scale_color_gradient2(
+    low      = COL_PITCHER,
+    mid      = "gray80",
+    high     = COL_HITTER,
+    midpoint = 1,
+    name     = "Ratio L/R",
+    labels   = number_format(accuracy = 0.01)
+  ) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = percent) +
+  annotate("text", x = 0.046, y = 0.044, label = "← favorece\nderechos",
+           color = COL_PITCHER, size = 3, hjust = 1) +
+  annotate("text", x = 0.044, y = 0.046, label = "favorece\nzurdos →",
+           color = COL_HITTER,  size = 3, hjust = 0) +
+  labs(
+    title    = "HR Rate: Bateadores Zurdos vs Derechos por parque",
+    subtitle = "Puntos por encima de la diagonal = parque favorece más a zurdos",
+    x = "HR Rate — Zurdos (L)", y = "HR Rate — Derechos (R)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
+### 4.2 Tabla de ventajas por bat side
+
+```{r batside-table}
+pf_bs |>
+  filter(matchup.batSide.code %in% c("L", "R")) |>
+  select(venue, matchup.batSide.code, HR_rate, XBH_rate, H_rate, total_PA) |>
+  pivot_wider(
+    names_from  = matchup.batSide.code,
+    values_from = c(HR_rate, XBH_rate, H_rate, total_PA),
+    names_glue  = "{.value}_{matchup.batSide.code}"
+  ) |>
+  mutate(
+    hr_adv_L  = HR_rate_L  / HR_rate_R,
+    xbh_adv_L = XBH_rate_L / XBH_rate_R,
+    h_adv_L   = H_rate_L   / H_rate_R,
+    abbr       = abbr[venue]
+  ) |>
+  arrange(desc(hr_adv_L)) |>
+  select(venue, HR_rate_L, HR_rate_R, hr_adv_L,
+         XBH_rate_L, XBH_rate_R, xbh_adv_L,
+         H_rate_L, H_rate_R, h_adv_L) |>
+  gt(rowname_col = "venue") |>
+  tab_header(
+    title    = "Ventaja por mano de bateo",
+    subtitle = "Ratio >1 = parque favorece a zurdos sobre derechos"
+  ) |>
+  tab_spanner(label = "HR Rate",  columns = c(HR_rate_L, HR_rate_R, hr_adv_L)) |>
+  tab_spanner(label = "XBH Rate", columns = c(XBH_rate_L, XBH_rate_R, xbh_adv_L)) |>
+  tab_spanner(label = "Hit Rate", columns = c(H_rate_L, H_rate_R, h_adv_L)) |>
+  cols_label(
+    HR_rate_L  = "L", HR_rate_R  = "R", hr_adv_L  = "L/R",
+    XBH_rate_L = "L", XBH_rate_R = "R", xbh_adv_L = "L/R",
+    H_rate_L   = "L", H_rate_R   = "R", h_adv_L   = "L/R"
+  ) |>
+  fmt_percent(columns = c(HR_rate_L, HR_rate_R, XBH_rate_L, XBH_rate_R,
+                           H_rate_L, H_rate_R), decimals = 1) |>
+  fmt_number(columns = c(hr_adv_L, xbh_adv_L, h_adv_L), decimals = 2) |>
+  data_color(
+    columns = c(hr_adv_L, xbh_adv_L, h_adv_L),
+    method  = "numeric",
+    palette = c(COL_PITCHER, "white", COL_HITTER),
+    domain  = c(0.7, 1.3)
+  ) |>
+  tab_style(
+    style = list(cell_fill(color = "#FFF3CD")),
+    locations = cells_stub(rows = venue == "Toros de Tijuana")
+  ) |>
+  opt_stylize(style = 1) |>
+  opt_table_font(font = google_font("IBM Plex Sans")) |>
+  tab_options(table.font.size = 11)
+```
+
+---
+
+## 5 · Perfil de parques — Guía de uso
+
+### ¿Qué parque se adapta a cada perfil de jugador?
+
+```{r profile-heatmap}
+#| fig-height: 8
+
+# Combinar métricas normalizadas en un índice de "usabilidad" por perfil
+profile_data <- pf |>
+  left_join(select(vbp, team, OPS, K_pct, BB_pct, avg_temp, pct_night), by = "team") |>
+  left_join(select(vbb, team, hr_per_fb, gb_pct, fb_pct, ld_pct), by = "team") |>
+  mutate(
+    # Perfil power hitter: HR altos, FB altos
+    score_power    = (PF_HR_avg_idx - 100) * 0.5 + fb_pct * 200 + hr_per_fb * 500,
+    # Perfil contact hitter: H altos, GB altos, K bajos
+    score_contact  = (PF_H_avg_idx  - 100) * 0.4 + gb_pct * 50 + (1 - K_pct) * 50,
+    # Perfil pitcher: K altos, HR bajos, run prevention
+    score_pitcher  = (100 - PF_HR_avg_idx) * 0.4 + (100 - PF_R_avg_idx) * 0.4 +
+                     PF_K_avg_idx * 0.2,
+    # Pitcher zurdo: diferencial bat-side L vs R favoreciendo R (opuesto)
+    across(starts_with("score_"), ~ scale(.x)[,1])
+  ) |>
+  select(abbr, score_power, score_contact, score_pitcher) |>
+  pivot_longer(-abbr, names_to = "profile", values_to = "score") |>
+  mutate(
+    profile = recode(profile,
+      score_power   = "Power Hitter",
+      score_contact = "Contact Hitter",
+      score_pitcher = "Pitcher (prevención)"
+    )
+  )
+
+profile_data |>
+  ggplot(aes(x = profile, y = reorder(abbr, score), fill = score)) +
+  geom_tile(color = "white", linewidth = 0.6) +
+  geom_text(aes(label = round(score, 1),
+                color = abs(score) > 1),
+            size = 3, fontface = "bold") +
+  scale_fill_gradient2(
+    low = COL_PITCHER, mid = "gray95", high = COL_HITTER,
+    midpoint = 0, name = "Z-score"
+  ) +
+  scale_color_manual(values = c("FALSE" = "gray30", "TRUE" = "white"),
+                     guide = "none") +
+  labs(
+    title    = "Compatibilidad parque–perfil de jugador",
+    subtitle = "Z-score normalizado · Rojo = parque muy favorable para ese perfil",
+    x = NULL, y = NULL,
+    caption  = "Power Hitter = FB% + HR/FB + PF_HR · Contact = GB% + PF_H - K% · Pitcher = PF_K + 1/PF_HR + 1/PF_R"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid = element_blank(),
+    axis.text.x = element_text(face = "bold", size = 12)
+  )
+```
+
+---
+
+## 6 · Ficha por equipo
+
+```{r team-cards}
+#| results: asis
+
+teams_sorted <- pf |> arrange(desc(PF_HR_avg_idx)) |> pull(team)
+
+for (tm in teams_sorted) {
+  pf_row  <- filter(pf,  team == tm)
+  vbp_row <- filter(vbp, team == tm)
+  vbb_row <- filter(vbb, team == tm)
+
+  cat(glue("\n\n### {tm} `{pf_row$abbr}`\n\n"))
+  cat(glue(
+    "**Perfil:** {pf_row$park_class} · ",
+    "**Temp. prom.:** {round(vbp_row$avg_temp, 1)}°F · ",
+    "**Juegos analizados:** {pf_row$total_games}\n\n"
+  ))
+
+  tibble(
+    Métrica   = c("PF HR", "PF Carreras", "PF Hits", "PF 2B", "PF K",
+                  "AVG", "OBP", "SLG", "OPS",
+                  "GB%", "FB%", "LD%", "HR/FB"),
+    Valor     = c(
+      round(pf_row$PF_HR_avg_idx, 1),
+      round(pf_row$PF_R_avg_idx, 1),
+      round(pf_row$PF_H_avg_idx, 1),
+      round(pf_row$PF_2B_avg_idx, 1),
+      round(pf_row$PF_K_avg_idx, 1),
+      round(vbp_row$AVG, 3),
+      round(vbp_row$OBP, 3),
+      round(vbp_row$SLG, 3),
+      round(vbp_row$OPS, 3),
+      round(vbb_row$gb_pct * 100, 1),
+      round(vbb_row$fb_pct * 100, 1),
+      round(vbb_row$ld_pct * 100, 1),
+      round(vbb_row$hr_per_fb * 100, 1)
+    ),
+    Referencia = c(rep("Índice (100=liga)", 5), rep("Rate", 4), rep("%", 4))
+  ) |>
+    gt() |>
+    tab_options(
+      table.font.size = 11,
+      table.border.top.style = "hidden",
+      table.border.bottom.style = "hidden"
+    ) |>
+    opt_table_font(font = google_font("IBM Plex Sans")) |>
+    print()
+}
+```
+
+---
+
+## Metodología {.appendix}
+
+- **Fuente de datos:** MLB Stats API via `{baseballr}` — boxscores y play-by-play.
+- **Período:** Temporadas regulares 2024, 2025 y 2026 (juegos finalizados al 9 de junio de 2026).
+- **Park Factor básico:** Ratio de producción ofensiva en casa vs fuera para cada equipo, ponderado por PA.
+- **Promedio multi-año:** Media ponderada por PA para reducir varianza en equipos que disputaron menos juegos (cancelados).
+- **Normalización (Índice):** PF × 100, donde 100 = promedio de liga en esa métrica.
+- **Batted ball:** Calculado desde PBP filtrando por el último lanzamiento de cada turno al bat.
+- **Discriminación por sede:** Se usó el equipo local como proxy de venue en lugar del nombre del estadio, para evitar inconsistencias por cambios de nombre o juegos en sede neutral.
