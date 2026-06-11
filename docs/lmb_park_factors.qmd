@@ -3,7 +3,7 @@ title: "LMB Park Factors 2024–2026"
 subtitle: "Análisis de condiciones de juego por sede · Liga Mexicana de Béisbol"
 author: "Axel Mora"
 date: today
-lang: es
+lang: en
 format:
   html:
     theme:
