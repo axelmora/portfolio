@@ -37,21 +37,39 @@ library(ggtext)
 library(scales)
 library(glue)
 library(ggrepel)
+library(patchwork)
 
-# ── Paleta ───────────────────────────────────────────────────────────────────
-COL_HITTER  <- "#E63946"
-COL_PITCHER <- "#2A9D8F"
-COL_NEUTRAL <- "#ADB5BD"
-COL_ACCENT  <- "#F4A261"
-COL_HIGH_ALT <- "#6A0572"   # púrpura — alta altitud
+# ── Paleta ────────────────────────────────────────────────────────────────────
+COL_HITTER   <- "#E63946"
+COL_PITCHER  <- "#2A9D8F"
+COL_NEUTRAL  <- "#ADB5BD"
+COL_ACCENT   <- "#F4A261"
+COL_HIGH_ALT <- "#6A0572"
 
-# ── Clasificación de altitud ──────────────────────────────────────────────────
-alt_breaks <- c(-Inf, 100, 800, 1600, Inf)
-alt_labels <- c("Nivel del mar (<100m)", "Baja altitud (100–800m)",
-                "Media altitud (800–1600m)", "Alta altitud (>1600m)")
+# ── Zonas altimétricas (en pies) ──────────────────────────────────────────────
+alt_breaks_ft <- c(-Inf, 330, 2625, 5250, Inf)
+alt_labels_ft <- c("Nivel del mar (<330 ft)",
+                   "Baja altitud (330–2,625 ft)",
+                   "Media altitud (2,625–5,250 ft)",
+                   "Alta altitud (>5,250 ft)")
 
-# ── Abreviaturas ─────────────────────────────────────────────────────────────
-abbr <- c(
+ALT_COLORS <- c(
+  "Nivel del mar (<330 ft)"       = "#0096C7",
+  "Baja altitud (330–2,625 ft)"   = "#52B788",
+  "Media altitud (2,625–5,250 ft)"= "#F4A261",
+  "Alta altitud (>5,250 ft)"      = "#6A0572"
+)
+
+CLASS_COLORS <- c(
+  "Extremo bateadores"    = "#C1121F",
+  "Favorable bateadores"  = "#E76F51",
+  "Neutro"                = "#ADB5BD",
+  "Favorable pitchers"    = "#457B9D",
+  "Extremo pitchers"      = "#1D3557"
+)
+
+# ── Abreviaturas ──────────────────────────────────────────────────────────────
+abbr_map <- c(
   "Acereros del Norte"            = "MVA",
   "Algodoneros Union Laguna"      = "LAG",
   "Bravos de Leon"                = "LEO",
@@ -74,19 +92,14 @@ abbr <- c(
   "Toros de Tijuana"              = "TIJ"
 )
 
-# ── Cargar datos ──────────────────────────────────────────────────────────────
-pf    <- read_csv("data/park_factors_career.csv") |>
-           mutate(abbr      = abbr[team],
-                  alt_group = cut(altitud, breaks = alt_breaks,
-                                  labels = alt_labels, right = FALSE))
-vbp   <- read_csv("data/venue_batting_profile_career.csv") |> mutate(abbr = abbr[team])
-vbb   <- read_csv("data/venue_batted_ball_career.csv")     |>
-           rename(team = venue) |> mutate(abbr = abbr[team])
-pf_bs <- read_csv("data/pf_batside_career.csv")            |> mutate(abbr = abbr[venue])
-
-# ── Clasificación de parques ──────────────────────────────────────────────────
-pf <- pf |>
+# ── Cargar y preparar datos ───────────────────────────────────────────────────
+pf <- read_csv("data/park_factors_career.csv") |>
+  select(-`...1`) |>
   mutate(
+    abbr      = abbr_map[team],
+    alt_group = cut(altitud_ft, breaks = alt_breaks_ft,
+                    labels = alt_labels_ft, right = FALSE),
+    # Clasificación del parque
     park_class = case_when(
       PF_HR_avg_idx >= 115 & PF_R_avg_idx >= 115  ~ "Extremo bateadores",
       PF_HR_avg_idx >= 105 | PF_R_avg_idx >= 110  ~ "Favorable bateadores",
@@ -95,68 +108,73 @@ pf <- pf |>
       TRUE                                          ~ "Neutro"
     ),
     park_class = factor(park_class, levels = c(
-      "Extremo bateadores", "Favorable bateadores",
-      "Neutro",
-      "Favorable pitchers", "Extremo pitchers"
-    ))
+      "Extremo bateadores", "Favorable bateadores", "Neutro",
+      "Favorable pitchers",  "Extremo pitchers"
+    )),
+    # Humedad como porcentaje legible
+    humidity_pct = humidity * 100
   )
 
-CLASS_COLORS <- c(
-  "Extremo bateadores"    = "#C1121F",
-  "Favorable bateadores"  = "#E76F51",
-  "Neutro"                = "#ADB5BD",
-  "Favorable pitchers"    = "#457B9D",
-  "Extremo pitchers"      = "#1D3557"
-)
+vbp  <- read_csv("data/venue_batting_profile_career.csv") |>
+          mutate(abbr = abbr_map[team])
+vbb  <- read_csv("data/venue_batted_ball_career.csv")     |>
+          rename(team = venue) |> mutate(abbr = abbr_map[team])
+pf_bs <- read_csv("data/pf_batside_career.csv")           |>
+           mutate(abbr = abbr_map[venue])
 
-ALT_COLORS <- c(
-  "Nivel del mar (<100m)"    = "#0096C7",
-  "Baja altitud (100–800m)"  = "#52B788",
-  "Media altitud (800–1600m)"= "#F4A261",
-  "Alta altitud (>1600m)"    = "#6A0572"
-)
+# Correlaciones clave
+cor_alt_hr  <- cor(pf$altitud_ft,    pf$PF_HR_avg_idx, use = "complete.obs")
+cor_hum_hr  <- cor(pf$humidity_pct,  pf$PF_HR_avg_idx, use = "complete.obs")
+cor_temp_hr <- cor(pf$avg_temp,      pf$PF_HR_avg_idx, use = "complete.obs")
+cor_hum_k   <- cor(pf$humidity_pct,  pf$PF_K_avg_idx,  use = "complete.obs")
 ```
 
 ## Resumen ejecutivo {.unnumbered}
 
-```{r exec-summary}
-top_hr    <- pf |> slice_max(PF_HR_avg_idx, n = 1)
-bot_hr    <- pf |> slice_min(PF_HR_avg_idx, n = 1)
-top_alt   <- pf |> slice_max(altitud, n = 1)
-bot_alt   <- pf |> slice_min(altitud, n = 1)
-top_temp  <- vbp |> slice_max(avg_temp, n = 1)
-bot_temp  <- vbp |> slice_min(avg_temp, n = 1)
-
-# Correlación altitud-HR
-cor_alt_hr <- cor(pf$altitud, pf$PF_HR_avg_idx, use = "complete.obs")
+```{r exec-kpis}
+top_hr   <- pf |> slice_max(PF_HR_avg_idx, n = 1)
+bot_hr   <- pf |> slice_min(PF_HR_avg_idx, n = 1)
+top_alt  <- pf |> slice_max(altitud_ft, n = 1)
+bot_alt  <- pf |> slice_min(altitud_ft, n = 1)
+top_hum  <- pf |> slice_max(humidity_pct, n = 1)
+bot_hum  <- pf |> slice_min(humidity_pct, n = 1)
+top_temp <- pf |> slice_max(avg_temp, n = 1)
+bot_temp <- pf |> slice_min(avg_temp, n = 1)
 ```
 
 ::: {.callout-note appearance="minimal"}
 Análisis basado en **`r sum(pf$total_games)`** juegos de temporada regular
 (2024–2026) en las 20 sedes de la Liga Mexicana de Béisbol. Desde 2024 se mantienen los mismos 20 equipos y el mismo rol de juegos (93 juegos por temporada).
-La altitud varía desde
-**`r bot_alt$altitud` msnm** (`r bot_alt$abbr`) hasta
-**`r top_alt$altitud` msnm** (`r top_alt$abbr`), un rango que —junto con
+La altitud varía de **`r round(bot_alt$altitud_ft)` ft** (`r bot_alt$abbr`) a
+**`r round(top_alt$altitud_ft, 0)` ft** (`r top_alt$abbr`); la humedad de
+**`r round(bot_hum$humidity_pct)`%** (`r bot_hum$abbr`) a
+**`r round(top_hum$humidity_pct)`%** (`r top_hum$abbr`).
 La temperatura promedio varía **`r round(bot_temp$avg_temp)`°F** en
-`r bot_temp$team` hasta **`r round(top_temp$avg_temp)`°F** en `r top_temp$team`,
-un rango que influye directamente en el vuelo de la pelota.
-La correlación altitud–PF_HR es **r = `r round(cor_alt_hr, 2)`**.
+`r bot_temp$abbr` hasta **`r round(top_temp$avg_temp)`°F** en `r top_temp$abbr`,
+Correlaciones con PF HR: altitud **r = `r round(cor_alt_hr, 2)`**,
+humedad **r = `r round(cor_hum_hr, 2)`**, temperatura **r = `r round(cor_temp_hr, 2)`**.
 :::
 
 ```{r kpi-cards}
-#| fig-height: 2.2
 tibble(
-  label = c("Mayor PF HR", "Menor PF HR", "Mayor altitud",
-            "Menor altitud", "Mayor temperatura", "Menor temperatura"),
+  label = c("Mayor PF HR", "Menor PF HR",
+            "Mayor altitud", "Menor altitud",
+            "Mayor humedad", "Menor humedad",
+            "Mayor temperatura", "Menor temperatura"),
   value = c(
     glue("{top_hr$abbr}  ·  {round(top_hr$PF_HR_avg_idx)} idx"),
     glue("{bot_hr$abbr}  ·  {round(bot_hr$PF_HR_avg_idx)} idx"),
-    glue("{top_alt$abbr}  ·  {top_alt$altitud} msnm"),
-    glue("{bot_alt$abbr}  ·  {bot_alt$altitud} msnm"),
+    glue("{top_alt$abbr}  ·  {round(top_alt$altitud_ft, 0)} ft"),
+    glue("{bot_alt$abbr}  ·  {round(bot_alt$altitud_ft, 0)} ft"),
+    glue("{top_hum$abbr}  ·  {round(top_hum$humidity_pct)}%"),
+    glue("{bot_hum$abbr}  ·  {round(bot_hum$humidity_pct)}%"),
     glue("{top_temp$abbr}  ·  {round(top_temp$avg_temp)}°F"),
     glue("{bot_temp$abbr}  ·  {round(bot_temp$avg_temp)}°F")
   ),
-  color = c(COL_HITTER, COL_PITCHER, COL_HIGH_ALT, "#0096C7", COL_ACCENT, "#457B9D")
+  color = c(COL_HITTER, COL_PITCHER,
+            COL_HIGH_ALT, "#0096C7",
+            "#457B9D", "#52B788",
+            COL_ACCENT, "#264653")
 ) |>
   gt() |>
   cols_label(label = "", value = "") |>
@@ -168,194 +186,296 @@ tibble(
   tab_style(style = cell_text(color = "#555", size = "small"),
             locations = cells_body(columns = label)) |>
   cols_hide(color) |>
-  tab_options(table.border.top.style = "hidden",
+  tab_options(table.border.top.style    = "hidden",
               table.border.bottom.style = "hidden",
-              column_labels.hidden = TRUE) |>
+              column_labels.hidden      = TRUE) |>
   opt_table_font(font = google_font("IBM Plex Sans"))
 ```
 
 ---
 
-## 1 · Altitud — El factor físico dominante
+## 1 · Contexto físico: altitud, humedad y temperatura
 
-> La presión atmosférica disminuye con la altitud, reduciendo la resistencia del aire sobre la pelota. A **2 232 msnm** (Ciudad de México), la pelota viaja aproximadamente un **8–10% más lejos** que a nivel del mar bajo condiciones equivalentes.
+> Tres variables ambientales determinan el comportamiento de la pelota. La **altitud** reduce la densidad del aire (menos resistencia → más distancia). La **humedad alta** hace la pelota más pesada y ligeramente más lenta. La **temperatura** afecta la presión interna y la densidad del aire.
 
 ### 1.1 Altitud por parque
 
 ```{r altitude-bar}
 #| fig-height: 6.5
-
 pf |>
-  arrange(desc(altitud)) |>
+  arrange(desc(altitud_ft)) |>
   mutate(abbr = fct_inorder(abbr)) |>
-  ggplot(aes(x = altitud, y = abbr, fill = alt_group)) +
+  ggplot(aes(x = altitud_ft, y = abbr, fill = alt_group)) +
   geom_col(width = 0.75, alpha = 0.9) +
-  geom_text(aes(label = paste0(altitud, " m")),
-            hjust = -0.1, size = 3.2, fontface = "bold") +
-  geom_vline(xintercept = c(100, 800, 1600),
+  geom_text(aes(label = paste0(comma(round(altitud_ft)), " ft\n(",
+                                altitud, " m)")),
+            hjust = -0.05, size = 2.9, lineheight = 0.9) +
+  geom_vline(xintercept = c(330, 2625, 5250),
              linetype = "dashed", color = "gray60", linewidth = 0.4) +
-  annotate("text", x = c(100, 800, 1600), y = 0.5,
-           label = c("100m", "800m", "1600m"),
-           color = "gray40", size = 2.8, hjust = -0.1, vjust = 0) +
-  scale_fill_manual(values = ALT_COLORS, name = "Zona altimétrica") +
-  scale_x_continuous(expand = expansion(mult = c(0, 0.15)),
+  scale_fill_manual(values = ALT_COLORS, name = NULL) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.22)),
                      labels = comma) +
-  labs(
-    title    = "Altitud de los parques LMB",
-    subtitle = "Los 20 estadios abarcan desde el nivel del mar hasta 2 232 msnm",
-    x = "Altitud (msnm)", y = NULL
-  ) +
+  labs(title    = "Altitud de los parques LMB · en pies",
+       subtitle = "De 10 ft (Campeche) a 7,323 ft (Ciudad de México)",
+       x = "Altitud (ft)", y = NULL) +
   theme_minimal(base_size = 12) +
-  theme(
-    plot.title    = element_text(face = "bold", size = 15),
-    plot.subtitle = element_text(color = "#555"),
-    legend.position = "top",
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor   = element_blank()
-  )
+  theme(plot.title = element_text(face = "bold", size = 15),
+        legend.position = "top",
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor   = element_blank())
 ```
 
-### 1.2 Altitud vs PF_HR — La correlación clave
+### 1.2 Humedad promedio por parque
 
-```{r alt-hr-scatter}
-#| fig-height: 6
-
+```{r humidity-bar}
+#| fig-height: 6.5
 pf |>
-  ggplot(aes(x = altitud, y = PF_HR_avg_idx, color = alt_group, size = avg_temp)) +
-  geom_hline(yintercept = 100, linetype = "dashed", color = "#888", linewidth = 0.4) +
+  arrange(desc(humidity_pct)) |>
+  mutate(abbr = fct_inorder(abbr)) |>
+  ggplot(aes(x = humidity_pct, y = abbr,
+             fill = humidity_pct)) +
+  geom_col(width = 0.75, alpha = 0.9) +
+  geom_text(aes(label = paste0(round(humidity_pct), "%")),
+            hjust = -0.2, size = 3.2, fontface = "bold") +
+  scale_fill_gradient(low = "#F4A261", high = "#0096C7",
+                      name = "Humedad (%)") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.12)),
+                     labels = function(x) paste0(x, "%")) +
+  labs(title    = "Humedad promedio por parque",
+       subtitle = "Parques costeros y tropicales concentran mayor humedad",
+       x = "Humedad promedio (%)", y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        legend.position = "none",
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor   = element_blank())
+```
+
+### 1.3 Mapa de condiciones: altitud × humedad × temperatura
+
+```{r env-scatter}
+#| fig-height: 6
+pf |>
+  ggplot(aes(x = altitud_ft, y = humidity_pct,
+             color = avg_temp, size = PF_HR_avg_idx)) +
+  geom_point(alpha = 0.88) +
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
+                  min.segment.length = 0.2, max.overlaps = 20) +
+  scale_color_gradient(low = "#264653", high = "#E63946",
+                       name = "Temp. prom. (°F)") +
+  scale_size_continuous(range = c(3, 12), name = "PF HR idx") +
+  scale_x_continuous(labels = comma) +
+  scale_y_continuous(labels = function(x) paste0(x, "%")) +
+  labs(
+    title    = "Mapa ambiental de los 20 parques LMB",
+    subtitle = "Altitud (X) · Humedad (Y) · Color = temperatura · Tamaño = PF HR",
+    x = "Altitud (ft)", y = "Humedad promedio (%)",
+    caption  = "Parques en esquina inferior-derecha: alta altitud + baja humedad = máximo efecto sobre la pelota"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
+---
+
+## 2 · Efecto de cada variable sobre los park factors
+
+### 2.1 Altitud vs PF HR
+
+```{r alt-hr}
+#| fig-height: 5.5
+pf |>
+  ggplot(aes(x = altitud_ft, y = PF_HR_avg_idx,
+             color = alt_group, size = humidity_pct)) +
+  geom_hline(yintercept = 100, linetype = "dashed",
+             color = "#888", linewidth = 0.4) +
   geom_smooth(aes(group = 1), method = "lm", se = TRUE,
               color = "gray50", fill = "gray80", alpha = 0.2,
               linewidth = 0.8, show.legend = FALSE) +
   geom_point(alpha = 0.88) +
-  geom_text_repel(aes(label = abbr), size = 3.2, fontface = "bold",
-                  min.segment.length = 0.2, max.overlaps = 20) +
-  annotate("text", x = 2100, y = 101,
+  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
+                  min.segment.length = 0.2) +
+  annotate("text", x = max(pf$altitud_ft) * 0.95, y = 102,
            label = glue("r = {round(cor_alt_hr, 2)}"),
            size = 4.5, fontface = "bold", color = "#333") +
-  scale_color_manual(values = ALT_COLORS, name = "Zona altimétrica") +
-  scale_size_continuous(range = c(3, 10), name = "Temp. prom. (°F)") +
+  scale_color_manual(values = ALT_COLORS, name = "Zona") +
+  scale_size_continuous(range = c(3, 10), name = "Humedad (%)",
+                        labels = function(x) paste0(x, "%")) +
   scale_x_continuous(labels = comma) +
-  scale_y_continuous(labels = function(x) paste0(x)) +
-  labs(
-    title    = "Altitud vs Park Factor HR",
-    subtitle = "Mayor altitud → menor resistencia del aire → más HR · tamaño = temperatura",
-    x = "Altitud (msnm)", y = "PF HR Index",
-    caption  = "Línea de tendencia con intervalo de confianza 95%"
-  ) +
+  labs(title    = "Altitud vs Park Factor HR",
+       subtitle = "Tamaño = humedad · mayor altitud + menor humedad = más HR",
+       x = "Altitud (ft)", y = "PF HR Index") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
+### 2.2 Humedad vs park factors ofensivos y defensivos
+
+```{r humidity-pf}
+#| fig-height: 6
+
+ph1 <- pf |>
+  ggplot(aes(x = humidity_pct, y = PF_HR_avg_idx,
+             color = alt_group)) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "#888") +
+  geom_smooth(aes(group = 1), method = "lm", se = TRUE,
+              color = "gray50", fill = "gray80", alpha = 0.2,
+              linewidth = 0.7, show.legend = FALSE) +
+  geom_point(size = 3.5, alpha = 0.9) +
+  geom_text_repel(aes(label = abbr), size = 2.6, fontface = "bold") +
+  annotate("text", x = max(pf$humidity_pct) * 0.97, y = 102,
+           label = glue("r = {round(cor_hum_hr, 2)}"),
+           size = 4, fontface = "bold", color = "#333") +
+  scale_color_manual(values = ALT_COLORS, guide = "none") +
+  scale_x_continuous(labels = function(x) paste0(x, "%")) +
+  labs(title = "Humedad vs PF HR",
+       x = "Humedad (%)", y = "PF HR Index") +
+  theme_minimal(base_size = 11) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+
+ph2 <- pf |>
+  ggplot(aes(x = humidity_pct, y = PF_K_avg_idx,
+             color = alt_group)) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "#888") +
+  geom_smooth(aes(group = 1), method = "lm", se = TRUE,
+              color = "gray50", fill = "gray80", alpha = 0.2,
+              linewidth = 0.7, show.legend = FALSE) +
+  geom_point(size = 3.5, alpha = 0.9) +
+  geom_text_repel(aes(label = abbr), size = 2.6, fontface = "bold") +
+  annotate("text", x = max(pf$humidity_pct) * 0.97, y = 102,
+           label = glue("r = {round(cor_hum_k, 2)}"),
+           size = 4, fontface = "bold", color = "#333") +
+  scale_color_manual(values = ALT_COLORS, name = "Zona") +
+  scale_x_continuous(labels = function(x) paste0(x, "%")) +
+  labs(title = "Humedad vs PF K (strikeouts)",
+       x = "Humedad (%)", y = "PF K Index",
+       caption = "PF K alto = más ponches → favorable para pitchers") +
+  theme_minimal(base_size = 11) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+
+ph1 + ph2 + plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+```
+
+### 2.3 Temperatura vs OPS (desde venue_batting_profile)
+
+```{r temp-ops}
+#| fig-height: 5
+vbp |>
+  left_join(select(pf, team, altitud_ft, alt_group, humidity_pct), by = "team") |>
+  ggplot(aes(x = avg_temp, y = OPS, color = alt_group, size = humidity_pct)) +
+  geom_smooth(aes(group = 1), method = "lm", se = TRUE,
+              color = "gray60", fill = "gray85", alpha = 0.2,
+              linewidth = 0.7, show.legend = FALSE) +
+  geom_point(alpha = 0.88) +
+  geom_text_repel(aes(label = abbr), size = 2.9, fontface = "bold") +
+  scale_color_manual(values = ALT_COLORS, name = "Zona altimétrica") +
+  scale_size_continuous(range = c(2, 8), name = "Humedad (%)",
+                        labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(labels = function(x) paste0(x, "°F")) +
+  labs(title    = "Temperatura vs OPS generado en el parque",
+       subtitle = "Tamaño = humedad · Color = zona altimétrica",
+       x = "Temperatura promedio (°F)", y = "OPS") +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold"),
         panel.grid.minor = element_blank(),
         legend.position = "right")
 ```
 
-### 1.3 Altitud + Temperatura — Efecto combinado sobre PF_R
+### 2.4 Índice ambiental combinado: altitud + humedad + temperatura
 
-```{r alt-temp-2d}
+> Se construye un **Índice Ambiental de Bateo (IAB)** que resume el efecto combinado de las tres variables físicas sobre la producción ofensiva. Valores altos favorecen al bateador.
+
+```{r env-index}
 #| fig-height: 6
 
-pf |>
-  ggplot(aes(x = altitud, y = avg_temp, color = PF_R_avg_idx, size = PF_HR_avg_idx)) +
-  geom_point(alpha = 0.9) +
-  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
-                  min.segment.length = 0.2) +
-  scale_color_gradient2(
-    low      = "#1D3557",
-    mid      = "gray90",
-    high     = "#C1121F",
-    midpoint = 100,
-    name     = "PF Carreras"
-  ) +
-  scale_size_continuous(range = c(3, 11), name = "PF HR idx") +
-  scale_x_continuous(labels = comma) +
+pf_env <- pf |>
+  mutate(
+    # Z-scores individuales (altitud y temperatura en dirección positiva,
+    # humedad en negativa porque más humedad = pelota más pesada = menos HR)
+    z_alt  =  scale(altitud_ft)[,1],
+    z_temp =  scale(avg_temp)[,1],
+    z_hum  = -scale(humidity_pct)[,1],
+    # IAB ponderado: altitud tiene mayor peso (efecto más documentado)
+    IAB    = 0.50 * z_alt + 0.30 * z_temp + 0.20 * z_hum
+  )
+
+pf_env |>
+  arrange(IAB) |>
+  mutate(abbr = fct_inorder(abbr),
+         fill_color = if_else(IAB >= 0, COL_HITTER, COL_PITCHER)) |>
+  ggplot(aes(x = IAB, y = abbr, fill = fill_color)) +
+  geom_col(width = 0.72, alpha = 0.88) +
+  geom_vline(xintercept = 0, linewidth = 0.6, color = "#333") +
+  geom_text(aes(label = round(IAB, 2),
+                hjust = if_else(IAB >= 0, -0.15, 1.15)),
+            size = 3, fontface = "bold") +
+  scale_fill_identity() +
+  scale_x_continuous(expand = expansion(mult = c(0.12, 0.12))) +
   labs(
-    title    = "Altitud × Temperatura → Park Factor Carreras",
-    subtitle = "Color = PF Carreras · Tamaño = PF HR · Esquina sup-derecha = parques más ofensivos",
-    x = "Altitud (msnm)", y = "Temperatura promedio (°F)"
+    title    = "Índice Ambiental de Bateo (IAB)",
+    subtitle = "Combina altitud (50%), temperatura (30%) y humedad inversa (20%) · Z-score",
+    x = "IAB (positivo = favorece bateador)", y = NULL,
+    caption  = "Pesos: altitud 50% · temperatura 30% · humedad 20% (invertida)"
   ) +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold"),
-        panel.grid.minor = element_blank())
-```
-
-### 1.4 Park factors por zona altimétrica — Boxplot comparativo
-
-```{r alt-group-box}
-#| fig-height: 6
-
-pf |>
-  select(alt_group, PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_K_avg_idx) |>
-  pivot_longer(-alt_group, names_to = "factor", values_to = "idx") |>
-  mutate(factor = recode(factor,
-    PF_HR_avg_idx = "HR", PF_R_avg_idx = "Carreras",
-    PF_H_avg_idx  = "Hits", PF_K_avg_idx = "Strikeouts"
-  )) |>
-  ggplot(aes(x = alt_group, y = idx, fill = alt_group)) +
-  geom_hline(yintercept = 100, linetype = "dashed", color = "#888") +
-  geom_boxplot(alpha = 0.8, width = 0.5, outlier.shape = 21) +
-  geom_jitter(aes(color = alt_group), width = 0.15, size = 2, alpha = 0.7) +
-  scale_fill_manual(values  = ALT_COLORS, guide = "none") +
-  scale_color_manual(values = ALT_COLORS, guide = "none") +
-  scale_x_discrete(labels = function(x) str_wrap(x, 12)) +
-  facet_wrap(~ factor, ncol = 2) +
-  labs(
-    title    = "Distribución de park factors por zona altimétrica",
-    subtitle = "Índice 100 = promedio de liga",
-    x = NULL, y = "Índice"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    plot.title = element_text(face = "bold"),
-    strip.text = element_text(face = "bold"),
-    panel.grid.minor = element_blank()
-  )
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor   = element_blank())
 ```
 
 ---
 
-## 2 · Park Factors — Vista global
+## 3 · Park Factors — Vista global
 
-### 2.1 Mapa HR vs Carreras (con altitud)
+### 3.1 HR vs Carreras (codificado por condiciones ambientales)
 
 ```{r pf-bubble}
 #| fig-height: 7
-
 pf |>
   ggplot(aes(x = PF_HR_avg_idx, y = PF_R_avg_idx,
-             color = alt_group, size = altitud)) +
-  geom_vline(xintercept = 100, linetype = "dashed", color = "#888", linewidth = 0.4) +
-  geom_hline(yintercept = 100, linetype = "dashed", color = "#888", linewidth = 0.4) +
+             color = alt_group, size = humidity_pct)) +
+  geom_vline(xintercept = 100, linetype = "dashed",
+             color = "#888", linewidth = 0.4) +
+  geom_hline(yintercept = 100, linetype = "dashed",
+             color = "#888", linewidth = 0.4) +
   annotate("rect", xmin = 100, xmax = Inf,  ymin = 100, ymax = Inf,
-           fill = COL_HITTER, alpha = 0.04) +
+           fill = COL_HITTER,  alpha = 0.04) +
   annotate("rect", xmin = -Inf, xmax = 100, ymin = -Inf, ymax = 100,
            fill = COL_PITCHER, alpha = 0.04) +
-  annotate("text", x = 165, y = 101, label = "Bateadores ↗",
-           color = COL_HITTER, size = 3, fontface = "italic", hjust = 1) +
-  annotate("text", x = 68,  y = 99,  label = "↙ Pitchers",
-           color = COL_PITCHER, size = 3, fontface = "italic", hjust = 0) +
+  annotate("text", x = 165, y = 101,
+           label = "Bateadores ↗", color = COL_HITTER,
+           size = 3, fontface = "italic", hjust = 1) +
+  annotate("text", x = 68, y = 99,
+           label = "↙ Pitchers", color = COL_PITCHER,
+           size = 3, fontface = "italic", hjust = 0) +
   geom_point(alpha = 0.88) +
   geom_text_repel(aes(label = abbr), size = 3, fontface = "bold",
                   min.segment.length = 0.2, max.overlaps = 20) +
   scale_color_manual(values = ALT_COLORS, name = "Zona altimétrica") +
-  scale_size_continuous(range = c(3, 12), name = "Altitud (msnm)",
-                        labels = comma) +
+  scale_size_continuous(range = c(3, 12), name = "Humedad (%)",
+                        labels = function(x) paste0(x, "%")) +
   labs(
     title    = "Park Factors LMB 2024–2026",
-    subtitle = "Índice HR (X) vs Índice Carreras (Y) · Color y tamaño = altitud del parque",
+    subtitle = "PF HR (X) vs PF Carreras (Y) · Color = altitud · Tamaño = humedad",
     x = "PF HR Index", y = "PF Carreras Index",
     caption  = "Índice 100 = promedio de liga · Ponderado por PA"
   ) +
   theme_minimal(base_size = 12) +
-  theme(plot.title = element_text(face = "bold", size = 16),
-        plot.subtitle = element_text(color = "#555", size = 11),
+  theme(plot.title = element_text(face = "bold", size = 15),
         panel.grid.minor = element_blank())
 ```
 
-### 2.2 Ranking completo
+### 3.2 Ranking completo con variables ambientales
 
 ```{r pf-table}
 pf |>
   arrange(desc(PF_HR_avg_idx)) |>
-  select(team, altitud, avg_temp, park_class,
+  select(team, altitud_ft, altitud, humidity_pct, avg_temp, park_class,
          PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx,
          PF_2B_avg_idx, PF_K_avg_idx, PF_BB_avg_idx,
          total_games) |>
@@ -365,9 +485,11 @@ pf |>
     subtitle = "Ordenado por PF HR · Índice 100 = promedio de liga"
   ) |>
   cols_label(
-    altitud        = "Alt (m)",
-    avg_temp       = "°F",
-    park_class     = "Perfil",
+    altitud_ft   = "Alt (ft)",
+    altitud      = "Alt (m)",
+    humidity_pct = "Humedad",
+    avg_temp     = "°F",
+    park_class   = "Perfil",
     PF_HR_avg_idx  = "HR",
     PF_R_avg_idx   = "Carreras",
     PF_H_avg_idx   = "Hits",
@@ -376,13 +498,20 @@ pf |>
     PF_BB_avg_idx  = "BB",
     total_games    = "G"
   ) |>
-  fmt_number(columns = c(PF_HR_avg_idx:PF_BB_avg_idx), decimals = 1) |>
-  fmt_number(columns = avg_temp, decimals = 1) |>
+  fmt_number(columns = altitud_ft, decimals = 0, use_seps = TRUE) |>
   fmt_integer(columns = c(altitud, total_games)) |>
+  fmt_number(columns = humidity_pct, decimals = 0, suffix = "%") |>
+  fmt_number(columns = avg_temp, decimals = 1) |>
+  fmt_number(columns = c(PF_HR_avg_idx:PF_BB_avg_idx), decimals = 1) |>
   data_color(
-    columns = altitud,
+    columns = altitud_ft,
     method  = "numeric",
     palette = c("#0096C7", "#52B788", "#F4A261", "#6A0572")
+  ) |>
+  data_color(
+    columns = humidity_pct,
+    method  = "numeric",
+    palette = c("#F4A261", "#ADB5BD", "#0096C7")
   ) |>
   data_color(
     columns = c(PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_2B_avg_idx),
@@ -394,36 +523,64 @@ pf |>
     method  = "numeric",
     palette = c("#C1121F", "#ADB5BD", "#1D3557")
   ) |>
-  tab_spanner(label = "Contexto",
-              columns = c(altitud, avg_temp, park_class)) |>
-  tab_spanner(label = "Ofensivos",
+  tab_spanner(label = "Ambiente",
+              columns = c(altitud_ft, altitud, humidity_pct, avg_temp, park_class)) |>
+  tab_spanner(label = "Ofensivos (bateador)",
               columns = c(PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_2B_avg_idx)) |>
   tab_spanner(label = "Pitching",
               columns = c(PF_K_avg_idx, PF_BB_avg_idx)) |>
-  tab_style(
-    style = list(cell_fill(color = "#FFF3CD")),
-    locations = cells_stub(rows = team == "Toros de Tijuana")
-  ) |>
+  tab_style(style = list(cell_fill(color = "#FFF3CD")),
+            locations = cells_stub(rows = team == "Toros de Tijuana")) |>
   opt_stylize(style = 1) |>
   opt_table_font(font = google_font("IBM Plex Sans")) |>
   tab_options(table.font.size = 12)
 ```
 
+### 3.3 Park factors por zona altimétrica — distribución
+
+```{r alt-group-box}
+#| fig-height: 6.5
+pf |>
+  select(alt_group, humidity_pct,
+         PF_HR_avg_idx, PF_R_avg_idx, PF_H_avg_idx, PF_K_avg_idx) |>
+  pivot_longer(-c(alt_group, humidity_pct),
+               names_to = "factor", values_to = "idx") |>
+  mutate(factor = recode(factor,
+    PF_HR_avg_idx = "HR",
+    PF_R_avg_idx  = "Carreras",
+    PF_H_avg_idx  = "Hits",
+    PF_K_avg_idx  = "Strikeouts"
+  )) |>
+  ggplot(aes(x = alt_group, y = idx, fill = alt_group)) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "#888") +
+  geom_boxplot(alpha = 0.8, width = 0.5, outlier.shape = 21) +
+  geom_jitter(aes(color = alt_group), width = 0.15, size = 2, alpha = 0.7) +
+  scale_fill_manual(values  = ALT_COLORS, guide = "none") +
+  scale_color_manual(values = ALT_COLORS, guide = "none") +
+  scale_x_discrete(labels = function(x) str_wrap(x, 10)) +
+  facet_wrap(~ factor, ncol = 2) +
+  labs(title    = "Distribución de park factors por zona altimétrica",
+       subtitle = "Índice 100 = promedio de liga",
+       x = NULL, y = "Índice") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        strip.text = element_text(face = "bold"),
+        panel.grid.minor = element_blank())
+```
+
 ---
 
-## 3 · Perfil ofensivo
+## 4 · Perfil ofensivo (venue_batting_profile)
 
-### 3.1 Slash line por parque
+### 4.1 Slash line comparativa
 
 ```{r slash-bars}
 #| fig-height: 8
-
 vbp |>
-  left_join(select(pf, team, altitud, alt_group), by = "team") |>
   arrange(desc(OPS)) |>
   mutate(abbr = fct_inorder(abbr)) |>
-  select(abbr, alt_group, AVG, OBP, SLG) |>
-  pivot_longer(-c(abbr, alt_group), names_to = "stat", values_to = "value") |>
+  select(abbr, AVG, OBP, SLG) |>
+  pivot_longer(-abbr, names_to = "stat", values_to = "value") |>
   mutate(stat = factor(stat, levels = c("SLG", "OBP", "AVG"))) |>
   ggplot(aes(x = value, y = abbr, fill = stat)) +
   geom_col(position = "identity", alpha = 0.82, width = 0.65) +
@@ -434,206 +591,194 @@ vbp |>
     name = NULL
   ) +
   scale_x_continuous(labels = label_number(accuracy = 0.001)) +
-  labs(
-    title    = "Slash line por parque — LMB 2024–2026",
-    subtitle = "Ordenado por OPS · línea punteada = AVG promedio de liga",
-    x = NULL, y = NULL
-  ) +
+  labs(title    = "Slash line por parque — LMB 2024–2026",
+       subtitle = "Ordenado por OPS · línea punteada = AVG promedio de liga",
+       x = NULL, y = NULL) +
   theme_minimal(base_size = 11) +
   theme(plot.title = element_text(face = "bold"),
         legend.position = "top",
         panel.grid.major.y = element_blank())
 ```
 
-### 3.2 Temperatura y altitud vs OPS
+### 4.2 Condiciones de juego: horario y cielo
 
-```{r temp-ops}
+```{r conditions-tile}
 #| fig-height: 5.5
-
-p1 <- vbp |>
-  left_join(select(pf, team, altitud, alt_group), by = "team") |>
-  ggplot(aes(x = avg_temp, y = OPS, color = alt_group)) +
-  geom_smooth(aes(group = 1), method = "lm", se = TRUE,
-              color = "gray60", fill = "gray85", alpha = 0.2,
-              linewidth = 0.7, show.legend = FALSE) +
-  geom_point(size = 4, alpha = 0.9) +
-  geom_text_repel(aes(label = abbr), size = 2.8, fontface = "bold") +
-  scale_color_manual(values = ALT_COLORS, guide = "none") +
-  scale_x_continuous(labels = function(x) paste0(x, "°F")) +
-  labs(title = "Temperatura vs OPS", x = "Temperatura prom. (°F)", y = "OPS") +
+vbp |>
+  left_join(select(pf, team, humidity_pct, altitud_ft), by = "team") |>
+  arrange(desc(OPS)) |>
+  mutate(abbr = fct_inorder(abbr)) |>
+  select(abbr, pct_day, pct_evening, pct_night, pct_cloudy) |>
+  pivot_longer(-abbr, names_to = "condition", values_to = "pct") |>
+  mutate(condition = recode(condition,
+    pct_day     = "Diurno (<5pm)",
+    pct_evening = "Tarde (5–7pm)",
+    pct_night   = "Nocturno (≥8pm)",
+    pct_cloudy  = "% Nublado"
+  ),
+  condition = factor(condition,
+    levels = c("Diurno (<5pm)", "Tarde (5–7pm)", "Nocturno (≥8pm)", "% Nublado"))) |>
+  ggplot(aes(x = condition, y = abbr, fill = pct)) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  geom_text(aes(label = percent(pct, accuracy = 1)),
+            size = 2.8, color = "white", fontface = "bold") +
+  scale_fill_gradient(low = "#1D3557", high = COL_HITTER,
+                      name = "% juegos", labels = percent) +
+  labs(title    = "Condiciones de juego por parque",
+       subtitle = "Equipos ordenados por OPS (mayor arriba)",
+       x = NULL, y = NULL) +
   theme_minimal(base_size = 11) +
-  theme(plot.title = element_text(face = "bold"),
-        panel.grid.minor = element_blank())
-
-p2 <- vbp |>
-  left_join(select(pf, team, altitud, alt_group), by = "team") |>
-  ggplot(aes(x = altitud, y = OPS, color = alt_group)) +
-  geom_smooth(aes(group = 1), method = "lm", se = TRUE,
-              color = "gray60", fill = "gray85", alpha = 0.2,
-              linewidth = 0.7, show.legend = FALSE) +
-  geom_point(size = 4, alpha = 0.9) +
-  geom_text_repel(aes(label = abbr), size = 2.8, fontface = "bold") +
-  scale_color_manual(values = ALT_COLORS, name = "Zona") +
-  scale_x_continuous(labels = comma) +
-  labs(title = "Altitud vs OPS", x = "Altitud (msnm)", y = "OPS") +
-  theme_minimal(base_size = 11) +
-  theme(plot.title = element_text(face = "bold"),
-        panel.grid.minor = element_blank())
-
-library(patchwork)
-p1 + p2 + plot_layout(guides = "collect") &
-  theme(legend.position = "bottom")
+  theme(plot.title   = element_text(face = "bold"),
+        axis.text.x  = element_text(angle = 20, hjust = 1),
+        panel.grid   = element_blank())
 ```
 
 ---
 
-## 4 · Batted Ball profile
+## 5 · Batted Ball profile
 
-### 4.1 Trayectorias por parque
+### 5.1 Trayectorias y HR/FB
 
-```{r trajectory-bars}
-#| fig-height: 8
+```{r batball-combo}
+#| fig-height: 7
 
-vbb |>
-  left_join(select(pf, team, altitud), by = "team") |>
+p_traj <- vbb |>
+  left_join(select(pf, team, altitud_ft, alt_group), by = "team") |>
   arrange(desc(fb_pct)) |>
   mutate(abbr = fct_inorder(abbr)) |>
-  select(abbr, altitud, gb_pct, fb_pct, ld_pct, pu_pct) |>
-  pivot_longer(-c(abbr, altitud), names_to = "traj", values_to = "pct") |>
+  select(abbr, gb_pct, fb_pct, ld_pct, pu_pct) |>
+  pivot_longer(-abbr, names_to = "traj", values_to = "pct") |>
   mutate(traj = recode(traj,
-    gb_pct = "Ground Ball", fb_pct = "Fly Ball",
-    ld_pct = "Line Drive",  pu_pct = "Pop Up"
+    gb_pct = "GB", fb_pct = "FB", ld_pct = "LD", pu_pct = "PU"
   ),
-  traj = factor(traj, levels = c("Ground Ball","Fly Ball","Line Drive","Pop Up"))) |>
+  traj = factor(traj, levels = c("GB","FB","LD","PU"))) |>
   ggplot(aes(x = pct, y = abbr, fill = traj)) +
   geom_col(width = 0.75) +
   scale_fill_manual(
-    values = c("Ground Ball"="#457B9D","Fly Ball"="#E76F51",
-               "Line Drive"="#2A9D8F","Pop Up"="#ADB5BD"),
-    name = NULL
-  ) +
+    values = c("GB"="#457B9D","FB"="#E76F51","LD"="#2A9D8F","PU"="#ADB5BD"),
+    name = NULL) +
   scale_x_continuous(labels = percent) +
-  labs(
-    title    = "Distribución de tipos de contacto por parque",
-    subtitle = "Ordenado por % Fly Ball · Parques de mayor altitud tienden a más FB",
-    x = "% de BIP", y = NULL
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(plot.title = element_text(face = "bold"),
-        legend.position = "top",
+  labs(title = "Trayectorias por parque", x = "% BIP", y = NULL) +
+  theme_minimal(base_size = 10) +
+  theme(legend.position = "top",
         panel.grid.major.y = element_blank())
-```
 
-### 4.2 HR/FB vs altitud
-
-```{r hrfb-alt}
-#| fig-height: 5.5
-
-vbb |>
-  left_join(select(pf, team, altitud, alt_group, PF_HR_avg_idx), by = "team") |>
-  ggplot(aes(x = altitud, y = hr_per_fb, color = alt_group, size = PF_HR_avg_idx)) +
+p_hrfb <- vbb |>
+  left_join(select(pf, team, altitud_ft, alt_group, humidity_pct), by = "team") |>
+  ggplot(aes(x = altitud_ft, y = hr_per_fb,
+             color = alt_group, size = humidity_pct)) +
   geom_smooth(aes(group = 1), method = "lm", se = TRUE,
-              color = "gray60", fill = "gray85", alpha = 0.2,
+              color = "gray50", fill = "gray80", alpha = 0.2,
               linewidth = 0.7, show.legend = FALSE) +
   geom_point(alpha = 0.88) +
-  geom_text_repel(aes(label = abbr), size = 3, fontface = "bold") +
-  scale_color_manual(values = ALT_COLORS, name = "Zona altimétrica") +
-  scale_size_continuous(range = c(3, 10), name = "PF HR idx") +
+  geom_text_repel(aes(label = abbr), size = 2.6, fontface = "bold") +
+  scale_color_manual(values = ALT_COLORS, guide = "none") +
+  scale_size_continuous(range = c(2, 8), name = "Humedad (%)",
+                        labels = function(x) paste0(x, "%")) +
   scale_x_continuous(labels = comma) +
   scale_y_continuous(labels = percent) +
-  labs(
-    title    = "Altitud vs HR por Fly Ball",
-    subtitle = "A mayor altitud, más Fly Balls se convierten en HR",
-    x = "Altitud (msnm)", y = "HR / FB"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(plot.title = element_text(face = "bold"),
-        panel.grid.minor = element_blank())
+  labs(title = "Altitud vs HR/FB · tamaño = humedad",
+       x = "Altitud (ft)", y = "HR / FB") +
+  theme_minimal(base_size = 10) +
+  theme(panel.grid.minor = element_blank())
+
+p_traj + p_hrfb + plot_layout(widths = c(1.2, 1))
 ```
 
 ---
 
-## 5 · Ventaja por mano de bateo
+## 6 · Ventaja por mano de bateo
 
-### 5.1 HR Rate: Zurdos vs Derechos por altitud
+### 6.1 HR Rate: Zurdos vs Derechos
 
 ```{r batside-hr}
 #| fig-height: 6.5
-
 pf_bs |>
-  filter(matchup.batSide.code %in% c("L", "R")) |>
+  filter(matchup.batSide.code %in% c("L","R")) |>
   select(venue, matchup.batSide.code, HR_rate, XBH_rate, H_rate) |>
   pivot_wider(names_from  = matchup.batSide.code,
               values_from = c(HR_rate, XBH_rate, H_rate)) |>
   mutate(
     hr_adv_L = HR_rate_L / HR_rate_R,
-    abbr     = abbr[venue]
+    abbr     = abbr_map[venue]
   ) |>
-  left_join(select(pf, team, altitud, alt_group), by = c("venue" = "team")) |>
-  ggplot(aes(x = HR_rate_L, y = HR_rate_R, color = alt_group, size = altitud)) +
+  left_join(select(pf, team, altitud_ft, alt_group, humidity_pct),
+            by = c("venue" = "team")) |>
+  ggplot(aes(x = HR_rate_L, y = HR_rate_R,
+             color = alt_group, size = humidity_pct)) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed",
               color = "#888", linewidth = 0.5) +
   geom_point(alpha = 0.88) +
   geom_text_repel(aes(label = abbr), size = 3, fontface = "bold") +
   scale_color_manual(values = ALT_COLORS, name = "Zona altimétrica") +
-  scale_size_continuous(range = c(3, 10), name = "Altitud (msnm)", labels = comma) +
+  scale_size_continuous(range = c(3, 10), name = "Humedad (%)",
+                        labels = function(x) paste0(x, "%")) +
   scale_x_continuous(labels = percent) +
   scale_y_continuous(labels = percent) +
   annotate("text", x = 0.046, y = 0.044,
            label = "← favorece\nderechos", color = "#457B9D", size = 3, hjust = 1) +
   annotate("text", x = 0.044, y = 0.046,
            label = "favorece\nzurdos →",  color = "#C1121F", size = 3, hjust = 0) +
-  labs(
-    title    = "HR Rate Zurdos vs Derechos · codificado por altitud",
-    subtitle = "Puntos sobre la diagonal = parque favorece más a zurdos",
-    x = "HR Rate — Zurdos (L)", y = "HR Rate — Derechos (R)"
-  ) +
+  labs(title    = "HR Rate Zurdos vs Derechos · condiciones ambientales",
+       subtitle = "Sobre la diagonal = parque favorece más a zurdos · tamaño = humedad",
+       x = "HR Rate — Zurdos (L)", y = "HR Rate — Derechos (R)") +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold"),
         panel.grid.minor = element_blank())
 ```
 
-### 5.2 Tabla de ventajas bat side
+### 6.2 Tabla bat side con contexto ambiental
 
 ```{r batside-table}
 pf_bs |>
-  filter(matchup.batSide.code %in% c("L", "R")) |>
+  filter(matchup.batSide.code %in% c("L","R")) |>
   select(venue, matchup.batSide.code, HR_rate, XBH_rate, H_rate) |>
   pivot_wider(names_from  = matchup.batSide.code,
               values_from = c(HR_rate, XBH_rate, H_rate),
               names_glue  = "{.value}_{matchup.batSide.code}") |>
-  mutate(
-    hr_adv_L  = HR_rate_L  / HR_rate_R,
-    xbh_adv_L = XBH_rate_L / XBH_rate_R,
-    h_adv_L   = H_rate_L   / H_rate_R
-  ) |>
-  left_join(select(pf, team, altitud, alt_group), by = c("venue" = "team")) |>
+  mutate(hr_adv_L  = HR_rate_L  / HR_rate_R,
+         xbh_adv_L = XBH_rate_L / XBH_rate_R,
+         h_adv_L   = H_rate_L   / H_rate_R) |>
+  left_join(select(pf, team, altitud_ft, humidity_pct, avg_temp),
+            by = c("venue" = "team")) |>
   arrange(desc(hr_adv_L)) |>
-  select(venue, altitud, HR_rate_L, HR_rate_R, hr_adv_L,
+  select(venue, altitud_ft, humidity_pct, avg_temp,
+         HR_rate_L, HR_rate_R, hr_adv_L,
          XBH_rate_L, XBH_rate_R, xbh_adv_L,
          H_rate_L, H_rate_R, h_adv_L) |>
   gt(rowname_col = "venue") |>
   tab_header(title    = "Ventaja por mano de bateo · LMB 2024–2026",
              subtitle = "Ratio >1 = parque favorece a zurdos") |>
   cols_label(
-    altitud    = "Alt (m)",
+    altitud_ft   = "Alt (ft)",
+    humidity_pct = "Hum %",
+    avg_temp     = "°F",
     HR_rate_L  = "L", HR_rate_R  = "R", hr_adv_L  = "L/R",
     XBH_rate_L = "L", XBH_rate_R = "R", xbh_adv_L = "L/R",
     H_rate_L   = "L", H_rate_R   = "R", h_adv_L   = "L/R"
   ) |>
-  fmt_integer(columns = altitud) |>
+  fmt_number(columns = altitud_ft, decimals = 0, use_seps = TRUE) |>
+  fmt_number(columns = humidity_pct, decimals = 0, suffix = "%") |>
+  fmt_number(columns = avg_temp, decimals = 1) |>
   fmt_percent(columns = c(HR_rate_L, HR_rate_R, XBH_rate_L,
                            XBH_rate_R, H_rate_L, H_rate_R), decimals = 1) |>
-  fmt_number(columns  = c(hr_adv_L, xbh_adv_L, h_adv_L), decimals = 2) |>
-  data_color(columns = altitud, method = "numeric",
+  fmt_number(columns = c(hr_adv_L, xbh_adv_L, h_adv_L), decimals = 2) |>
+  data_color(columns = altitud_ft, method = "numeric",
              palette = c("#0096C7","#52B788","#F4A261","#6A0572")) |>
+  data_color(columns = humidity_pct, method = "numeric",
+             palette = c("#F4A261", "#ADB5BD", "#0096C7")) |>
   data_color(columns = c(hr_adv_L, xbh_adv_L, h_adv_L),
              method  = "numeric",
              palette = c("#1D3557", "white", "#C1121F"),
              domain  = c(0.7, 1.3)) |>
-  tab_spanner(label = "HR Rate",  columns = c(HR_rate_L, HR_rate_R, hr_adv_L)) |>
-  tab_spanner(label = "XBH Rate", columns = c(XBH_rate_L, XBH_rate_R, xbh_adv_L)) |>
-  tab_spanner(label = "Hit Rate", columns = c(H_rate_L, H_rate_R, h_adv_L)) |>
+  tab_spanner(label = "Ambiente",
+              columns = c(altitud_ft, humidity_pct, avg_temp)) |>
+  tab_spanner(label = "HR Rate",
+              columns = c(HR_rate_L, HR_rate_R, hr_adv_L)) |>
+  tab_spanner(label = "XBH Rate",
+              columns = c(XBH_rate_L, XBH_rate_R, xbh_adv_L)) |>
+  tab_spanner(label = "Hit Rate",
+              columns = c(H_rate_L, H_rate_R, h_adv_L)) |>
   tab_style(style = list(cell_fill(color = "#FFF3CD")),
             locations = cells_stub(rows = venue == "Toros de Tijuana")) |>
   opt_stylize(style = 1) |>
@@ -643,31 +788,43 @@ pf_bs |>
 
 ---
 
-## 6 · Compatibilidad parque–perfil de jugador
+## 7 · Compatibilidad parque–perfil de jugador
 
 ```{r profile-heatmap}
 #| fig-height: 8
-
 pf |>
-  left_join(select(vbp, team, OPS, K_pct, BB_pct), by = "team") |>
   left_join(select(vbb, team, hr_per_fb, gb_pct, fb_pct), by = "team") |>
+  left_join(select(vbp, team, K_pct), by = "team") |>
   mutate(
-    score_power   = scale(PF_HR_avg_idx * 0.4 + fb_pct * 200 + hr_per_fb * 400)[,1],
-    score_contact = scale(PF_H_avg_idx  * 0.4 + gb_pct  * 60 + (1 - K_pct) * 60)[,1],
-    score_pitcher = scale((200 - PF_HR_avg_idx) * 0.3 +
-                          (200 - PF_R_avg_idx)  * 0.3 +
-                          PF_K_avg_idx * 0.2 +
-                          (1000 - altitud) * 0.02)[,1]
+    # Power: HR idx + FB rate + altitud (en la misma dirección)
+    score_power   = scale(
+      PF_HR_avg_idx * 0.35 + fb_pct * 180 +
+      hr_per_fb * 380 + altitud_ft * 0.004)[,1],
+    # Contact: H idx + GB rate - K% - humedad alta ayuda al pitcher, no al power
+    score_contact = scale(
+      PF_H_avg_idx * 0.35 + gb_pct * 60 +
+      (1 - K_pct) * 60 + humidity_pct * 0.2)[,1],
+    # Pitcher: K idx + 1/HR idx + altitud inversa + humedad
+    score_pitcher = scale(
+      PF_K_avg_idx * 0.30 +
+      (200 - PF_HR_avg_idx) * 0.30 +
+      (200 - PF_R_avg_idx)  * 0.25 +
+      humidity_pct * 0.15   +
+      (8000 - altitud_ft) * 0.002)[,1]
   ) |>
-  select(abbr, altitud, alt_group, score_power, score_contact, score_pitcher) |>
-  pivot_longer(-c(abbr, altitud, alt_group),
+  select(abbr, altitud_ft, humidity_pct,
+         score_power, score_contact, score_pitcher) |>
+  pivot_longer(-c(abbr, altitud_ft, humidity_pct),
                names_to = "profile", values_to = "score") |>
-  mutate(profile = recode(profile,
-    score_power   = "Power Hitter",
-    score_contact = "Contact Hitter",
-    score_pitcher = "Pitcher")) |>
+  mutate(
+    profile = recode(profile,
+      score_power   = "Power Hitter",
+      score_contact = "Contact Hitter",
+      score_pitcher = "Pitcher"),
+    label_abbr = glue("{abbr}\n{comma(round(altitud_ft))}ft · {round(humidity_pct)}%")
+  ) |>
   ggplot(aes(x = profile,
-             y = reorder(glue("{abbr} ({altitud}m)"), score),
+             y = reorder(label_abbr, score),
              fill = score)) +
   geom_tile(color = "white", linewidth = 0.6) +
   geom_text(aes(label = round(score, 1),
@@ -679,23 +836,28 @@ pf |>
                      guide = "none") +
   labs(
     title    = "Compatibilidad parque–perfil de jugador",
-    subtitle = "Z-score · Rojo = parque muy favorable · altitud entre paréntesis",
+    subtitle = "Z-score · Rojo = muy favorable · Etiquetas: abbr / altitud / humedad",
     x = NULL, y = NULL,
-    caption  = "Pitcher score incluye penalización por altitud (alta altitud = desventaja para pitcher)"
+    caption  = paste0(
+      "Power: PF_HR(35%) + FB%(28%) + HR/FB(37%) + altitud\n",
+      "Contact: PF_H(35%) + GB%(30%) + 1-K%(30%) + humedad\n",
+      "Pitcher: PF_K(30%) + 1-PF_HR(30%) + 1-PF_R(25%) + humedad(15%) - altitud"
+    )
   ) +
   theme_minimal(base_size = 11) +
   theme(plot.title = element_text(face = "bold"),
-        panel.grid = element_blank(),
-        axis.text.x = element_text(face = "bold", size = 13))
+        plot.caption = element_text(size = 8, color = "#666"),
+        panel.grid  = element_blank(),
+        axis.text.x = element_text(face = "bold", size = 13),
+        axis.text.y = element_text(size = 9))
 ```
 
 ---
 
-## 7 · Fichas por equipo
+## 8 · Fichas por equipo
 
 ```{r team-cards}
 #| results: asis
-
 for (tm in pf |> arrange(desc(PF_HR_avg_idx)) |> pull(team)) {
   pf_row  <- filter(pf,  team == tm)
   vbp_row <- filter(vbp, team == tm)
@@ -703,35 +865,39 @@ for (tm in pf |> arrange(desc(PF_HR_avg_idx)) |> pull(team)) {
 
   cat(glue("\n\n### {tm} `{pf_row$abbr}`\n\n"))
   cat(glue(
-    "**Altitud:** {pf_row$altitud} msnm · ",
-    "**Zona:** {pf_row$alt_group} · ",
+    "**Altitud:** {comma(round(pf_row$altitud_ft))} ft ",
+    "({pf_row$altitud} m) · ",
+    "**Humedad:** {round(pf_row$humidity_pct)}% · ",
     "**Temp. prom.:** {round(vbp_row$avg_temp, 1)}°F · ",
     "**Perfil:** {pf_row$park_class} · ",
     "**Juegos:** {pf_row$total_games}\n\n"
   ))
 
   tibble(
-    Métrica   = c("Altitud (msnm)", "Temp. prom. (°F)",
-                  "PF HR idx", "PF Carreras idx", "PF Hits idx",
-                  "PF 2B idx", "PF K idx",
-                  "AVG", "OBP", "SLG", "OPS",
-                  "GB%", "FB%", "LD%", "HR/FB"),
-    Valor     = c(
+    Métrica = c(
+      "Altitud (ft)", "Altitud (m)", "Humedad (%)", "Temp. prom. (°F)",
+      "PF HR idx", "PF Carreras idx", "PF Hits idx", "PF 2B idx", "PF K idx",
+      "AVG", "OBP", "SLG", "OPS",
+      "GB%", "FB%", "LD%", "HR/FB"
+    ),
+    Valor = c(
+      comma(round(pf_row$altitud_ft)),
       pf_row$altitud,
+      round(pf_row$humidity_pct),
       round(vbp_row$avg_temp, 1),
       round(pf_row$PF_HR_avg_idx, 1),
-      round(pf_row$PF_R_avg_idx, 1),
-      round(pf_row$PF_H_avg_idx, 1),
+      round(pf_row$PF_R_avg_idx,  1),
+      round(pf_row$PF_H_avg_idx,  1),
       round(pf_row$PF_2B_avg_idx, 1),
-      round(pf_row$PF_K_avg_idx, 1),
+      round(pf_row$PF_K_avg_idx,  1),
       round(vbp_row$AVG, 3),
       round(vbp_row$OBP, 3),
       round(vbp_row$SLG, 3),
       round(vbp_row$OPS, 3),
-      round(vbb_row$gb_pct * 100, 1),
-      round(vbb_row$fb_pct * 100, 1),
-      round(vbb_row$ld_pct * 100, 1),
-      round(vbb_row$hr_per_fb * 100, 1)
+      paste0(round(vbb_row$gb_pct   * 100, 1), "%"),
+      paste0(round(vbb_row$fb_pct   * 100, 1), "%"),
+      paste0(round(vbb_row$ld_pct   * 100, 1), "%"),
+      paste0(round(vbb_row$hr_per_fb * 100, 1), "%")
     )
   ) |>
     gt() |>
@@ -747,13 +913,16 @@ for (tm in pf |> arrange(desc(PF_HR_avg_idx)) |> pull(team)) {
 
 ## Metodología {.appendix}
 
-- **Fuente:** MLB Stats API via `{baseballr}` · Temporadas regulares 2024–2026.
+- **Fuente:** MLB Stats API via R package `{baseballr}` · Temporadas regulares 2024–2026. ETL por Axel Mora.
 - **Período:** Temporadas regulares 2024, 2025 y 2026 (juegos finalizados al 9 de junio de 2026).
-- **Altitud:** Dato geográfico de cada ciudad sede (msnm) incorporado manualmente.
-- **Efecto de altitud sobre la pelota:** A 2 232 msnm la densidad del aire es ~20% menor que a nivel del mar, reduciendo la resistencia aerodinámica y aumentando el alcance de la pelota en forma de arco cuadrado-lineal con la altitud.
-- **Park Factor:** Ratio home/away ponderado por PA · normalizado a índice 100 = promedio de liga.
+- **Altitud:** Medida en pies (`altitud_ft`) y metros (`altitud`) para cada sede.
+- **Humedad:** Promedio de la humedad relativa registrada por la API en los juegos del período analizado.
+- **Efecto físico de altitud:** A 7,323 ft (Ciudad de México) la densidad del aire es ~20% menor que a nivel del mar, reduciendo la resistencia aerodinámica y aumentando el alcance de la pelota.
+- **Efecto de humedad:** Alta humedad → pelota más pesada → menor distancia de vuelo; también modifica el agarre del lanzador. Relación inversa con el poder ofensivo.
+- **Índice Ambiental de Bateo (IAB):** Z-score ponderado: altitud (50%) + temperatura (30%) + humedad inversa (20%).
+- **Park Factor:** Ratio home/away ponderado por PA, normalizado a índice 100 = promedio de liga.
 - **Batted ball:** Calculado desde PBP filtrando por el último lanzamiento de cada turno al bat.
 - **Promedio multi-año:** Media ponderada por PA para reducir varianza en equipos que disputaron menos juegos (cancelados).
 - **Normalización (Índice):** PF × 100, donde 100 = promedio de liga en esa métrica.
-- **Score de compatibilidad:** Z-score normalizado combinando park factors, batted ball rates y penalización/bonus por altitud según el perfil del jugador.
+- **Score de compatibilidad:** Combina park factors, batted ball rates, altitud y humedad con pesos diferenciados por perfil de jugador.
 - **Discriminación por sede:** Se usó el equipo local como proxy de venue en lugar del nombre del estadio, para evitar inconsistencias por cambios de nombre o juegos en sede neutral.
