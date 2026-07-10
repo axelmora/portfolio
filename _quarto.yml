@@ -16,6 +16,8 @@ website:
         href: wbc_rosters.qmd
       - text: WBC Rosters 
         href: wbc_rosters_full.qmd
+      - text: Best Starters vs LHB 
+        href: starters_vs_lhb.qmd
       - text: About
         href: about.qmd
     right:
@@ -30,4 +32,9 @@ format:
   html:
     theme: cosmo
     css: styles.css
-    toc: true
+    toc: false
+    page-layout: full
+    embed-resources: true
+    grid:
+      body-width: 1200px
+      margin-width: 300px

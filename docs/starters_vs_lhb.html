@@ -20,56 +20,21 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="index_files/libs/quarto-html/popper.min.js"></script>
-<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
-<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="starters_vs_lhb_files/libs/clipboard/clipboard.min.js"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/popper.min.js"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="starters_vs_lhb_files/libs/quarto-html/anchor.min.js"></script>
+<link href="starters_vs_lhb_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="starters_vs_lhb_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="starters_vs_lhb_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="starters_vs_lhb_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="starters_vs_lhb_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -101,77 +66,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Place vs_lhb.csv in this same project folder (or adjust the path below)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"vs_lhb.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Show R code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Qualified starters (SP) with &gt;= 52 IP overall ------------------------</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>overall <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(split_type <span class="sc">==</span> <span class="st">"Overall"</span>, role <span class="sc">==</span> <span class="st">"SP"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(IP_dec <span class="sc">&gt;=</span> <span class="dv">52</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    pitcher_id, Name, Team, pitch_hand, age, birth_country,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    GS, <span class="at">IP_ov =</span> IP_dec, W, L, <span class="at">ERA_ov =</span> ERA, <span class="at">WHIP_ov =</span> WHIP,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">BAA_ov =</span> BAA, <span class="st">`</span><span class="at">K%_ov</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">K%</span><span class="st">`</span>, <span class="st">`</span><span class="at">BB%_ov</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">BB%</span><span class="st">`</span>, <span class="at">HR9_ov =</span> <span class="st">`</span><span class="at">HR/9</span><span class="st">`</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- vs_LHB split for those same pitchers ---------------------------------</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>vs_lhb <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(split_type <span class="sc">==</span> <span class="st">"vs_LHB"</span>, pitcher_id <span class="sc">%in%</span> overall<span class="sc">$</span>pitcher_id) <span class="sc">%&gt;%</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    pitcher_id, <span class="at">IP_lhb =</span> IP_dec, <span class="at">BAA_lhb =</span> BAA,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">K%_lhb</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">K%</span><span class="st">`</span>, <span class="st">`</span><span class="at">BB%_lhb</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">BB%</span><span class="st">`</span>, <span class="at">HR9_lhb =</span> <span class="st">`</span><span class="at">HR/9</span><span class="st">`</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">GO%_lhb</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">GO%</span><span class="st">`</span>, <span class="st">`</span><span class="at">AO%_lhb</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">AO%</span><span class="st">`</span>, <span class="at">Whiff_lhb =</span> <span class="st">`</span><span class="at">Whiff%</span><span class="st">`</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Join, rank (best vs LHB = lowest BAA, then highest K%), top 10 -------</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> overall <span class="sc">%&gt;%</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(vs_lhb, <span class="at">by =</span> <span class="st">"pitcher_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(BAA_lhb, <span class="fu">desc</span>(<span class="st">`</span><span class="at">K%_lhb</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pitcher_id) <span class="sc">%&gt;%</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Rank =</span> <span class="fu">row_number</span>(), <span class="at">.before =</span> Name) <span class="sc">%&gt;%</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<div id="vtbehkqjqv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="zyqwrpkjfr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#vtbehkqjqv table {
+#zyqwrpkjfr table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vtbehkqjqv thead, #vtbehkqjqv tbody, #vtbehkqjqv tfoot, #vtbehkqjqv tr, #vtbehkqjqv td, #vtbehkqjqv th {
+#zyqwrpkjfr thead, #zyqwrpkjfr tbody, #zyqwrpkjfr tfoot, #zyqwrpkjfr tr, #zyqwrpkjfr td, #zyqwrpkjfr th {
   border-style: none;
 }
 
-#vtbehkqjqv p {
+#zyqwrpkjfr p {
   margin: 0;
   padding: 0;
 }
 
-#vtbehkqjqv .gt_table {
+#zyqwrpkjfr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 100%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -186,14 +110,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_caption {
+#zyqwrpkjfr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vtbehkqjqv .gt_title {
+#zyqwrpkjfr .gt_title {
   color: #333333;
-  font-size: 125%;
+  font-size: 18px;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -203,9 +127,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#vtbehkqjqv .gt_subtitle {
+#zyqwrpkjfr .gt_subtitle {
   color: #333333;
-  font-size: 85%;
+  font-size: 12px;
   font-weight: initial;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -215,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#vtbehkqjqv .gt_heading {
+#zyqwrpkjfr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -227,13 +151,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_bottom_border {
+#zyqwrpkjfr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_col_headings {
+#zyqwrpkjfr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -248,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_col_heading {
+#zyqwrpkjfr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -261,14 +185,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#vtbehkqjqv .gt_column_spanner_outer {
+#zyqwrpkjfr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -280,31 +204,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#vtbehkqjqv .gt_column_spanner_outer:first-child {
+#zyqwrpkjfr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vtbehkqjqv .gt_column_spanner_outer:last-child {
+#zyqwrpkjfr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vtbehkqjqv .gt_column_spanner {
+#zyqwrpkjfr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#vtbehkqjqv .gt_spanner_row {
+#zyqwrpkjfr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vtbehkqjqv .gt_group_heading {
+#zyqwrpkjfr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -330,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#vtbehkqjqv .gt_empty_group_heading {
+#zyqwrpkjfr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -345,17 +269,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#vtbehkqjqv .gt_from_md > :first-child {
+#zyqwrpkjfr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vtbehkqjqv .gt_from_md > :last-child {
+#zyqwrpkjfr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vtbehkqjqv .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
+#zyqwrpkjfr .gt_row {
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -372,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#vtbehkqjqv .gt_stub {
+#zyqwrpkjfr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vtbehkqjqv .gt_stub_row_group {
+#zyqwrpkjfr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -399,15 +323,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#vtbehkqjqv .gt_row_group_first td {
+#zyqwrpkjfr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vtbehkqjqv .gt_row_group_first th {
+#zyqwrpkjfr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vtbehkqjqv .gt_summary_row {
+#zyqwrpkjfr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -417,16 +341,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vtbehkqjqv .gt_first_summary_row {
+#zyqwrpkjfr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_first_summary_row.thick {
+#zyqwrpkjfr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vtbehkqjqv .gt_last_summary_row {
+#zyqwrpkjfr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -436,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_grand_summary_row {
+#zyqwrpkjfr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -446,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vtbehkqjqv .gt_first_grand_summary_row {
+#zyqwrpkjfr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -456,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_last_grand_summary_row_top {
+#zyqwrpkjfr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -466,11 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_striped {
+#zyqwrpkjfr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vtbehkqjqv .gt_table_body {
+#zyqwrpkjfr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -479,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_footnotes {
+#zyqwrpkjfr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -493,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_footnote {
+#zyqwrpkjfr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -502,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vtbehkqjqv .gt_sourcenotes {
+#zyqwrpkjfr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -516,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#vtbehkqjqv .gt_sourcenote {
+#zyqwrpkjfr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -524,118 +448,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#vtbehkqjqv .gt_left {
+#zyqwrpkjfr .gt_left {
   text-align: left;
 }
 
-#vtbehkqjqv .gt_center {
+#zyqwrpkjfr .gt_center {
   text-align: center;
 }
 
-#vtbehkqjqv .gt_right {
+#zyqwrpkjfr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vtbehkqjqv .gt_font_normal {
+#zyqwrpkjfr .gt_font_normal {
   font-weight: normal;
 }
 
-#vtbehkqjqv .gt_font_bold {
+#zyqwrpkjfr .gt_font_bold {
   font-weight: bold;
 }
 
-#vtbehkqjqv .gt_font_italic {
+#zyqwrpkjfr .gt_font_italic {
   font-style: italic;
 }
 
-#vtbehkqjqv .gt_super {
+#zyqwrpkjfr .gt_super {
   font-size: 65%;
 }
 
-#vtbehkqjqv .gt_footnote_marks {
+#zyqwrpkjfr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vtbehkqjqv .gt_asterisk {
+#zyqwrpkjfr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vtbehkqjqv .gt_indent_1 {
+#zyqwrpkjfr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vtbehkqjqv .gt_indent_2 {
+#zyqwrpkjfr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vtbehkqjqv .gt_indent_3 {
+#zyqwrpkjfr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vtbehkqjqv .gt_indent_4 {
+#zyqwrpkjfr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vtbehkqjqv .gt_indent_5 {
+#zyqwrpkjfr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vtbehkqjqv .katex-display {
+#zyqwrpkjfr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vtbehkqjqv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zyqwrpkjfr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-</colgroup>
 <thead>
 <tr class="gt_heading header">
-<td colspan="24" class="gt_heading gt_title gt_font_normal">Best LMB Starting Pitchers vs. Left-Handed Batters</td>
+<td colspan="20" class="gt_heading gt_title gt_font_normal">Best LMB Starting Pitchers vs. Left-Handed Batters</td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="24" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">2026 Season · Minimum 52 IP overall · Top 10, sorted by BAA vs LHB</td>
+<td colspan="20" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">2026 Season · Minimum 52 IP overall · Top 10, sorted by BAA vs LHB</td>
 </tr>
 <tr class="gt_col_headings gt_spanner_row header">
 <th colspan="6" id="Pitcher Info" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
 Pitcher Info
 </div></th>
-<th colspan="10" id="Overall" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+<th colspan="8" id="Overall" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
 Overall
 </div></th>
-<th colspan="8" id="vs LHB" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+<th colspan="6" id="vs LHB" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
 vs LHB
 </div></th>
 </tr>
@@ -652,17 +550,13 @@ vs LHB
 <th id="L" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">L</th>
 <th id="ERA_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">ERA</th>
 <th id="WHIP_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">WHIP</th>
-<th id="BAA_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">BAA</th>
 <th id="K%_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">K%</th>
 <th id="BB%_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">BB%</th>
-<th id="HR9_ov" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">HR/9</th>
 <th id="IP_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">IP</th>
 <th id="BAA_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">BAA</th>
 <th id="K%_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">K%</th>
 <th id="BB%_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">BB%</th>
 <th id="HR9_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">HR/9</th>
-<th id="GO%_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">GO%</th>
-<th id="AO%_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">AO%</th>
 <th id="Whiff_lhb" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Whiff%</th>
 </tr>
 </thead>
@@ -680,17 +574,13 @@ vs LHB
 <td class="gt_row gt_center" headers="L">4</td>
 <td class="gt_row gt_center" headers="ERA_ov">5.18</td>
 <td class="gt_row gt_center" headers="WHIP_ov">1.47</td>
-<td class="gt_row gt_center" headers="BAA_ov">0.267</td>
 <td class="gt_row gt_center" headers="K%_ov">18.8%</td>
 <td class="gt_row gt_center" headers="BB%_ov">9.8%</td>
-<td class="gt_row gt_center" headers="HR9_ov">1.38</td>
 <td class="gt_row gt_center" headers="IP_lhb">16.3</td>
-<td class="gt_row gt_center" headers="BAA_lhb" style="background-color: #1A9850; color: #FFFFFF">0.155</td>
+<td class="gt_row gt_center" headers="BAA_lhb">0.155</td>
 <td class="gt_row gt_center" headers="K%_lhb">25.8%</td>
 <td class="gt_row gt_center" headers="BB%_lhb">6.5%</td>
 <td class="gt_row gt_center" headers="HR9_lhb">1.10</td>
-<td class="gt_row gt_center" headers="GO%_lhb">37.1%</td>
-<td class="gt_row gt_center" headers="AO%_lhb">60.0%</td>
 <td class="gt_row gt_center" headers="Whiff_lhb">27.8%</td>
 </tr>
 <tr class="even">
@@ -706,17 +596,13 @@ vs LHB
 <td class="gt_row gt_center gt_striped" headers="L">1</td>
 <td class="gt_row gt_center gt_striped" headers="ERA_ov">3.54</td>
 <td class="gt_row gt_center gt_striped" headers="WHIP_ov">1.16</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_ov">0.236</td>
 <td class="gt_row gt_center gt_striped" headers="K%_ov">24.3%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_ov">6.5%</td>
-<td class="gt_row gt_center gt_striped" headers="HR9_ov">1.03</td>
 <td class="gt_row gt_center gt_striped" headers="IP_lhb">27.7</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_lhb" style="background-color: #AFD792; color: #000000">0.186</td>
+<td class="gt_row gt_center gt_striped" headers="BAA_lhb">0.186</td>
 <td class="gt_row gt_center gt_striped" headers="K%_lhb">26.0%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_lhb">6.7%</td>
 <td class="gt_row gt_center gt_striped" headers="HR9_lhb">1.30</td>
-<td class="gt_row gt_center gt_striped" headers="GO%_lhb">45.5%</td>
-<td class="gt_row gt_center gt_striped" headers="AO%_lhb">45.5%</td>
 <td class="gt_row gt_center gt_striped" headers="Whiff_lhb">22.5%</td>
 </tr>
 <tr class="odd">
@@ -732,17 +618,13 @@ vs LHB
 <td class="gt_row gt_center" headers="L">4</td>
 <td class="gt_row gt_center" headers="ERA_ov">3.64</td>
 <td class="gt_row gt_center" headers="WHIP_ov">1.20</td>
-<td class="gt_row gt_center" headers="BAA_ov">0.247</td>
 <td class="gt_row gt_center" headers="K%_ov">17.0%</td>
 <td class="gt_row gt_center" headers="BB%_ov">6.5%</td>
-<td class="gt_row gt_center" headers="HR9_ov">1.10</td>
 <td class="gt_row gt_center" headers="IP_lhb">37.7</td>
-<td class="gt_row gt_center" headers="BAA_lhb" style="background-color: #D3E9A6; color: #000000">0.195</td>
+<td class="gt_row gt_center" headers="BAA_lhb">0.195</td>
 <td class="gt_row gt_center" headers="K%_lhb">21.1%</td>
 <td class="gt_row gt_center" headers="BB%_lhb">6.8%</td>
 <td class="gt_row gt_center" headers="HR9_lhb">0.72</td>
-<td class="gt_row gt_center" headers="GO%_lhb">46.2%</td>
-<td class="gt_row gt_center" headers="AO%_lhb">47.4%</td>
 <td class="gt_row gt_center" headers="Whiff_lhb">24.1%</td>
 </tr>
 <tr class="even">
@@ -758,17 +640,13 @@ vs LHB
 <td class="gt_row gt_center gt_striped" headers="L">3</td>
 <td class="gt_row gt_center gt_striped" headers="ERA_ov">3.60</td>
 <td class="gt_row gt_center gt_striped" headers="WHIP_ov">1.33</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_ov">0.219</td>
 <td class="gt_row gt_center gt_striped" headers="K%_ov">25.7%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_ov">11.5%</td>
-<td class="gt_row gt_center gt_striped" headers="HR9_ov">0.91</td>
 <td class="gt_row gt_center gt_striped" headers="IP_lhb">23.3</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_lhb" style="background-color: #FFE9AC; color: #000000">0.212</td>
+<td class="gt_row gt_center gt_striped" headers="BAA_lhb">0.212</td>
 <td class="gt_row gt_center gt_striped" headers="K%_lhb">17.6%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_lhb">13.7%</td>
 <td class="gt_row gt_center gt_striped" headers="HR9_lhb">1.54</td>
-<td class="gt_row gt_center gt_striped" headers="GO%_lhb">52.8%</td>
-<td class="gt_row gt_center gt_striped" headers="AO%_lhb">47.2%</td>
 <td class="gt_row gt_center gt_striped" headers="Whiff_lhb">24.7%</td>
 </tr>
 <tr class="odd">
@@ -784,17 +662,13 @@ vs LHB
 <td class="gt_row gt_center" headers="L">7</td>
 <td class="gt_row gt_center" headers="ERA_ov">5.29</td>
 <td class="gt_row gt_center" headers="WHIP_ov">1.56</td>
-<td class="gt_row gt_center" headers="BAA_ov">0.296</td>
 <td class="gt_row gt_center" headers="K%_ov">19.2%</td>
 <td class="gt_row gt_center" headers="BB%_ov">7.3%</td>
-<td class="gt_row gt_center" headers="HR9_ov">0.72</td>
 <td class="gt_row gt_center" headers="IP_lhb">32.3</td>
-<td class="gt_row gt_center" headers="BAA_lhb" style="background-color: #FCCB92; color: #000000">0.220</td>
+<td class="gt_row gt_center" headers="BAA_lhb">0.220</td>
 <td class="gt_row gt_center" headers="K%_lhb">18.7%</td>
 <td class="gt_row gt_center" headers="BB%_lhb">8.2%</td>
 <td class="gt_row gt_center" headers="HR9_lhb">0.56</td>
-<td class="gt_row gt_center" headers="GO%_lhb">67.2%</td>
-<td class="gt_row gt_center" headers="AO%_lhb">23.9%</td>
 <td class="gt_row gt_center" headers="Whiff_lhb">20.7%</td>
 </tr>
 <tr class="even">
@@ -810,17 +684,13 @@ vs LHB
 <td class="gt_row gt_center gt_striped" headers="L">5</td>
 <td class="gt_row gt_center gt_striped" headers="ERA_ov">6.55</td>
 <td class="gt_row gt_center gt_striped" headers="WHIP_ov">1.57</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_ov">0.279</td>
 <td class="gt_row gt_center gt_striped" headers="K%_ov">23.8%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_ov">10.1%</td>
-<td class="gt_row gt_center gt_striped" headers="HR9_ov">1.15</td>
 <td class="gt_row gt_center gt_striped" headers="IP_lhb">26.0</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_lhb" style="background-color: #EF875C; color: #000000">0.238</td>
+<td class="gt_row gt_center gt_striped" headers="BAA_lhb">0.238</td>
 <td class="gt_row gt_center gt_striped" headers="K%_lhb">23.9%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_lhb">10.6%</td>
 <td class="gt_row gt_center gt_striped" headers="HR9_lhb">0.69</td>
-<td class="gt_row gt_center gt_striped" headers="GO%_lhb">38.0%</td>
-<td class="gt_row gt_center gt_striped" headers="AO%_lhb">50.0%</td>
 <td class="gt_row gt_center gt_striped" headers="Whiff_lhb">26.5%</td>
 </tr>
 <tr class="odd">
@@ -836,17 +706,13 @@ vs LHB
 <td class="gt_row gt_center" headers="L">2</td>
 <td class="gt_row gt_center" headers="ERA_ov">2.34</td>
 <td class="gt_row gt_center" headers="WHIP_ov">1.21</td>
-<td class="gt_row gt_center" headers="BAA_ov">0.217</td>
 <td class="gt_row gt_center" headers="K%_ov">25.2%</td>
 <td class="gt_row gt_center" headers="BB%_ov">10.2%</td>
-<td class="gt_row gt_center" headers="HR9_ov">0.56</td>
 <td class="gt_row gt_center" headers="IP_lhb">30.3</td>
-<td class="gt_row gt_center" headers="BAA_lhb" style="background-color: #EE8359; color: #FFFFFF">0.239</td>
+<td class="gt_row gt_center" headers="BAA_lhb">0.239</td>
 <td class="gt_row gt_center" headers="K%_lhb">19.2%</td>
 <td class="gt_row gt_center" headers="BB%_lhb">13.8%</td>
 <td class="gt_row gt_center" headers="HR9_lhb">0.89</td>
-<td class="gt_row gt_center" headers="GO%_lhb">55.0%</td>
-<td class="gt_row gt_center" headers="AO%_lhb">38.3%</td>
 <td class="gt_row gt_center" headers="Whiff_lhb">29.3%</td>
 </tr>
 <tr class="even">
@@ -862,17 +728,13 @@ vs LHB
 <td class="gt_row gt_center gt_striped" headers="L">5</td>
 <td class="gt_row gt_center gt_striped" headers="ERA_ov">4.86</td>
 <td class="gt_row gt_center gt_striped" headers="WHIP_ov">1.43</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_ov">0.276</td>
 <td class="gt_row gt_center gt_striped" headers="K%_ov">12.8%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_ov">7.8%</td>
-<td class="gt_row gt_center gt_striped" headers="HR9_ov">1.53</td>
 <td class="gt_row gt_center gt_striped" headers="IP_lhb">31.3</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_lhb" style="background-color: #E66745; color: #FFFFFF">0.246</td>
+<td class="gt_row gt_center gt_striped" headers="BAA_lhb">0.246</td>
 <td class="gt_row gt_center gt_striped" headers="K%_lhb">12.7%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_lhb">9.0%</td>
 <td class="gt_row gt_center gt_striped" headers="HR9_lhb">1.72</td>
-<td class="gt_row gt_center gt_striped" headers="GO%_lhb">46.2%</td>
-<td class="gt_row gt_center gt_striped" headers="AO%_lhb">44.9%</td>
 <td class="gt_row gt_center gt_striped" headers="Whiff_lhb">15.3%</td>
 </tr>
 <tr class="odd">
@@ -888,17 +750,13 @@ vs LHB
 <td class="gt_row gt_center" headers="L">4</td>
 <td class="gt_row gt_center" headers="ERA_ov">5.09</td>
 <td class="gt_row gt_center" headers="WHIP_ov">1.54</td>
-<td class="gt_row gt_center" headers="BAA_ov">0.267</td>
 <td class="gt_row gt_center" headers="K%_ov">13.0%</td>
 <td class="gt_row gt_center" headers="BB%_ov">11.5%</td>
-<td class="gt_row gt_center" headers="HR9_ov">1.26</td>
 <td class="gt_row gt_center" headers="IP_lhb">33.7</td>
-<td class="gt_row gt_center" headers="BAA_lhb" style="background-color: #D8362A; color: #FFFFFF">0.256</td>
+<td class="gt_row gt_center" headers="BAA_lhb">0.256</td>
 <td class="gt_row gt_center" headers="K%_lhb">6.5%</td>
 <td class="gt_row gt_center" headers="BB%_lhb">15.0%</td>
 <td class="gt_row gt_center" headers="HR9_lhb">1.34</td>
-<td class="gt_row gt_center" headers="GO%_lhb">47.7%</td>
-<td class="gt_row gt_center" headers="AO%_lhb">45.5%</td>
 <td class="gt_row gt_center" headers="Whiff_lhb">12.1%</td>
 </tr>
 <tr class="even">
@@ -914,22 +772,18 @@ vs LHB
 <td class="gt_row gt_center gt_striped" headers="L">5</td>
 <td class="gt_row gt_center gt_striped" headers="ERA_ov">4.17</td>
 <td class="gt_row gt_center gt_striped" headers="WHIP_ov">1.32</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_ov">0.230</td>
 <td class="gt_row gt_center gt_striped" headers="K%_ov">17.3%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_ov">10.7%</td>
-<td class="gt_row gt_center gt_striped" headers="HR9_ov">0.00</td>
 <td class="gt_row gt_center gt_striped" headers="IP_lhb">28.3</td>
-<td class="gt_row gt_center gt_striped" headers="BAA_lhb" style="background-color: #D73027; color: #FFFFFF">0.257</td>
+<td class="gt_row gt_center gt_striped" headers="BAA_lhb">0.257</td>
 <td class="gt_row gt_center gt_striped" headers="K%_lhb">16.8%</td>
 <td class="gt_row gt_center gt_striped" headers="BB%_lhb">10.4%</td>
 <td class="gt_row gt_center gt_striped" headers="HR9_lhb">0.00</td>
-<td class="gt_row gt_center gt_striped" headers="GO%_lhb">45.5%</td>
-<td class="gt_row gt_center gt_striped" headers="AO%_lhb">49.1%</td>
 <td class="gt_row gt_center gt_striped" headers="Whiff_lhb">19.2%</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
-<td colspan="24" class="gt_sourcenote">Source: LMB 2026 pitching splits</td>
+<td colspan="20" class="gt_sourcenote"></td>
 </tr>
 </tfoot>
 
