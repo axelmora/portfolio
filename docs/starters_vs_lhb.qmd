@@ -1,6 +1,6 @@
 ---
 title: "Best LMB Starting Pitchers vs. Left-Handed Batters"
-subtitle: "2026 Season · Minimum 52 IP overall · Top 10, sorted by BAA vs LHB"
+subtitle: "2026 Season · Minimum 58 IP overall · Top 10, sorted by BAA vs LHB"
 format:
   html:
     echo: false
@@ -26,7 +26,7 @@ raw <- read_csv("vs_lhb.csv", show_col_types = FALSE)
 # ---- Qualified starters (SP) with >= 52 IP overall ------------------------
 overall <- raw %>%
   filter(split_type == "Overall", role == "SP") %>%
-  filter(IP_dec >= 52) %>%
+  filter(IP_dec >= 58) %>%
   transmute(
     pitcher_id, Name, Team, pitch_hand, age, birth_country,
     GS, IP_ov = IP_dec, W, L, ERA_ov = ERA, WHIP_ov = WHIP,
