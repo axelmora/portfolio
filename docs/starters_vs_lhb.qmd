@@ -1,6 +1,6 @@
 ---
 title: "Best LMB Starting Pitchers vs. Left-Handed Batters"
-subtitle: "2026 Season · Minimum 58 IP overall · Top 10, sorted by BAA vs LHB"
+subtitle: "2026 Season · Minimum 57 IP overall · Top 20, sorted by BAA vs LHB"
 format:
   html:
     echo: false
@@ -14,8 +14,16 @@ format:
 library(tidyverse)
 library(gt)
 
+format_ip <- function(outs) {
+  innings <- floor(outs / 3)
+  remainder <- outs %% 3
+  return(as.numeric(paste0(innings, ".", remainder)))
+}
 # Place vs_lhb.csv in this same project folder (or adjust the path below)
 raw <- read_csv("vs_lhb.csv", show_col_types = FALSE)
+raw <- raw %>%
+  mutate(
+    IP = format_ip(Outs))
 ```
 
 ```{r}
@@ -26,10 +34,10 @@ raw <- read_csv("vs_lhb.csv", show_col_types = FALSE)
 # ---- Qualified starters (SP) with >= 52 IP overall ------------------------
 overall <- raw %>%
   filter(split_type == "Overall", role == "SP") %>%
-  filter(IP_dec >= 58) %>%
+  filter(IP >= 57) %>%
   transmute(
     pitcher_id, Name, Team, pitch_hand, age, birth_country,
-    GS, IP_ov = IP_dec, W, L, ERA_ov = ERA, WHIP_ov = WHIP,
+    GS, IP_ov = IP, W, L, ERA_ov = ERA, WHIP_ov = WHIP,
     BAA_ov = BAA, `K%_ov` = `K%`, `BB%_ov` = `BB%`, HR9_ov = `HR/9`
   )
 
@@ -37,7 +45,7 @@ overall <- raw %>%
 vs_lhb <- raw %>%
   filter(split_type == "vs_LHB", pitcher_id %in% overall$pitcher_id) %>%
   transmute(
-    pitcher_id, IP_lhb = IP_dec, BAA_lhb = BAA,
+    pitcher_id, IP_lhb = IP, BAA_lhb = BAA,
     `K%_lhb` = `K%`, `BB%_lhb` = `BB%`, HR9_lhb = `HR/9`,
     `GO%_lhb` = `GO%`, `AO%_lhb` = `AO%`, Whiff_lhb = `Whiff%`
   )
@@ -48,7 +56,7 @@ tbl <- overall %>%
   arrange(BAA_lhb, desc(`K%_lhb`)) %>%
   select(-c(pitcher_id,BAA_ov,HR9_ov,`GO%_lhb`,`AO%_lhb`)) %>%
   mutate(Rank = row_number(), .before = Name) %>%
-  slice_head(n = 10)
+  slice_head(n = 20)
 ```
 
 ```{r}
@@ -61,7 +69,7 @@ tbl %>%
   gt() %>%
   tab_header(
     title = "Best LMB Starting Pitchers vs. Left-Handed Batters",
-    subtitle = "2026 Season · Minimum 52 IP overall · Top 10, sorted by BAA vs LHB"
+    subtitle = "2026 Season · Minimum 57 IP overall · Top 10, sorted by BAA vs LHB"
   ) %>%
   tab_spanner(label = "Pitcher Info", columns = c(Rank, Name, Team, pitch_hand, age, birth_country)) %>%
   tab_spanner(label = "Overall", columns = c(GS, IP_ov, W, L, ERA_ov, WHIP_ov, `K%_ov`, `BB%_ov`)) %>%
