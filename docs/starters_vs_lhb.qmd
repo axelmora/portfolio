@@ -34,7 +34,7 @@ raw <- raw %>%
 # ---- Qualified starters (SP) with >= 52 IP overall ------------------------
 overall <- raw %>%
   filter(split_type == "Overall", role == "SP") %>%
-  filter(IP >= 57) %>%
+  filter(IP >= 62) %>%
   transmute(
     pitcher_id, Name, Team, pitch_hand, age, birth_country,
     GS, IP_ov = IP, W, L, ERA_ov = ERA, WHIP_ov = WHIP,
@@ -69,7 +69,7 @@ tbl %>%
   gt() %>%
   tab_header(
     title = "Best LMB Starting Pitchers vs. Left-Handed Batters",
-    subtitle = "2026 Season · Minimum 57 IP overall · Top 10, sorted by BAA vs LHB"
+    subtitle = "2026 Season · Minimum 62 IP overall · Top 10, sorted by BAA vs LHB"
   ) %>%
   tab_spanner(label = "Pitcher Info", columns = c(Rank, Name, Team, pitch_hand, age, birth_country)) %>%
   tab_spanner(label = "Overall", columns = c(GS, IP_ov, W, L, ERA_ov, WHIP_ov, `K%_ov`, `BB%_ov`)) %>%
