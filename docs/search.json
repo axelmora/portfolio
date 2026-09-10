@@ -1916,5 +1916,19 @@
     "title": "LMB 2026",
     "section": " Toros de Tijuana – País de Nacimiento",
     "text": "Toros de Tijuana – País de Nacimiento"
+  },
+  {
+    "objectID": "lmb_timeline.html",
+    "href": "lmb_timeline.html",
+    "title": "Historia de los equipos de la Liga Mexicana de Béisbol",
+    "section": "",
+    "text": "Esta visualización muestra la evolución histórica de los equipos de la Liga Mexicana de Béisbol (LMB) por temporada.\nCada punto representa una temporada. Las líneas conectan temporadas consecutivas dentro de una misma etapa; un cambio de nombre o sede se muestra como una nueva etapa visual."
+  },
+  {
+    "objectID": "lmb_timeline.html#criterio-histórico",
+    "href": "lmb_timeline.html#criterio-histórico",
+    "title": "Historia de los equipos de la Liga Mexicana de Béisbol",
+    "section": "Criterio histórico",
+    "text": "Criterio histórico\nLa identidad de los equipos en esta visualización es una convención histórica para fines analíticos. No pretende determinar continuidad jurídica o propiedad de franquicias.\nEl catálogo utilizado para la gráfica conserva las decisiones históricas definidas para este proyecto, incluyendo la agrupación de nombres y sedes que se consideran parte de una misma identidad estadística y la separación de franquicias que se consideran distintas para el análisis.\n\nFuente de datos: catálogo histórico de equipos de la LMB elaborado y validado para este proyecto. Los archivos data/lmb_timeline_parts/part_*.csv contienen, en conjunto, una fila por equipo y temporada."
   }
 ]
