@@ -1,0 +1,173 @@
+---
+title: "Historia de los equipos de la Liga Mexicana de Béisbol"
+description: "Línea de tiempo interactiva de la evolución histórica de los equipos de la Liga Mexicana de Béisbol."
+page-layout: full
+---
+
+Esta visualización muestra la evolución histórica de los equipos de la **Liga Mexicana de Béisbol (LMB)** por temporada.
+
+Cada punto representa una temporada. Las líneas conectan temporadas consecutivas dentro de una misma etapa; un cambio de nombre o sede se muestra como una nueva etapa visual.
+
+::: {.callout-note}
+## Cómo explorarla
+
+- **Pasa el cursor** sobre un punto para consultar temporada, nombre, sede y `team_id`.
+- Usa la **rueda del mouse** o los controles de Plotly para acercarte a un periodo.
+- El **range slider** inferior permite seleccionar rápidamente un intervalo de años.
+:::
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(plotly)
+library(scales)
+
+lmb <- readr::read_csv(
+  "data/lmb_equipos_long_format_v3.csv",
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+) %>%
+  mutate(
+    team_id = as.integer(team_id),
+    anio = as.integer(anio),
+    across(c(equipo_canonico, nombre_temporada, sede_principal), as.character)
+  ) %>%
+  arrange(team_id, anio)
+
+orden_equipos <- lmb %>%
+  group_by(team_id, equipo_canonico) %>%
+  summarise(
+    primera_temporada = min(anio, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(primera_temporada, team_id) %>%
+  mutate(y = row_number())
+
+lmb_etapas <- lmb %>%
+  left_join(orden_equipos %>% select(team_id, y), by = "team_id") %>%
+  arrange(team_id, anio) %>%
+  group_by(team_id) %>%
+  mutate(
+    cambio_nombre = row_number() > 1 & nombre_temporada != lag(nombre_temporada),
+    cambio_sede = row_number() > 1 & sede_principal != lag(sede_principal),
+    nueva_etapa = row_number() == 1 |
+      anio - lag(anio) > 1 |
+      cambio_nombre |
+      cambio_sede,
+    etapa = cumsum(coalesce(nueva_etapa, FALSE))
+  ) %>%
+  ungroup()
+
+segmentos <- lmb_etapas %>%
+  group_by(
+    team_id, equipo_canonico, y, etapa,
+    nombre_temporada, sede_principal
+  ) %>%
+  summarise(
+    inicio = min(anio, na.rm = TRUE),
+    fin = max(anio, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    xmin = inicio - 0.45,
+    xmax = fin + 0.45
+  )
+
+puntos <- lmb_etapas %>%
+  mutate(
+    tooltip = paste0(
+      "<b>", equipo_canonico, "</b>",
+      "<br>Temporada: ", anio,
+      "<br>Nombre: ", nombre_temporada,
+      "<br>Sede: ", sede_principal,
+      "<br>Team ID: ", team_id
+    )
+  )
+
+ids <- sort(unique(lmb$team_id))
+colores <- scales::hue_pal()(length(ids))
+names(colores) <- as.character(ids)
+
+p <- ggplot() +
+  geom_segment(
+    data = segmentos,
+    aes(
+      x = xmin, xend = xmax,
+      y = y, yend = y,
+      color = factor(team_id)
+    ),
+    linewidth = 5,
+    lineend = "butt"
+  ) +
+  geom_point(
+    data = puntos,
+    aes(
+      x = anio,
+      y = y,
+      color = factor(team_id),
+      text = tooltip
+    ),
+    size = 1.8,
+    alpha = 0.85
+  ) +
+  scale_y_continuous(
+    breaks = orden_equipos$y,
+    labels = orden_equipos$equipo_canonico,
+    expand = expansion(mult = c(0.01, 0.02))
+  ) +
+  scale_x_continuous(
+    breaks = seq(min(lmb$anio), max(lmb$anio), by = 5),
+    minor_breaks = seq(min(lmb$anio), max(lmb$anio), by = 1),
+    expand = expansion(mult = c(0.005, 0.01))
+  ) +
+  scale_color_manual(values = colores, guide = "none") +
+  labs(
+    title = "Historia de los equipos de la Liga Mexicana de Béisbol",
+    subtitle = paste0(
+      n_distinct(lmb$team_id), " equipos históricos | ",
+      min(lmb$anio), "–", max(lmb$anio)
+    ),
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_line(linewidth = 0.3),
+    panel.grid.minor.x = element_line(linewidth = 0.15, linetype = "dotted"),
+    axis.text.y = element_text(size = 8),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(size = 11),
+    plot.margin = margin(10, 20, 10, 10)
+  )
+
+ggplotly(p, tooltip = "text") %>%
+  layout(
+    hoverlabel = list(align = "left"),
+    margin = list(l = 190, r = 30, t = 80, b = 70),
+    height = max(1300, n_distinct(lmb$team_id) * 24),
+    xaxis = list(
+      rangeslider = list(visible = TRUE),
+      fixedrange = FALSE
+    ),
+    yaxis = list(automargin = TRUE)
+  ) %>%
+  config(
+    displaylogo = FALSE,
+    responsive = TRUE,
+    modeBarButtonsToRemove = c("lasso2d", "select2d")
+  )
+```
+
+## Criterio histórico
+
+La identidad de los equipos en esta visualización es una **convención histórica para fines analíticos**. No pretende determinar continuidad jurídica o propiedad de franquicias.
+
+El catálogo utilizado para la gráfica conserva las decisiones históricas definidas para este proyecto, incluyendo la agrupación de nombres y sedes que se consideran parte de una misma identidad estadística y la separación de franquicias que se consideran distintas para el análisis.
+
+> **Fuente de datos:** catálogo histórico de equipos de la LMB elaborado y validado para este proyecto. El archivo `data/lmb_equipos_long_format_v3.csv` contiene una fila por equipo y temporada.
