@@ -25,13 +25,19 @@ library(tidyverse)
 library(plotly)
 library(scales)
 
-lmb <- readr::read_csv(
-  "data/lmb_equipos_long_format_v3.csv",
+archivos <- sort(list.files(
+  "data/lmb_timeline_parts",
+  pattern = "^part_[0-9]+\\.csv$",
+  full.names = TRUE
+))
+
+lmb <- purrr::map_dfr(archivos, ~ readr::read_csv(
+  .x,
   show_col_types = FALSE,
   locale = locale(encoding = "UTF-8")
-) %>%
+)) %>%
   mutate(
-    team_id = as.integer(team_id),
+    team_id = as.character(team_id),
     anio = as.integer(anio),
     across(c(equipo_canonico, nombre_temporada, sede_principal), as.character)
   ) %>%
@@ -89,7 +95,7 @@ puntos <- lmb_etapas %>%
 
 ids <- sort(unique(lmb$team_id))
 colores <- scales::hue_pal()(length(ids))
-names(colores) <- as.character(ids)
+names(colores) <- ids
 
 p <- ggplot() +
   geom_segment(
@@ -170,4 +176,4 @@ La identidad de los equipos en esta visualización es una **convención históri
 
 El catálogo utilizado para la gráfica conserva las decisiones históricas definidas para este proyecto, incluyendo la agrupación de nombres y sedes que se consideran parte de una misma identidad estadística y la separación de franquicias que se consideran distintas para el análisis.
 
-> **Fuente de datos:** catálogo histórico de equipos de la LMB elaborado y validado para este proyecto. El archivo `data/lmb_equipos_long_format_v3.csv` contiene una fila por equipo y temporada.
+> **Fuente de datos:** catálogo histórico de equipos de la LMB elaborado y validado para este proyecto. Los archivos `data/lmb_timeline_parts/part_*.csv` contienen, en conjunto, una fila por equipo y temporada.
