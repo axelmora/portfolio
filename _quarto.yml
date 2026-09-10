@@ -12,6 +12,8 @@ website:
         href: portfolio.qmd
       - text: LMB Analytics
         href: lmb.qmd
+      - text: LMB Team History
+        href: lmb_timeline.qmd
       - text: WBC Rosters Composition
         href: wbc_rosters.qmd
       - text: WBC Rosters 
