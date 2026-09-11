@@ -1,25 +1,25 @@
 body {
   font-family: "Inter", sans-serif;
   max-width: 1600px !important;
-  margin: 100% !important;
+  margin: 0 auto !important;
 }
- 
+
 h1.title {
   font-weight: 700;
 }
- 
+
 .gt_table {
   margin-left: auto;
   margin-right: auto;
   width: 100% !important;
   table-layout: fixed;
 }
- 
+
 .quarto-container,
 .cell-output-display {
   overflow-x: visible !important;
 }
- 
+
 .gt_table td,
 .gt_table th {
   white-space: normal;
